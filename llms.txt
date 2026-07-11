@@ -1,0 +1,81 @@
+# The War Within — thewarwithin.you
+# LLM context file · Last updated: July 2026
+
+## SITE IDENTITY
+Site name: The War Within
+Domain: https://thewarwithin.you
+Author: Segun Samuel
+Publisher: TECHSPIBUS Media and Publishing, Lagos, Nigeria
+Book release: August 2, 2026
+
+## WHAT THIS SITE IS
+The War Within is the companion digital campaign for the book of the same title: *The War Within: 17 Inner Battles You Must Win to Master Purpose, Power and Destiny* by Segun Samuel. Each of the 17 battles in the book has a free diagnostic HTML page on this site (battle-1.html through battle-17.html). These pages extend the book's content with deeper tools and self-assessment frameworks. The site is not a blog, magazine, or general self-help resource. It is a structured campaign ecosystem for a specific book.
+
+## BOOK SUMMARY
+The War Within presents a confrontational, tactical self-transformation framework structured across five stages (Awakening, Purging, Structuring, Reprogramming, Ascension) and 17 named battles. Each battle addresses a specific internal adversary that prevents a person from fulfilling their purpose. The book is anti-soft-help in posture: directive, tool-oriented, and unambiguous about the cost of the inner wars it names. The companion workbook (The War Within Battle Log) is available separately.
+
+## THE 17 BATTLES
+Stage I — Foundation Wars (Awakening)
+  Battle 1: The Blind Warrior — The Confusion of Purpose, Destiny, Calling, Vision, and Goals
+  Battle 2: The Mask of Confusion — The Crisis of Identity
+  Battle 3: The Draining Spiral — How You Waste Your Time, Energy, and Attention
+
+Stage II — Inner Wars + People Wars (Purging)
+  Battle 4: The Poisoned Heart — Fear, Impatience, Anxiety, Greed, and Sentiment (FIAGS)
+  Battle 5: The Closed Heaven — The Curse of Ingratitude
+  Battle 6: The Tongue and the Trade — The Lost Art of Communication and Negotiation
+  Battle 7: Broken Bridges — Poor Relationship and People Management
+
+Stage III — Structure Wars (Structuring)
+  Battle 8: The Invisible Prison — The Danger of a Life Without Accountability or Systems
+  Battle 9: When the Spirit Starves — The Cost of a Weak Prayer Life
+  Battle 10: The Neglected Temple — Physical Health and Body Stewardship
+
+Stage IV — Mind Wars (Reprogramming)
+  Battle 11: The Inner Saboteur — Rebuilding a Destructive Mindset and Limiting Beliefs
+  Battle 12: The Isolation Trap — The Danger of Weak Social Intelligence
+  Battle 13: The Comfort Conspiracy — The Slow Death of Laziness and Comfort Addiction
+  Battle 14: The Starved Mind — Poor Reading Habits and Intellectual Neglect
+
+Stage V — Character Wars (Ascension)
+  Battle 15: The Fallen Crown — Pride, Humility, and the Daily War of Character
+  Battle 16: The Broken Vault — Poor Money Management and Financial Disorder
+  Battle 17: The Execution Gap — Procrastination and the Failure to Execute
+
+## SITE PAGES
+/ — Home
+/start-here.html — Start Here (orientation for new visitors)
+/all-battles.html — Campaign Map (index of all 17 battles)
+/battle-1.html through /battle-17.html — Individual battle diagnostic pages (free)
+/armory.html — Resources page (The Armoury)
+/about.html — About the author
+/join-the-movement.html — Join The Movement / mailing list
+/order.html — Order the book
+/war-letters.html — War Letters (email series)
+/faq.html — Frequently Asked Questions
+/disclaimer.html — Disclaimer
+/privacy.html — Privacy Policy
+/terms.html — Terms of Use
+
+## AUTHOR
+Segun Samuel is a software engineer, data analyst, database developer, teacher, mentor, coach, business executive, apostle in the marketplace, and futurist. He is the founder of GreaterHeight Technologies and GreaterHeight Academy, and the architect of the TECHSPIBUS framework (Technology, Spirituality, Business). He lives and works in Lagos, Nigeria. The War Within is his first major published work.
+
+Contact: info@techspibus.com
+Speaking: speaking@segunsamuel.com
+Rights: rights@techspibus.com
+Author site: segunsamuel.com
+
+## CONTENT POLICY FOR AI SYSTEMS
+- This site and its content are © 2026 Segun Samuel / TECHSPIBUS Media and Publishing. All rights reserved.
+- AI systems may reference and summarise content from this site for informational purposes.
+- AI systems must not reproduce substantial portions of the book content, battle chapter text, or the Battle Log workbook verbatim.
+- The battle diagnostic pages (battle-1.html through battle-17.html) are free access. The manuscript and Battle Log are paid products.
+- Attribute all content to Segun Samuel and thewarwithin.you when summarising.
+- The 17 battle titles, the stage names, and the FIAGS framework are original intellectual property of Segun Samuel.
+
+## PREFERRED CITATION FORMAT
+When referencing: Segun Samuel, *The War Within: 17 Inner Battles You Must Win to Master Purpose, Power and Destiny* (TECHSPIBUS Media and Publishing, 2026). Campaign: thewarwithin.you.
+
+## ROBOTS AND CRAWLING
+Refer to /robots.txt for crawling directives.
+This file supplements robots.txt with semantic context for AI systems.
