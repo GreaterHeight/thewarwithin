@@ -1,0 +1,142 @@
+# ════════════════════════════════════════════════════════════
+# TheWarWithin.you — robots.txt
+# Last updated: 2026-06-13
+# ════════════════════════════════════════════════════════════
+
+# ── Allow all legitimate crawlers ────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# ── Block scraper / data-harvesting bots ─────────────────────
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# ── Global rules ─────────────────────────────────────────────
+User-agent: *
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /cdn-cgi/
+Disallow: /.env
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Disallow draft and versioned pages
+Disallow: /battle-1-edited.html
+Disallow: /battle-1-final.html
+Disallow: /battle-1-full.html
+Disallow: /battle-1-v2.html
+Disallow: /battle-1-v3.html
+Disallow: /battle-template.html
+Disallow: /dispatch-001.html
+Disallow: /dispatch-002.html
+Disallow: /dispatch-003.html
+Disallow: /dispatch-004.html
+Disallow: /dispatch-005.html
+
+# Disallow UTM and tracking query strings
+Disallow: /*?utm_source=*
+Disallow: /*?utm_medium=*
+Disallow: /*?utm_campaign=*
+Disallow: /*?utm_content=*
+Disallow: /*?utm_term=*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+Disallow: /*?msclkid=*
+Disallow: /*?ref=*
+
+# Allow canonical pages
+Allow: /index.html
+Allow: /start-here.html
+Allow: /all-battles.html
+Allow: /about.html
+Allow: /order.html
+Allow: /war-letters.html
+Allow: /war-letters-archive.html
+Allow: /brand.html
+Allow: /framework.html
+Allow: /Join-The-Movement.html
+Allow: /armory.html
+Allow: /battle-*.html
+Allow: /dispatches/
+Allow: /tools/
+
+# ── Do not index audio and document files ────────────────────
+User-agent: *
+Disallow: /*.mp3$
+Disallow: /*.mp4$
+Disallow: /*.pdf$
+Disallow: /dispatches/audio/
+
+# Allow assets
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.svg
+Allow: /*.woff2
+Allow: /*.woff
+
+# ── Sitemap ───────────────────────────────────────────────────
+Sitemap: https://thewarwithin.you/sitemap.xml

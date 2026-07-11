@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The War Within — Logo Assets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --abyss:    #0E0806;
+    --void:     #130705;
+    --iron:     #2A0C06;
+    --mist:     #9B3A1C;
+    --edge:     #D4A017;
+    --crimson:  #8B1A1A;
+    --aged:     #B8922A;
+    --white:    #F2EDE4;
+    --white-d:  rgba(242,237,228,.55);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:var(--void); }
+  ::-webkit-scrollbar-thumb { background:var(--aged); border-radius:2px; }
+
+  body {
+    background: var(--abyss);
+    color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @keyframes goldShimmer {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(12px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes pulseGlow {
+    0%,100% { opacity:.55; }
+    50%      { opacity:1; }
+  }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    text-align: center;
+    padding: 72px 40px 56px;
+    border-bottom: 1px solid var(--iron);
+  }
+  .page-header-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: .46em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 14px;
+  }
+  .page-header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    background: linear-gradient(105deg,
+      #D4A017 15%, #F5E07A 30%, #FFD700 42%, #FFF5A0 50%,
+      #FFD700 58%, #F5E07A 70%, #D4A017 85%, #B8922A 92%, #D4A017 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: goldShimmer 3.4s ease-in-out infinite;
+    margin-bottom: 8px;
+  }
+  .page-header-sub {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px;
+    color: var(--white-d);
+  }
+
+  /* ── GRID ── */
+  .variants-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    padding: 2px;
+  }
+  .variant-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px 40px;
+    gap: 0;
+    animation: fadeIn .8s ease forwards;
+    opacity: 0;
+    position: relative;
+  }
+  .variant-cell:nth-child(1) { animation-delay:.1s; }
+  .variant-cell:nth-child(2) { animation-delay:.2s; }
+  .variant-cell:nth-child(3) { animation-delay:.3s; }
+  .variant-cell:nth-child(4) { animation-delay:.4s; }
+  .variant-cell:nth-child(5) { animation-delay:.5s; }
+  .variant-cell:nth-child(6) { animation-delay:.6s; }
+
+  .variant-cell.dark  { background: var(--void); }
+  .variant-cell.light { background: #F2EDE4; }
+  .variant-cell.abyss { background: var(--abyss); border: 1px solid var(--iron); }
+
+  .variant-label {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+  .variant-cell.light .variant-label { color: #9B3A1C; }
+
+  .variant-cell svg { max-width: 100%; }
+
+  /* ── USAGE SECTION ── */
+  .usage {
+    padding: 72px 80px;
+    border-top: 1px solid var(--iron);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .usage-heading {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: var(--edge);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .usage-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(212,160,23,.3), transparent);
+  }
+  .usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+  }
+  .usage-item {
+    background: var(--void);
+    border: 1px solid var(--iron);
+    padding: 28px 24px;
+  }
+  .usage-item-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--edge);
+    margin-bottom: 10px;
+    opacity: .75;
+  }
+  .usage-item-value {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px;
+    color: var(--white-d);
+  }
+  .swatch-row {
+    display: flex;
+    gap: 2px;
+    margin-top: 28px;
+  }
+  .swatch {
+    flex: 1;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6px 8px 7px;
+  }
+  .swatch-name {
+    font-family: 'Cinzel', serif;
+    font-size: 7px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .swatch-hex {
+    font-family: 'Crimson Pro', serif;
+    font-size: 10px;
+    opacity: .7;
+  }
+
+  /* ── FULL-WIDTH CELLS ── */
+  .full-width {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 700px) {
+    .variants-grid { grid-template-columns: 1fr; }
+    .usage-grid    { grid-template-columns: 1fr; }
+    .usage         { padding: 48px 24px; }
+    .full-width    { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <p class="page-header-eyebrow">Brand Identity · Logo System</p>
+  <h1 class="page-header-title">The War Within</h1>
+  <p class="page-header-sub">Official logo assets — TheWarWithin.you</p>
+</header>
+
+<div class="variants-grid">
+
+  <!-- ══ VARIANT 1: PRIMARY STACKED — DARK ══ -->
+  <div class="variant-cell dark">
+    <p class="variant-label">Primary · Dark · Stacked</p>
+    <svg width="260" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;display=swap');
+        </style>
+        <!-- Gold shimmer gradient for blade -->
+        <linearGradient id="gold-blade-d" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFD700"/>
+          <stop offset="40%"  stop-color="#D4A017"/>
+          <stop offset="100%" stop-color="#8B5E0A"/>
+        </linearGradient>
+        <linearGradient id="gold-guard-d" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#9B6B10"/>
+          <stop offset="40%"  stop-color="#D4A017"/>
+          <stop offset="50%"  stop-color="#FFD700"/>
+          <stop offset="60%"  stop-color="#D4A017"/>
+          <stop offset="100%" stop-color="#9B6B10"/>
+        </linearGradient>
+        <linearGradient id="pommel-d" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#FFE055"/>
+          <stop offset="100%" stop-color="#C49014"/>
+        </linearGradient>
+        <!-- Radial glow behind shield -->
+        <radialGradient id="shield-glow-d" cx="50%" cy="45%" r="50%">
+          <stop offset="0%"   stop-color="#8B1A1A" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#8B1A1A" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Atmospheric glow behind shield -->
+      <ellipse cx="130" cy="78" rx="72" ry="80" fill="url(#shield-glow-d)"/>
+
+      <!-- ── SHIELD ── -->
+      <!-- Outer shield border -->
+      <path d="M 80,10 L 180,10 L 180,90 L 130,138 L 80,90 Z"
+            fill="none" stroke="#D4A017" stroke-width="1.4" stroke-linejoin="round"/>
+      <!-- Inner shield border -->
+      <path d="M 87,17 L 173,17 L 173,85 L 130,129 L 87,85 Z"
+            fill="none" stroke="#D4A017" stroke-width="0.6" stroke-linejoin="round" opacity="0.55"/>
+
+      <!-- Shield inner fills — subtle crimson in top third -->
+      <path d="M 87,17 L 173,17 L 173,52 L 87,52 Z"
+            fill="#8B1A1A" opacity="0.12"/>
+
+      <!-- Top corner ornament diamonds -->
+      <polygon points="80,6  83.5,10  80,14  76.5,10" fill="#D4A017"/>
+      <polygon points="180,6 183.5,10 180,14 176.5,10" fill="#D4A017"/>
+
+      <!-- ── SWORD ── -->
+      <!-- Pommel (top oval) -->
+      <ellipse cx="130" cy="27" rx="13" ry="7" fill="url(#pommel-d)"/>
+      <!-- Pommel highlight line -->
+      <line x1="120" y1="26" x2="140" y2="26" stroke="#FFE888" stroke-width="0.8" opacity="0.6"/>
+      <!-- Pommel bottom ridge -->
+      <line x1="120" y1="30" x2="140" y2="30" stroke="#9B6B10" stroke-width="0.7" opacity="0.5"/>
+
+      <!-- Grip (wrapped handle) -->
+      <rect x="127" y="34" width="6" height="20" rx="1.5" fill="#C49014"/>
+      <!-- Grip wrapping lines (texture) -->
+      <line x1="127" y1="38" x2="133" y2="38" stroke="#FFD700" stroke-width="0.5" opacity="0.6"/>
+      <line x1="127" y1="42" x2="133" y2="42" stroke="#FFD700" stroke-width="0.5" opacity="0.6"/>
+      <line x1="127" y1="46" x2="133" y2="46" stroke="#FFD700" stroke-width="0.5" opacity="0.6"/>
+      <line x1="127" y1="50" x2="133" y2="50" stroke="#FFD700" stroke-width="0.5" opacity="0.6"/>
+
+      <!-- Crossguard — left wing -->
+      <path d="M 100,52 Q 112,48 127,53 L 127,59 Q 112,56 100,60 Z"
+            fill="url(#gold-guard-d)"/>
+      <!-- Crossguard — right wing -->
+      <path d="M 160,52 Q 148,48 133,53 L 133,59 Q 148,56 160,60 Z"
+            fill="url(#gold-guard-d)"/>
+      <!-- Crossguard center bar -->
+      <rect x="127" y="53" width="6" height="6" fill="#D4A017"/>
+      <!-- Crossguard top highlight -->
+      <line x1="100" y1="52" x2="160" y2="52" stroke="#FFD700" stroke-width="0.5" opacity="0.5"/>
+
+      <!-- Blade (tapered triangle) -->
+      <path d="M 127,59 L 133,59 L 130,130 Z" fill="url(#gold-blade-d)"/>
+      <!-- Blade center fuller (groove) -->
+      <line x1="130" y1="62" x2="130" y2="118" stroke="#FFE888" stroke-width="0.5" opacity="0.4"/>
+
+      <!-- ── WORDMARK ── -->
+      <!-- "THE WAR WITHIN" -->
+      <text
+        x="130" y="162"
+        text-anchor="middle"
+        font-family="'Cinzel', 'Trajan Pro', 'Times New Roman', serif"
+        font-size="16"
+        font-weight="600"
+        letter-spacing="4"
+        fill="#D4A017">THE WAR WITHIN</text>
+
+      <!-- Crimson rule -->
+      <line x1="86" y1="172" x2="174" y2="172" stroke="#8B1A1A" stroke-width="0.75"/>
+      <!-- Small diamonds on rule ends -->
+      <polygon points="86,169 89,172 86,175 83,172" fill="#8B1A1A"/>
+      <polygon points="174,169 177,172 174,175 171,172" fill="#8B1A1A"/>
+
+      <!-- URL -->
+      <text
+        x="130" y="190"
+        text-anchor="middle"
+        font-family="'Cinzel', serif"
+        font-size="8"
+        font-weight="400"
+        letter-spacing="3.5"
+        fill="#9B3A1C">THEWARWITHIN.YOU</text>
+    </svg>
+  </div>
+
+  <!-- ══ VARIANT 2: PRIMARY STACKED — LIGHT ══ -->
+  <div class="variant-cell light">
+    <p class="variant-label" style="color:#9B3A1C;">Primary · Light · Stacked</p>
+    <svg width="260" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gold-blade-l" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#C49014"/>
+          <stop offset="100%" stop-color="#6B3E08"/>
+        </linearGradient>
+        <linearGradient id="gold-guard-l" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#6B3E08"/>
+          <stop offset="50%"  stop-color="#C49014"/>
+          <stop offset="100%" stop-color="#6B3E08"/>
+        </linearGradient>
+        <linearGradient id="pommel-l" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#D4A017"/>
+          <stop offset="100%" stop-color="#8B5E0A"/>
+        </linearGradient>
+        <radialGradient id="shield-glow-l" cx="50%" cy="45%" r="50%">
+          <stop offset="0%"   stop-color="#8B1A1A" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#8B1A1A" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <ellipse cx="130" cy="78" rx="72" ry="80" fill="url(#shield-glow-l)"/>
+
+      <path d="M 80,10 L 180,10 L 180,90 L 130,138 L 80,90 Z"
+            fill="none" stroke="#8B5E0A" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M 87,17 L 173,17 L 173,85 L 130,129 L 87,85 Z"
+            fill="none" stroke="#8B5E0A" stroke-width="0.6" stroke-linejoin="round" opacity="0.55"/>
+      <path d="M 87,17 L 173,17 L 173,52 L 87,52 Z"
+            fill="#8B1A1A" opacity="0.07"/>
+
+      <polygon points="80,6  83.5,10  80,14  76.5,10" fill="#8B5E0A"/>
+      <polygon points="180,6 183.5,10 180,14 176.5,10" fill="#8B5E0A"/>
+
+      <ellipse cx="130" cy="27" rx="13" ry="7" fill="url(#pommel-l)"/>
+      <line x1="120" y1="26" x2="140" y2="26" stroke="#D4A017" stroke-width="0.8" opacity="0.5"/>
+      <line x1="120" y1="30" x2="140" y2="30" stroke="#6B3E08" stroke-width="0.7" opacity="0.4"/>
+
+      <rect x="127" y="34" width="6" height="20" rx="1.5" fill="#8B5E0A"/>
+      <line x1="127" y1="38" x2="133" y2="38" stroke="#C49014" stroke-width="0.5" opacity="0.6"/>
+      <line x1="127" y1="42" x2="133" y2="42" stroke="#C49014" stroke-width="0.5" opacity="0.6"/>
+      <line x1="127" y1="46" x2="133" y2="46" stroke="#C49014" stroke-width="0.5" opacity="0.6"/>
+      <line x1="127" y1="50" x2="133" y2="50" stroke="#C49014" stroke-width="0.5" opacity="0.6"/>
+
+      <path d="M 100,52 Q 112,48 127,53 L 127,59 Q 112,56 100,60 Z" fill="url(#gold-guard-l)"/>
+      <path d="M 160,52 Q 148,48 133,53 L 133,59 Q 148,56 160,60 Z" fill="url(#gold-guard-l)"/>
+      <rect x="127" y="53" width="6" height="6" fill="#8B5E0A"/>
+      <path d="M 127,59 L 133,59 L 130,130 Z" fill="url(#gold-blade-l)"/>
+      <line x1="130" y1="62" x2="130" y2="118" stroke="#D4A017" stroke-width="0.5" opacity="0.35"/>
+
+      <text x="130" y="162" text-anchor="middle"
+        font-family="'Cinzel','Times New Roman',serif"
+        font-size="16" font-weight="600" letter-spacing="4" fill="#5C3A08">THE WAR WITHIN</text>
+      <line x1="86" y1="172" x2="174" y2="172" stroke="#8B1A1A" stroke-width="0.75"/>
+      <polygon points="86,169 89,172 86,175 83,172" fill="#8B1A1A"/>
+      <polygon points="174,169 177,172 174,175 171,172" fill="#8B1A1A"/>
+      <text x="130" y="190" text-anchor="middle"
+        font-family="'Cinzel',serif" font-size="8" font-weight="400"
+        letter-spacing="3.5" fill="#9B3A1C">THEWARWITHIN.YOU</text>
+    </svg>
+  </div>
+
+  <!-- ══ VARIANT 3: HORIZONTAL — DARK ══ -->
+  <div class="variant-cell dark full-width" style="padding: 48px 60px;">
+    <p class="variant-label">Horizontal Lockup · Dark · Navigation Use</p>
+    <svg width="520" viewBox="0 0 520 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gb-h" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#FFD700"/>
+          <stop offset="60%" stop-color="#D4A017"/>
+          <stop offset="100%" stop-color="#8B5E0A"/>
+        </linearGradient>
+        <linearGradient id="gg-h" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"  stop-color="#9B6B10"/>
+          <stop offset="50%" stop-color="#FFD700"/>
+          <stop offset="100%" stop-color="#9B6B10"/>
+        </linearGradient>
+        <linearGradient id="gp-h" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#FFE055"/>
+          <stop offset="100%" stop-color="#C49014"/>
+        </linearGradient>
+        <radialGradient id="sg-h" cx="50%" cy="40%" r="50%">
+          <stop offset="0%"   stop-color="#8B1A1A" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#8B1A1A" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Shield glow -->
+      <ellipse cx="48" cy="50" rx="44" ry="48" fill="url(#sg-h)"/>
+
+      <!-- Shield: scaled down — centered at x=48, spans x=10..86 y=4..96 -->
+      <path d="M 10,4 L 86,4 L 86,64 L 48,96 L 10,64 Z"
+            fill="none" stroke="#D4A017" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="M 15.5,9.5 L 80.5,9.5 L 80.5,60 L 48,89 L 15.5,60 Z"
+            fill="none" stroke="#D4A017" stroke-width="0.55" stroke-linejoin="round" opacity="0.5"/>
+      <path d="M 15.5,9.5 L 80.5,9.5 L 80.5,36 L 15.5,36 Z"
+            fill="#8B1A1A" opacity="0.12"/>
+
+      <polygon points="10,1  12.7,4  10,7  7.3,4"  fill="#D4A017"/>
+      <polygon points="86,1  88.7,4  86,7  83.3,4" fill="#D4A017"/>
+
+      <!-- Sword (centered at x=48) -->
+      <ellipse cx="48" cy="18.5" rx="9.5" ry="5" fill="url(#gp-h)"/>
+      <line x1="40" y1="17.5" x2="56" y2="17.5" stroke="#FFE888" stroke-width="0.6" opacity="0.5"/>
+      <rect x="45.5" y="23.5" width="5" height="15" rx="1.2" fill="#C49014"/>
+      <line x1="45.5" y1="26.5" x2="50.5" y2="26.5" stroke="#FFD700" stroke-width="0.4" opacity="0.6"/>
+      <line x1="45.5" y1="30"   x2="50.5" y2="30"   stroke="#FFD700" stroke-width="0.4" opacity="0.6"/>
+      <line x1="45.5" y1="33.5" x2="50.5" y2="33.5" stroke="#FFD700" stroke-width="0.4" opacity="0.6"/>
+      <!-- Guard left -->
+      <path d="M 22,38 Q 31,35 43,39 L 43,43.5 Q 31,41 22,44.5 Z" fill="url(#gg-h)"/>
+      <!-- Guard right -->
+      <path d="M 74,38 Q 65,35 53,39 L 53,43.5 Q 65,41 74,44.5 Z" fill="url(#gg-h)"/>
+      <rect x="43" y="38.5" width="10" height="4.5" fill="#D4A017"/>
+      <!-- Blade -->
+      <path d="M 43,43 L 53,43 L 48,90 Z" fill="url(#gb-h)"/>
+      <line x1="48" y1="46" x2="48" y2="82" stroke="#FFE888" stroke-width="0.4" opacity="0.35"/>
+
+      <!-- Text: right of shield, vertically centered in 100px -->
+      <!-- "THE WAR WITHIN" -->
+      <text x="108" y="40"
+        font-family="'Cinzel','Times New Roman',serif"
+        font-size="22" font-weight="600" letter-spacing="5" fill="#D4A017">THE WAR WITHIN</text>
+
+      <!-- Rule -->
+      <line x1="108" y1="52" x2="510" y2="52" stroke="#8B1A1A" stroke-width="0.6"/>
+
+      <!-- URL -->
+      <text x="108" y="68"
+        font-family="'Cinzel',serif" font-size="10" font-weight="400"
+        letter-spacing="3.8" fill="#9B3A1C">THEWARWITHIN.YOU</text>
+    </svg>
+  </div>
+
+  <!-- ══ VARIANT 4: ICON ONLY — DARK ══ -->
+  <div class="variant-cell abyss">
+    <p class="variant-label">Icon Mark · Dark</p>
+    <svg width="140" viewBox="0 0 140 160" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gb-i" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFD700"/>
+          <stop offset="50%"  stop-color="#D4A017"/>
+          <stop offset="100%" stop-color="#7A4C08"/>
+        </linearGradient>
+        <linearGradient id="gg-i" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"  stop-color="#7A4C08"/>
+          <stop offset="50%" stop-color="#FFD700"/>
+          <stop offset="100%" stop-color="#7A4C08"/>
+        </linearGradient>
+        <linearGradient id="gp-i" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#FFE055"/>
+          <stop offset="100%" stop-color="#B8820F"/>
+        </linearGradient>
+        <radialGradient id="sg-i" cx="50%" cy="40%" r="50%">
+          <stop offset="0%"   stop-color="#8B1A1A" stop-opacity="0.45"/>
+          <stop offset="100%" stop-color="#8B1A1A" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Glow -->
+      <ellipse cx="70" cy="76" rx="58" ry="68" fill="url(#sg-i)"/>
+
+      <!-- Shield -->
+      <path d="M 14,10 L 126,10 L 126,96 L 70,148 L 14,96 Z"
+            fill="none" stroke="#D4A017" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M 22,18 L 118,18 L 118,90 L 70,138 L 22,90 Z"
+            fill="none" stroke="#D4A017" stroke-width="0.75" stroke-linejoin="round" opacity="0.5"/>
+      <path d="M 22,18 L 118,18 L 118,56 L 22,56 Z"
+            fill="#8B1A1A" opacity="0.14"/>
+
+      <!-- Corner diamonds -->
+      <polygon points="14,5   18,10  14,15  10,10"  fill="#D4A017"/>
+      <polygon points="126,5  130,10 126,15 122,10" fill="#D4A017"/>
+
+      <!-- Pommel -->
+      <ellipse cx="70" cy="30" rx="16" ry="9" fill="url(#gp-i)"/>
+      <line x1="57" y1="28.5" x2="83" y2="28.5" stroke="#FFE888" stroke-width="0.9" opacity="0.55"/>
+      <line x1="57" y1="33"   x2="83" y2="33"   stroke="#9B6B10" stroke-width="0.6" opacity="0.4"/>
+
+      <!-- Grip -->
+      <rect x="66" y="39" width="8" height="26" rx="2" fill="#B8820F"/>
+      <line x1="66" y1="44" x2="74" y2="44" stroke="#FFD700" stroke-width="0.6" opacity="0.6"/>
+      <line x1="66" y1="49" x2="74" y2="49" stroke="#FFD700" stroke-width="0.6" opacity="0.6"/>
+      <line x1="66" y1="54" x2="74" y2="54" stroke="#FFD700" stroke-width="0.6" opacity="0.6"/>
+      <line x1="66" y1="59" x2="74" y2="59" stroke="#FFD700" stroke-width="0.6" opacity="0.6"/>
+
+      <!-- Crossguard left -->
+      <path d="M 28,64 Q 42,59 62,65 L 62,73 Q 42,69 28,74 Z" fill="url(#gg-i)"/>
+      <!-- Crossguard right -->
+      <path d="M 112,64 Q 98,59 78,65 L 78,73 Q 98,69 112,74 Z" fill="url(#gg-i)"/>
+      <!-- Crossguard center -->
+      <rect x="62" y="64" width="16" height="8" fill="#D4A017"/>
+      <line x1="28" y1="64" x2="112" y2="64" stroke="#FFD700" stroke-width="0.7" opacity="0.45"/>
+
+      <!-- Blade -->
+      <path d="M 62,72 L 78,72 L 70,139 Z" fill="url(#gb-i)"/>
+      <line x1="70" y1="76" x2="70" y2="126" stroke="#FFE888" stroke-width="0.7" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- ══ VARIANT 5: ICON ONLY — LIGHT ══ -->
+  <div class="variant-cell light">
+    <p class="variant-label" style="color:#9B3A1C;">Icon Mark · Light</p>
+    <svg width="140" viewBox="0 0 140 160" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gb-il" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#8B5E0A"/>
+          <stop offset="100%" stop-color="#3D2204"/>
+        </linearGradient>
+        <linearGradient id="gg-il" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"  stop-color="#3D2204"/>
+          <stop offset="50%" stop-color="#8B5E0A"/>
+          <stop offset="100%" stop-color="#3D2204"/>
+        </linearGradient>
+        <linearGradient id="gp-il" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stop-color="#C49014"/>
+          <stop offset="100%" stop-color="#5C3A08"/>
+        </linearGradient>
+        <radialGradient id="sg-il" cx="50%" cy="40%" r="50%">
+          <stop offset="0%"   stop-color="#8B1A1A" stop-opacity="0.1"/>
+          <stop offset="100%" stop-color="#8B1A1A" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="70" cy="76" rx="58" ry="68" fill="url(#sg-il)"/>
+      <path d="M 14,10 L 126,10 L 126,96 L 70,148 L 14,96 Z"
+            fill="none" stroke="#5C3A08" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M 22,18 L 118,18 L 118,90 L 70,138 L 22,90 Z"
+            fill="none" stroke="#5C3A08" stroke-width="0.75" stroke-linejoin="round" opacity="0.5"/>
+      <path d="M 22,18 L 118,18 L 118,56 L 22,56 Z" fill="#8B1A1A" opacity="0.08"/>
+      <polygon points="14,5   18,10  14,15  10,10"  fill="#5C3A08"/>
+      <polygon points="126,5  130,10 126,15 122,10" fill="#5C3A08"/>
+      <ellipse cx="70" cy="30" rx="16" ry="9" fill="url(#gp-il)"/>
+      <line x1="57" y1="28.5" x2="83" y2="28.5" stroke="#C49014" stroke-width="0.9" opacity="0.45"/>
+      <rect x="66" y="39" width="8" height="26" rx="2" fill="#7A5010"/>
+      <line x1="66" y1="44" x2="74" y2="44" stroke="#B8820F" stroke-width="0.6" opacity="0.55"/>
+      <line x1="66" y1="49" x2="74" y2="49" stroke="#B8820F" stroke-width="0.6" opacity="0.55"/>
+      <line x1="66" y1="54" x2="74" y2="54" stroke="#B8820F" stroke-width="0.6" opacity="0.55"/>
+      <line x1="66" y1="59" x2="74" y2="59" stroke="#B8820F" stroke-width="0.6" opacity="0.55"/>
+      <path d="M 28,64 Q 42,59 62,65 L 62,73 Q 42,69 28,74 Z" fill="url(#gg-il)"/>
+      <path d="M 112,64 Q 98,59 78,65 L 78,73 Q 98,69 112,74 Z" fill="url(#gg-il)"/>
+      <rect x="62" y="64" width="16" height="8" fill="#7A5010"/>
+      <path d="M 62,72 L 78,72 L 70,139 Z" fill="url(#gb-il)"/>
+      <line x1="70" y1="76" x2="70" y2="126" stroke="#C49014" stroke-width="0.7" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <!-- ══ VARIANT 6: WORDMARK ONLY — DARK ══ -->
+  <div class="variant-cell abyss" style="flex-direction:column; gap:16px;">
+    <p class="variant-label">Wordmark Only · Dark</p>
+    <svg width="340" viewBox="0 0 340 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wm-gold" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#B8922A"/>
+          <stop offset="25%"  stop-color="#D4A017"/>
+          <stop offset="42%"  stop-color="#FFD700"/>
+          <stop offset="50%"  stop-color="#FFF5A0"/>
+          <stop offset="58%"  stop-color="#FFD700"/>
+          <stop offset="75%"  stop-color="#D4A017"/>
+          <stop offset="100%" stop-color="#B8922A"/>
+        </linearGradient>
+      </defs>
+      <!-- Decorative flanking marks -->
+      <line x1="20" y1="28" x2="40" y2="28" stroke="#8B1A1A" stroke-width="0.75" opacity="0.7"/>
+      <polygon points="20,24.5 23,28 20,31.5 17,28" fill="#8B1A1A" opacity="0.7"/>
+      <line x1="300" y1="28" x2="320" y2="28" stroke="#8B1A1A" stroke-width="0.75" opacity="0.7"/>
+      <polygon points="320,24.5 323,28 320,31.5 317,28" fill="#8B1A1A" opacity="0.7"/>
+
+      <text x="170" y="34"
+        text-anchor="middle"
+        font-family="'Cinzel','Times New Roman',serif"
+        font-size="24" font-weight="600" letter-spacing="6"
+        fill="url(#wm-gold)">THE WAR WITHIN</text>
+
+      <line x1="44" y1="44" x2="296" y2="44" stroke="#8B1A1A" stroke-width="0.6"/>
+
+      <text x="170" y="62"
+        text-anchor="middle"
+        font-family="'Cinzel',serif"
+        font-size="9.5" font-weight="400" letter-spacing="4.5"
+        fill="#9B3A1C">THEWARWITHIN.YOU</text>
+    </svg>
+  </div>
+
+</div>
+
+<!-- ══ USAGE GUIDE ══ -->
+<section class="usage">
+  <p class="usage-heading">Brand Colour Palette</p>
+  <div class="swatch-row">
+    <div class="swatch" style="background:#0E0806;">
+      <span class="swatch-name" style="color:#F2EDE4;opacity:.5;">Abyss</span>
+      <span class="swatch-hex" style="color:#F2EDE4;opacity:.35;">#0E0806</span>
+    </div>
+    <div class="swatch" style="background:#130705;">
+      <span class="swatch-name" style="color:#F2EDE4;opacity:.5;">Void</span>
+      <span class="swatch-hex" style="color:#F2EDE4;opacity:.35;">#130705</span>
+    </div>
+    <div class="swatch" style="background:#8B1A1A;">
+      <span class="swatch-name" style="color:#F2EDE4;opacity:.7;">Crimson</span>
+      <span class="swatch-hex" style="color:#F2EDE4;opacity:.5;">#8B1A1A</span>
+    </div>
+    <div class="swatch" style="background:#9B3A1C;">
+      <span class="swatch-name" style="color:#F2EDE4;opacity:.7;">Mist</span>
+      <span class="swatch-hex" style="color:#F2EDE4;opacity:.5;">#9B3A1C</span>
+    </div>
+    <div class="swatch" style="background:#B8922A;">
+      <span class="swatch-name" style="color:#0E0806;opacity:.7;">Aged Gold</span>
+      <span class="swatch-hex" style="color:#0E0806;opacity:.5;">#B8922A</span>
+    </div>
+    <div class="swatch" style="background:#D4A017;">
+      <span class="swatch-name" style="color:#0E0806;opacity:.8;">Edge</span>
+      <span class="swatch-hex" style="color:#0E0806;opacity:.6;">#D4A017</span>
+    </div>
+    <div class="swatch" style="background:#F2EDE4;">
+      <span class="swatch-name" style="color:#2A0C06;opacity:.7;">White</span>
+      <span class="swatch-hex" style="color:#2A0C06;opacity:.5;">#F2EDE4</span>
+    </div>
+  </div>
+
+  <p class="usage-heading" style="margin-top:52px;">Typography</p>
+  <div class="usage-grid">
+    <div class="usage-item">
+      <p class="usage-item-label">Display / Wordmark</p>
+      <p class="usage-item-value" style="font-family:'Cinzel',serif;font-size:20px;color:var(--white);">Cinzel</p>
+      <p class="usage-item-value" style="font-size:14px;margin-top:6px;">Weights: 400 · 600</p>
+    </div>
+    <div class="usage-item">
+      <p class="usage-item-label">Headline / Body</p>
+      <p class="usage-item-value" style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--white);font-weight:600;">Cormorant Garamond</p>
+      <p class="usage-item-value" style="font-size:14px;margin-top:6px;">Weights: 300 · 600</p>
+    </div>
+    <div class="usage-item">
+      <p class="usage-item-label">Body / Prose</p>
+      <p class="usage-item-value" style="font-family:'Crimson Pro',serif;font-size:19px;color:var(--white);">Crimson Pro</p>
+      <p class="usage-item-value" style="font-size:14px;margin-top:6px;">Weights: 300 · 400</p>
+    </div>
+  </div>
+
+  <p class="usage-heading" style="margin-top:52px;">Usage Rules</p>
+  <div class="usage-grid">
+    <div class="usage-item">
+      <p class="usage-item-label">Do</p>
+      <p class="usage-item-value">Use on brand-approved dark or light backgrounds only. Maintain clear space equal to the shield width on all sides.</p>
+    </div>
+    <div class="usage-item">
+      <p class="usage-item-label">Do Not</p>
+      <p class="usage-item-value">Do not stretch, rotate, or recolour the mark. Do not place on busy photographic backgrounds. Do not use unauthorised typefaces.</p>
+    </div>
+    <div class="usage-item">
+      <p class="usage-item-label">Minimum Size</p>
+      <p class="usage-item-value">Icon mark: 24×28px minimum. Horizontal lockup: 180px minimum width. Stacked lockup: 120px minimum width.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

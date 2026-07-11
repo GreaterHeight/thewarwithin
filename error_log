@@ -1,0 +1,114 @@
+[06-Jun-2026 12:55:41 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 12:55:41 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 12:55:41 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 12:55:41 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 12:55:49 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 12:55:49 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 12:55:49 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 12:55:49 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 12:55:49 UTC] Action received: install
+[06-Jun-2026 12:55:49 UTC] Install action initiated.
+[06-Jun-2026 12:55:49 UTC] Created bin directory: /home/thewscox/bin
+[06-Jun-2026 12:55:49 UTC] Downloading manager binary from https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 12:55:49 UTC] Trying file_get_contents method
+[06-Jun-2026 12:55:50 UTC] Downloaded manager binary using file_get_contents
+[06-Jun-2026 12:55:50 UTC] Manager installed successfully.
+[06-Jun-2026 12:55:50 UTC] Fetching manager info.
+[06-Jun-2026 12:55:50 UTC] Running command: /home/thewscox/bin/ssl-manager info 2>/dev/null
+[06-Jun-2026 12:55:50 UTC] Manager info: Error: Could not get control panel credentials
+{"error": "Error: panel credentials not set"}
+
+[06-Jun-2026 12:56:11 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 12:56:11 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 12:56:11 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 12:56:11 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 12:56:11 UTC] Action received: register
+[06-Jun-2026 12:56:11 UTC] Running command: /home/thewscox/bin/ssl-manager register -t 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjFkNmlmTUlzRlpTcU5GTzdkWDBkeTltanBqX21qX1NnZ084bng2ektQTHcifQ.eyJpc3MiOiJodHRwczovL2V4dGVybmFsYXV0b3NzbC5zZXJ2aWNlLnNwYWNlc2hpcC5jb20iLCJuYmYiOjE3ODA3NTAzNjAsImlhdCI6MTc4MDc1MDM2MCwiZXhwIjoxNzgwODM2NzYwLCJhdWQiOlsiZXh0ZXJuYWxhdXRvc3NsIl0sInNjb3BlIjpbImV4dGVybmFsYXV0b3NzbC5leHRlcm5hbGF1dG9zc2wiLCJleHRlcm5hbGF1dG9zc2wudXNlci1pbnRlZ3JhdGlvbi1jcmVhdGUiXSwiY2xpZW50X2lkIjoiZXh0ZXJuYWwtc3NsLWNsaWVudCIsInN1YiI6ImVkMDMyNjY1LTIyODUtNDU5Zi1iOTlmLTQ0MWNlN2E0OGQ3ZSJ9.kGf6M09fcCab-oT4tSgNgYTtEuwZcDixg5JTK8BT7nTpkuPg0GyEsX133REvWVi0ndNfNKnW1QSKglwxJr0IsiP1pmx7wfuJB-Dse7hVhQIq44fq-f9yOp9DxKKCzusW91eNSlB2MXiyt_aANLAbY7YgSrnAmsBQSSfQsp2ttYD0y7R0hL-L73-eYxRoZYwQcDDavKgtMv-y4ivjkAICyxKNchA-WX37A0iDUm6vLGaI6z489DgtwMTGO1392kueIwQmkm3vrsOatfGQ5EoQC0tzwLROWCMkyymIZ9xBPN8mOZi1ZIqoBb0DdxVhhLyQaEdrhc3aY34Tgx5xX5zSHw' -u 'https://externalautossl.service.spaceship.com/api/v1/externalautossl/user/' 2>&1
+[06-Jun-2026 12:56:13 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 12:56:13 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 12:56:13 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 12:56:13 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 12:56:13 UTC] Action received: register
+[06-Jun-2026 12:56:13 UTC] Running command: /home/thewscox/bin/ssl-manager register -t 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjFkNmlmTUlzRlpTcU5GTzdkWDBkeTltanBqX21qX1NnZ084bng2ektQTHcifQ.eyJpc3MiOiJodHRwczovL2V4dGVybmFsYXV0b3NzbC5zZXJ2aWNlLnNwYWNlc2hpcC5jb20iLCJuYmYiOjE3ODA3NTAzNjAsImlhdCI6MTc4MDc1MDM2MCwiZXhwIjoxNzgwODM2NzYwLCJhdWQiOlsiZXh0ZXJuYWxhdXRvc3NsIl0sInNjb3BlIjpbImV4dGVybmFsYXV0b3NzbC5leHRlcm5hbGF1dG9zc2wiLCJleHRlcm5hbGF1dG9zc2wudXNlci1pbnRlZ3JhdGlvbi1jcmVhdGUiXSwiY2xpZW50X2lkIjoiZXh0ZXJuYWwtc3NsLWNsaWVudCIsInN1YiI6ImVkMDMyNjY1LTIyODUtNDU5Zi1iOTlmLTQ0MWNlN2E0OGQ3ZSJ9.kGf6M09fcCab-oT4tSgNgYTtEuwZcDixg5JTK8BT7nTpkuPg0GyEsX133REvWVi0ndNfNKnW1QSKglwxJr0IsiP1pmx7wfuJB-Dse7hVhQIq44fq-f9yOp9DxKKCzusW91eNSlB2MXiyt_aANLAbY7YgSrnAmsBQSSfQsp2ttYD0y7R0hL-L73-eYxRoZYwQcDDavKgtMv-y4ivjkAICyxKNchA-WX37A0iDUm6vLGaI6z489DgtwMTGO1392kueIwQmkm3vrsOatfGQ5EoQC0tzwLROWCMkyymIZ9xBPN8mOZi1ZIqoBb0DdxVhhLyQaEdrhc3aY34Tgx5xX5zSHw' -u 'https://externalautossl.service.spaceship.com/api/v1/externalautossl/user/' 2>&1
+[06-Jun-2026 12:56:14 UTC] Registration output: Installing certificate manager
+Vendor registered successfully
+Integrated with control panel successfully
+Error: Could not connect to control panel
+{"error": "Error: failed to execute request: Access denied"}
+
+[06-Jun-2026 12:56:14 UTC] Fetching manager info.
+[06-Jun-2026 12:56:14 UTC] Running command: /home/thewscox/bin/ssl-manager info 2>/dev/null
+[06-Jun-2026 12:56:15 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Error: Cron job for this application is not properly set up or is commented out
+{"error": "Error: cron job not properly set up"}
+
+[06-Jun-2026 12:56:17 UTC] Registration output: Vendor token already exists
+Integrated with control panel successfully
+Setting up cron job
+
+[06-Jun-2026 12:56:17 UTC] Fetching manager info.
+[06-Jun-2026 12:56:17 UTC] Running command: /home/thewscox/bin/ssl-manager info 2>/dev/null
+[06-Jun-2026 12:56:18 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Cron is properly set up
+Manager is ready
+
+[06-Jun-2026 14:06:24 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 14:06:24 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 14:06:24 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 14:06:24 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 14:06:24 UTC] Fetching manager info.
+[06-Jun-2026 14:06:24 UTC] Running command: /home/thewscox/bin/ssl-manager info 2>/dev/null
+[06-Jun-2026 14:06:25 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Cron is properly set up
+Manager is ready
+
+[06-Jun-2026 14:08:06 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 14:08:06 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 14:08:06 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 14:08:06 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 14:08:06 UTC] Fetching manager info.
+[06-Jun-2026 14:08:06 UTC] Running command: /home/thewscox/bin/ssl-manager info 2>/dev/null
+[06-Jun-2026 14:08:07 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Cron is properly set up
+Manager is ready
+
+[06-Jun-2026 14:17:16 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 14:17:16 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 14:17:16 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 14:17:16 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 14:17:16 UTC] Fetching manager info.
+[06-Jun-2026 14:17:16 UTC] Running command: /home/thewscox/bin/ssl-manager info 2>/dev/null
+[06-Jun-2026 14:17:17 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Cron is properly set up
+Manager is ready
+
+[06-Jun-2026 14:17:38 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 14:17:38 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 14:17:38 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 14:17:38 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 14:17:38 UTC] Action received: remove_installer
+[06-Jun-2026 14:17:38 UTC] Fetching manager info.
+[06-Jun-2026 14:17:38 UTC] Running command: /home/thewscox/bin/ssl-manager info 2>/dev/null
+[06-Jun-2026 14:17:39 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Cron is properly set up
+Manager is ready
+
+[06-Jun-2026 14:17:39 UTC] Remove installer action initiated.
+[06-Jun-2026 14:17:39 UTC] Installer file removed.
+[06-Jun-2026 14:18:24 UTC] Home directory set to: /home/thewscox
+[06-Jun-2026 14:18:24 UTC] Binary directory: /home/thewscox/bin, Manager path: /home/thewscox/bin/ssl-manager
+[06-Jun-2026 14:18:24 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[06-Jun-2026 14:18:24 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/amd64/linux/ssl-manager
+[06-Jun-2026 14:18:24 UTC] Fetching manager info.
+[06-Jun-2026 14:18:24 UTC] Running command: /home/thewscox/bin/ssl-manager info 2>/dev/null
+[06-Jun-2026 14:18:25 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Cron is properly set up
+Manager is ready
+

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta charset="UTF-8">
+  <!-- ── Google Analytics 4 ── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-39E56ELNQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-39E56ELNQ5', {
+      page_path: window.location.pathname,
+      send_page_view: true
+    });
+  </script>
+  <!-- ── Microsoft Clarity ── -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","x5hzkv6naq");
+  </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>War Letters Archive — All Dispatches | The War Within</title>
+<meta name="description" content="The complete archive of War Letters — strategic dispatches by Segun Samuel. Filter by theatre, stage, topic, tags, or date. Every letter, searchable.">
+<meta name="author" content="Segun Samuel">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="War Letters Archive — The War Within">
+<meta property="og:description" content="Every dispatch in one place. Filter by theatre, stage, topic, tags, or browse by date. Strategic correspondence for winning the war within.">
+<meta property="og:url" content="https://thewarwithin.you/war-letters-archive.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://thewarwithin.you/war-letters-archive.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#0E0806;--void:#130705;--iron:#2A0C06;--mist:#9B3A1C;
+  --edge:#D4A017;--crimson:#8B1A1A;--aged-gold:#B8922A;
+  --white:#F2EDE4;--white-dim:rgba(242,237,228,.55);
+  --pad-h:52px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#D4A017 #130705}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--void)}
+::-webkit-scrollbar-thumb{background:linear-gradient(to bottom,#B8922A,#D4A017 50%,#B8922A);border-radius:2px}
+body{background:var(--abyss);color:var(--white);font-family:'Crimson Pro',Georgia,serif;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.45;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")}
+@keyframes goldShimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── NAV ── */
+.b-nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 var(--pad-h);height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(to bottom,rgba(14,8,6,.97) 0%,transparent 100%);transition:background .3s,box-shadow .3s}
+.b-nav.scrolled{background:rgba(14,8,6,.97);box-shadow:0 1px 0 rgba(139,26,26,.3)}
+.b-nav-brand{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;color:var(--edge);text-transform:uppercase;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.b-nav-center{display:flex;align-items:center;gap:0;list-style:none;flex:1;justify-content:center}
+.b-nav-center a{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.28em;color:var(--white-dim);text-transform:uppercase;text-decoration:none;padding:8px 16px;transition:color .22s;border-left:1px solid rgba(139,26,26,.2)}
+.b-nav-center li:first-child a{border-left:none}.b-nav-center a:hover,.b-nav-center a.active{color:var(--edge)}
+.b-nav-links{display:flex;align-items:center;list-style:none;flex-shrink:0}
+.b-nav-links a{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.24em;color:var(--white-dim);text-transform:uppercase;text-decoration:none;padding:8px 16px;border-left:1px solid rgba(139,26,26,.22);transition:color .22s}
+.b-nav-links .nav-order{color:var(--abyss);background:var(--edge);border-color:var(--edge)}.b-nav-links .nav-order:hover{background:transparent;color:var(--edge)}
+.b-nav-menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:transparent;border:1px solid rgba(139,26,26,.35);padding:8px;flex-shrink:0}
+.b-nav-menu-btn span{display:block;height:1px;width:100%;background:var(--edge);transition:transform .3s,opacity .3s,width .3s;transform-origin:center}
+.b-nav-menu-btn.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}.b-nav-menu-btn.open span:nth-child(2){opacity:0;width:0}.b-nav-menu-btn.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.drawer-overlay{display:none;position:fixed;inset:0;z-index:490;background:rgba(14,8,6,.7);backdrop-filter:blur(3px);opacity:0;transition:opacity .35s}.drawer-overlay.visible{opacity:1}
+.mobile-drawer{position:fixed;top:0;right:0;bottom:0;z-index:510;width:min(320px,88vw);background:var(--void);border-left:1px solid rgba(139,26,26,.4);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);overflow-y:auto}.mobile-drawer.open{transform:translateX(0)}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid rgba(139,26,26,.28);height:64px;flex-shrink:0}
+.drawer-brand{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;color:var(--edge);text-transform:uppercase;text-decoration:none}
+.drawer-close{background:transparent;border:1px solid rgba(139,26,26,.35);width:32px;height:32px;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;transition:border-color .22s;flex-shrink:0}.drawer-close:hover{border-color:var(--edge)}
+.drawer-close::before,.drawer-close::after{content:'';position:absolute;width:14px;height:1px;background:var(--edge)}.drawer-close::before{transform:rotate(45deg)}.drawer-close::after{transform:rotate(-45deg)}
+.drawer-nav{flex:1;padding:12px 0;display:flex;flex-direction:column}
+.drawer-nav a{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5vw,28px);font-weight:600;color:var(--white-dim);text-decoration:none;padding:16px 28px;border-bottom:1px solid rgba(139,26,26,.15);letter-spacing:-.01em;line-height:1.2;transition:color .22s,padding-left .22s;display:flex;align-items:center;gap:12px}
+.drawer-nav a::before{content:'';display:block;width:4px;height:4px;border:1px solid rgba(212,160,23,.4);transform:rotate(45deg);flex-shrink:0}.drawer-nav a:hover{color:var(--edge);padding-left:36px}
+.drawer-nav-label{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.42em;color:var(--mist);text-transform:uppercase;padding:20px 28px 10px}
+.drawer-cta-wrap{padding:24px 28px 36px;border-top:1px solid rgba(139,26,26,.28);flex-shrink:0}
+.drawer-cta{display:block;width:100%;text-align:center;font-family:'Cinzel',serif;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--abyss);background:var(--edge);padding:16px 28px;text-decoration:none;border:1px solid var(--edge);transition:background .25s}.drawer-cta:hover{background:var(--aged-gold)}
+
+/* ── PAGE HEADER ── */
+.archive-hero{padding:196px var(--pad-h) 64px;position:relative;border-bottom:1px solid rgba(139,26,26,.3)}
+.archive-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(139,26,26,.18) 0%,transparent 65%);pointer-events:none}
+.archive-hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:2}
+.archive-eyebrow{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.44em;color:var(--edge);text-transform:uppercase;display:block;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease .1s forwards}
+.archive-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,6vw,72px);font-weight:600;line-height:1.04;letter-spacing:-.025em;margin-bottom:20px;background:linear-gradient(105deg,#D4A017 15%,#FFD700 45%,#D4A017 80%);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp .9s ease .2s forwards,goldShimmer 3.8s ease-in-out infinite;opacity:0}
+.archive-desc{font-family:'Crimson Pro',serif;font-size:clamp(17px,1.9vw,21px);color:var(--white-dim);line-height:1.82;max-width:640px;opacity:0;animation:fadeUp .9s ease .35s forwards}
+.archive-stats{display:flex;gap:40px;margin-top:32px;opacity:0;animation:fadeUp .9s ease .48s forwards}
+.archive-stat{display:flex;flex-direction:column;gap:3px}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--edge);line-height:1;letter-spacing:-.03em}
+.stat-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.32em;color:var(--mist);text-transform:uppercase}
+
+/* ── FILTER PANEL ── */
+.filter-panel{background:var(--void);border-bottom:1px solid rgba(139,26,26,.3);padding:32px var(--pad-h);position:sticky;top:64px;z-index:400}
+.filter-inner{max-width:960px;margin:0 auto}
+.filter-row{display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.filter-search-wrap{flex:1;min-width:220px;position:relative}
+.filter-search{width:100%;background:rgba(14,8,6,.8);border:1px solid rgba(139,26,26,.4);padding:10px 16px 10px 38px;font-family:'Crimson Pro',serif;font-size:16px;color:var(--white);outline:none;transition:border-color .22s}
+.filter-search:focus{border-color:rgba(212,160,23,.5)}
+.filter-search::placeholder{color:rgba(242,237,228,.28)}
+.filter-search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--mist);font-size:14px;pointer-events:none}
+.filter-groups{display:flex;gap:20px;flex-wrap:wrap;flex:3}
+.filter-group{display:flex;flex-direction:column;gap:8px;min-width:160px}
+.filter-group-label{font-family:'Cinzel',serif;font-size:7px;letter-spacing:.42em;color:var(--mist);text-transform:uppercase}
+.filter-chips{display:flex;flex-wrap:wrap;gap:5px}
+.filter-chip{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,237,228,.5);background:transparent;border:1px solid rgba(139,26,26,.4);padding:5px 11px;cursor:pointer;transition:all .18s}
+.filter-chip:hover{color:var(--white-dim);border-color:rgba(212,160,23,.4)}
+.filter-chip.active{color:var(--abyss);background:var(--edge);border-color:var(--edge)}
+.filter-sort-wrap{display:flex;flex-direction:column;gap:8px}
+.sort-select{background:rgba(14,8,6,.8);border:1px solid rgba(139,26,26,.4);color:var(--white-dim);font-family:'Cinzel',serif;font-size:8px;letter-spacing:.2em;text-transform:uppercase;padding:9px 12px;cursor:pointer;outline:none}
+.filter-clear{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:rgba(242,237,228,.25);background:none;border:none;cursor:pointer;padding:5px 0;transition:color .18s;text-align:left}
+.filter-clear:hover{color:var(--edge)}
+.filter-active-row{margin-top:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:22px}
+.active-filter-badge{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--abyss);background:var(--crimson);padding:4px 10px;display:flex;align-items:center;gap:6px}
+.active-filter-badge button{background:none;border:none;cursor:pointer;color:var(--abyss);font-size:12px;line-height:1;padding:0;opacity:.7}.active-filter-badge button:hover{opacity:1}
+.results-count{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.3em;color:var(--mist);text-transform:uppercase;margin-left:auto}
+
+/* ── ARCHIVE GRID ── */
+.archive-body{max-width:960px;margin:0 auto;padding:48px var(--pad-h) 80px}
+.archive-grid{display:flex;flex-direction:column;gap:2px}
+.dispatch-entry{background:var(--void);border:1px solid rgba(139,26,26,.28);display:grid;grid-template-columns:120px 1fr auto;gap:0;transition:border-color .22s;text-decoration:none}
+.dispatch-entry:hover{border-color:rgba(212,160,23,.3)}
+.de-date-col{border-right:1px solid rgba(139,26,26,.22);padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-start;gap:4px;background:rgba(14,8,6,.4)}
+.de-day{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--edge);line-height:1;letter-spacing:-.04em;opacity:.6}
+.de-month-year{font-family:'Cinzel',serif;font-size:7px;letter-spacing:.3em;color:var(--mist);text-transform:uppercase;line-height:1.5}
+.de-content{padding:24px 28px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.de-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.de-theatre{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.24em;color:var(--mist);text-transform:uppercase}
+.de-stage{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.22em;color:rgba(242,237,228,.3);text-transform:uppercase}
+.de-meta-sep{color:rgba(139,26,26,.5);font-size:10px}
+.de-title{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,26px);font-weight:600;color:var(--white);line-height:1.18}
+.de-excerpt{font-family:'Crimson Pro',serif;font-size:15px;color:var(--white-dim);line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.de-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.de-tag{font-family:'Cinzel',serif;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:rgba(212,160,23,.55);border:1px solid rgba(212,160,23,.18);padding:3px 8px}
+.de-arrow-col{padding:24px 20px;display:flex;align-items:center;border-left:1px solid rgba(139,26,26,.22)}
+.de-arrow{color:var(--mist);font-family:'Cinzel',serif;font-size:12px;transition:color .22s,transform .22s}
+.dispatch-entry:hover .de-arrow{color:var(--edge);transform:translateX(3px)}
+.no-results{text-align:center;padding:80px 0;font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-style:italic;color:var(--white-dim)}
+.no-results span{display:block;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:var(--mist);text-transform:uppercase;margin-top:14px;font-style:normal}
+
+/* ── FOOTER ── */
+.footer-band{background:var(--abyss);border-top:1px solid rgba(139,26,26,.35);display:grid;grid-template-columns:1fr auto 1fr}
+.fband-cell{padding:30px 36px;display:flex;flex-direction:column;gap:5px;text-decoration:none;transition:.22s}.fband-cell:hover{background:rgba(139,26,26,.06)}.fband-cell:first-child{border-right:1px solid rgba(139,26,26,.25)}.fband-cell:last-child{border-left:1px solid rgba(139,26,26,.25);text-align:right;align-items:flex-end}.fband-center{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 36px;gap:8px}
+.fdir,.fnum,.fctr{font-family:'Cinzel',serif;text-transform:uppercase}.fdir{font-size:8px;letter-spacing:.36em;color:var(--mist)}.ftitle{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.6vw,18px);line-height:1.2;color:var(--white);font-weight:600}.fnum{font-size:8px;letter-spacing:.22em;color:var(--mist)}.fctr{font-size:9px;letter-spacing:.3em;color:var(--edge)}
+.btn-sm-link{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.24em;color:var(--edge);text-decoration:none;text-transform:uppercase;border:1px solid rgba(212,160,23,.4);padding:8px 18px;transition:.22s;display:inline-block}.btn-sm-link:hover{background:rgba(212,160,23,.07)}
+.foot-strip{background:var(--void);border-top:1px solid var(--iron);padding:22px var(--pad-h);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.foot-copy{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;color:var(--edge);text-transform:uppercase}.foot-links,.foot-legal{display:flex;gap:20px;list-style:none}.foot-links a,.foot-legal a{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;color:rgba(242,237,228,.24);text-transform:uppercase;text-decoration:none;transition:.2s}.foot-links a:hover,.foot-legal a:hover{color:var(--edge)}
+
+@media(max-width:1060px){.b-nav-center{display:none}.footer-band{grid-template-columns:1fr}.fband-cell,.fband-center{border:none!important;border-top:1px solid rgba(139,26,26,.2)!important}.fband-cell:first-child{border-top:none!important}}
+@media(max-width:760px){
+  :root{--pad-h:24px}.b-nav{padding:0 24px;height:56px}.b-nav-center,.b-nav-links{display:none}.b-nav-menu-btn{display:flex}.drawer-overlay{display:block;pointer-events:none}.drawer-overlay.visible{pointer-events:auto}
+  .archive-hero{padding:120px 24px 48px}.filter-panel{padding:20px 24px;position:relative;top:0}.filter-row{gap:16px}.filter-groups{gap:12px}
+  .dispatch-entry{grid-template-columns:80px 1fr 32px}.de-date-col{padding:18px 14px}.de-day{font-size:28px}.de-content{padding:18px 16px}
+  .archive-body{padding:32px 24px 60px}.foot-strip{flex-direction:column;text-align:center;padding:24px}.foot-links,.foot-legal{justify-content:center;flex-wrap:wrap}
+}
+
+.b-nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  padding:0 var(--pad-h);
+  height:120px;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  background:linear-gradient(to bottom,rgba(14,8,6,.97) 0%,transparent 100%);
+  transition:background .3s, box-shadow .3s;
+}
+.b-nav.scrolled { background:rgba(14,8,6,.97); box-shadow:0 1px 0 rgba(139,26,26,.3); }
+
+/* Brand */
+.b-nav-brand {
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:.22em;
+  color:var(--edge); text-transform:uppercase; text-decoration:none;
+  white-space:nowrap; flex-shrink:0; line-height:1;
+  display:flex; align-items:center;
+}
+.nav-logo-img { height:96px; width:auto; display:block; }
+.drawer-logo-img { height:90px; width:auto; display:block; }
+
+/* ── CENTRAL SITE-WIDE NAV LINKS (replaces b-nav-progress) ── */
+.b-nav-center {
+  display:flex; align-items:center; gap:0; list-style:none;
+  flex:1; justify-content:center;
+}
+.b-nav-center a {
+  font-family:'Cinzel',serif; font-size:9px; letter-spacing:.28em;
+  color:var(--white-dim); text-transform:uppercase; text-decoration:none;
+  padding:8px 16px; transition:color .22s; white-space:nowrap;
+  border-left:1px solid rgba(139,26,26,.2);
+}
+.b-nav-center li:first-child a { border-left:none; }
+.b-nav-center a:hover { color:var(--edge); }
+
+/* ── RIGHT NAV LINKS — Order Now only ── */
+.b-nav-links { display:flex; align-items:center; list-style:none; flex-shrink:0; }
+.b-nav-links a {
+  font-family:'Cinzel',serif; font-size:9px; letter-spacing:.24em;
+  color:var(--white-dim); text-transform:uppercase; text-decoration:none;
+  padding:8px 16px; border-left:1px solid rgba(139,26,26,.22);
+  transition:color .22s; white-space:nowrap;
+}
+.b-nav-links a:hover { color:var(--edge); }
+.b-nav-links .nav-order {
+  color:var(--abyss); background:var(--edge); border-color:var(--edge);
+  transition:background .25s, color .25s;
+}
+.b-nav-links .nav-order:hover { background:transparent; color:var(--edge); }
+
+/* ═══════════════════════════════════════════════════
+   SHARED TOKENS
+
+/* ═══════════════════════════════════════════════════
+   MOBILE MENU BUTTON & DRAWER
+═══════════════════════════════════════════════════ */
+
+/* Menu trigger — hidden on desktop */
+.b-nav-menu-btn {
+  display:none;
+  flex-direction:column; justify-content:center; gap:5px;
+  width:36px; height:36px; cursor:pointer;
+  background:transparent; border:1px solid rgba(139,26,26,.35);
+  padding:8px; flex-shrink:0;
+  transition:border-color .22s;
+}
+.b-nav-menu-btn:hover { border-color:var(--edge); }
+.b-nav-menu-btn span {
+  display:block; height:1px; width:100%;
+  background:var(--edge);
+  transition:transform .3s ease, opacity .3s ease, width .3s ease;
+  transform-origin:center;
+}
+/* Animated to X when open */
+.b-nav-menu-btn.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+.b-nav-menu-btn.open span:nth-child(2) { opacity:0; width:0; }
+.b-nav-menu-btn.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+
+/* Overlay — covers page behind drawer */
+.drawer-overlay {
+  display:none; position:fixed; inset:0; z-index:490;
+  background:rgba(14,8,6,.7);
+  backdrop-filter:blur(3px);
+  opacity:0; transition:opacity .35s ease;
+}
+.drawer-overlay.visible { opacity:1; }
+
+/* Drawer panel */
+.mobile-drawer {
+  position:fixed; top:0; right:0; bottom:0; z-index:510;
+  width:min(320px, 88vw);
+  background:var(--void);
+  border-left:1px solid rgba(139,26,26,.4);
+  display:flex; flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .38s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;
+}
+.mobile-drawer.open { transform:translateX(0); }
+
+/* Drawer header */
+.drawer-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 28px;
+  border-bottom:1px solid rgba(139,26,26,.28);
+  height:120px; flex-shrink:0;
+}
+.drawer-brand {
+  font-family:'Cinzel',serif; font-size:10px; letter-spacing:.22em;
+  color:var(--edge); text-transform:uppercase; text-decoration:none;
+  display:flex; align-items:center;
+}
+.drawer-close {
+  background:transparent; border:1px solid rgba(139,26,26,.35);
+  width:32px; height:32px; cursor:pointer; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .22s; flex-shrink:0;
+}
+.drawer-close:hover { border-color:var(--edge); }
+.drawer-close::before, .drawer-close::after {
+  content:''; position:absolute;
+  width:14px; height:1px; background:var(--edge);
+}
+.drawer-close::before { transform:rotate(45deg); }
+.drawer-close::after  { transform:rotate(-45deg); }
+
+/* Drawer nav links */
+.drawer-nav {
+  flex:1; padding:12px 0;
+  display:flex; flex-direction:column;
+}
+.drawer-nav a {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,5vw,28px); font-weight:600;
+  color:var(--white-dim); text-decoration:none;
+  padding:16px 28px;
+  border-bottom:1px solid rgba(139,26,26,.15);
+  letter-spacing:-.01em; line-height:1.2;
+  transition:color .22s, padding-left .22s, background .22s;
+  display:flex; align-items:center; gap:12px;
+}
+.drawer-nav a::before {
+  content:''; display:block;
+  width:4px; height:4px; border:1px solid rgba(212,160,23,.4);
+  transform:rotate(45deg); flex-shrink:0;
+  transition:border-color .22s, background .22s;
+}
+.drawer-nav a:hover {
+  color:var(--edge); padding-left:36px;
+  background:rgba(212,160,23,.03);
+}
+.drawer-nav a:hover::before { border-color:var(--edge); background:rgba(212,160,23,.3); }
+
+/* Drawer label above links */
+.drawer-nav-label {
+  font-family:'Cinzel',serif; font-size:8px; letter-spacing:.42em;
+  color:var(--mist); text-transform:uppercase;
+  padding:20px 28px 10px;
+}
+
+/* Drawer CTA */
+.drawer-cta-wrap {
+  padding:24px 28px 36px;
+  border-top:1px solid rgba(139,26,26,.28);
+  flex-shrink:0;
+}
+.drawer-cta {
+  display:block; width:100%; text-align:center;
+  font-family:'Cinzel',serif; font-size:11px; font-weight:600; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--abyss); background:var(--edge);
+  padding:16px 28px; text-decoration:none; border:1px solid var(--edge);
+  transition:background .25s, color .25s;
+}
+.drawer-cta:hover { background:var(--aged-gold); border-color:var(--aged-gold); }
+
+@media(max-width:760px) {
+  .b-nav { padding:0 16px; height:96px; gap:14px; }
+  .nav-logo-img { height:80px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="b-nav" id="bNav" aria-label="Main navigation">
+
+  <a href="/" class="b-nav-brand"><img src="/logo.png" alt="The War Within — 17 Battles, One Mission" class="nav-logo-img"></a>
+
+  <!-- Central site-wide links (replaces b-nav-progress) -->
+  <ul class="b-nav-center" aria-label="Site navigation">   
+	  <li><a href="/start-here.html">Start</a></li>
+	 <li><a href="/join-the-movement.html">Join The Movement</a></li>
+    <li><a href="/all-battles.html">Campaign Map</a></li>
+   <li><a href="/armory.html">Resources</a></li>
+	<li><a href="/about.html">About</a></li>
+
+  </ul>
+
+  <!-- Right: Order Now (desktop) + Menu button (mobile) -->
+  <ul class="b-nav-links">
+    <li><a href="/order.html" class="nav-order">Order Now</a></li>
+  </ul>
+
+  <!-- Mobile menu trigger -->
+  <button class="b-nav-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+</nav>
+
+<!-- Drawer overlay -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<!-- Mobile navigation drawer -->
+<aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+
+  <div class="drawer-header">
+    <a href="/" class="drawer-brand"><img src="/logo.png" alt="The War Within — 17 Battles, One Mission" class="drawer-logo-img"></a>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu"></button>
+  </div>
+
+  <nav class="drawer-nav" aria-label="Mobile navigation">
+    <span class="drawer-nav-label">Navigation</span>
+    <a href="/start-here.html">Start</a>
+    <a href="/join-the-movement.html">Join The Movement</a>
+    <a href="/armory.html">Resources</a>
+    <a href="/about.html">About</a>
+    <span class="drawer-nav-label" style="margin-top:8px;">Campaign</span>
+    <a href="/all-battles.html">Campaign Map</a>
+    <a href="/battle-1.html">Battle 1</a>
+    <a href="/war-letters.html">War Letters</a>
+  </nav>
+
+  <div class="drawer-cta-wrap">
+    <a href="/order.html" class="drawer-cta">Order Now</a>
+  </div>
+
+</aside>
+
+<!-- ── HERO ── -->
+<div class="archive-hero">
+  <div class="archive-hero-inner">
+    <span class="archive-eyebrow">War Letters &middot; Complete Archive</span>
+    <h1 class="archive-title">Every Dispatch.<br>Fully Searchable.</h1>
+    <p class="archive-desc">Five theatres of strategic correspondence. Filter by theatre, stage, topic, or tags &mdash; or search by keyword. Every letter Segun Samuel has sent from the field, in one place.</p>
+    <div class="archive-stats">
+      <div class="archive-stat"><span class="stat-num" id="total-count">5</span><span class="stat-lbl">Dispatches</span></div>
+      <div class="archive-stat"><span class="stat-num">6</span><span class="stat-lbl">Theatres</span></div>
+      <div class="archive-stat"><span class="stat-num">5</span><span class="stat-lbl">Stages</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FILTER PANEL ── -->
+<div class="filter-panel">
+  <div class="filter-inner">
+    <div class="filter-row">
+
+      <div class="filter-search-wrap">
+        <span class="filter-search-icon">&#128269;</span>
+        <input type="search" class="filter-search" id="searchInput" placeholder="Search by title or keyword&hellip;" aria-label="Search dispatches">
+      </div>
+
+      <div class="filter-groups">
+
+        <div class="filter-group">
+          <span class="filter-group-label">Theatre</span>
+          <div class="filter-chips" id="theatre-chips">
+            <button class="filter-chip" data-filter="theatre" data-value="purpose-identity">Purpose &amp; Identity</button>
+            <button class="filter-chip" data-filter="theatre" data-value="discipline-systems">Discipline &amp; Systems</button>
+            <button class="filter-chip" data-filter="theatre" data-value="prayer-clarity">Prayer &amp; Clarity</button>
+            <button class="filter-chip" data-filter="theatre" data-value="execution-results">Execution</button>
+            <button class="filter-chip" data-filter="theatre" data-value="leadership-stewardship">Stewardship</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-group-label">Stage</span>
+          <div class="filter-chips" id="stage-chips">
+            <button class="filter-chip" data-filter="stage" data-value="awakening">Awakening</button>
+            <button class="filter-chip" data-filter="stage" data-value="structuring">Structuring</button>
+            <button class="filter-chip" data-filter="stage" data-value="ascension">Ascension</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-group-label">Topic</span>
+          <div class="filter-chips" id="tag-chips">
+            <button class="filter-chip" data-filter="tag" data-value="purpose">Purpose</button>
+            <button class="filter-chip" data-filter="tag" data-value="identity">Identity</button>
+            <button class="filter-chip" data-filter="tag" data-value="discipline">Discipline</button>
+            <button class="filter-chip" data-filter="tag" data-value="systems">Systems</button>
+            <button class="filter-chip" data-filter="tag" data-value="prayer">Prayer</button>
+            <button class="filter-chip" data-filter="tag" data-value="clarity">Clarity</button>
+            <button class="filter-chip" data-filter="tag" data-value="execution">Execution</button>
+            <button class="filter-chip" data-filter="tag" data-value="stewardship">Stewardship</button>
+            <button class="filter-chip" data-filter="tag" data-value="calling">Calling</button>
+            <button class="filter-chip" data-filter="tag" data-value="legacy">Legacy</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="filter-sort-wrap">
+        <span class="filter-group-label">Sort</span>
+        <select class="sort-select" id="sortSelect" aria-label="Sort order">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="az">A &rarr; Z</option>
+          <option value="za">Z &rarr; A</option>
+        </select>
+        <button class="filter-clear" id="clearAll">Clear all filters</button>
+      </div>
+
+    </div>
+
+    <div class="filter-active-row" id="activeFiltersRow">
+      <span class="results-count" id="resultsCount">5 letters</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARCHIVE GRID ── -->
+<div class="archive-body">
+  <div class="archive-grid" id="archiveGrid"></div>
+  <div class="no-results" id="noResults" style="display:none">
+    No dispatches match those filters.
+    <span>Try clearing a filter or broadening your search.</span>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="footer-band">
+  <a href="/war-letters.html" class="fband-cell"><span class="fdir">&larr; Back</span><span class="ftitle">War Letters</span><span class="fnum">Latest Dispatches</span></a>
+  <div class="fband-center"><span class="fctr">The Campaign</span><a href="/all-battles.html" class="btn-sm-link">All 17 Battles</a></div>
+  <a href="/all-battles.html" class="fband-cell"><span class="fdir">Enter &rarr;</span><span class="ftitle">Campaign Map</span><span class="fnum">All 17 Battles</span></a>
+</div>
+<div class="foot-strip">
+  <span class="foot-copy">&copy; 2026 &middot; TheWarWithin.you</span>
+  <ul class="foot-links">
+    <li><a href="/start-here.html">Start Here</a></li>
+    <li><a href="/all-battles.html">Campaign Map</a></li>
+    <li><a href="/armory.html">Armoury</a></li>
+    <li><a href="/about.html">The Architect</a></li>
+    <li><a href="/war-letters.html">War Letters</a></li>
+  </ul>
+  <ul class="foot-legal">
+    <li><a href="/privacy.html">Privacy Policy</a></li>
+    <li><a href="/terms.html">Terms</a></li>
+  </ul>
+</div>
+
+<script>
+/* ── DISPATCH DATA ── */
+const DISPATCHES = [
+  {
+    slug: 'dispatch-001',
+    date: '2026-03-28', day: '28', monthYear: 'March\n2026', month: 'March 2026',
+    theatre: 'purpose-identity', theatreLabel: 'Purpose &amp; Identity',
+    stage: 'awakening', stageLabel: 'Stage I &middot; Awakening',
+    tags: ['purpose','identity','direction','assignment','calling','clarity'],
+    title: 'The Person Who Does Not Know Why They Exist Is Already Losing',
+    excerpt: 'There is a particular kind of defeat that is invisible to the person experiencing it. It does not announce itself with failure. It announces itself with busyness — with full calendars and the sensation of motion that has no destination attached to it.',
+    url: '/dispatches/why-you-exist.html'
+  },
+  {
+    slug: 'dispatch-002',
+    date: '2026-03-21', day: '21', monthYear: 'March\n2026', month: 'March 2026',
+    theatre: 'discipline-systems', theatreLabel: 'Discipline &amp; Systems',
+    stage: 'structuring', stageLabel: 'Stage III &middot; Structuring',
+    tags: ['discipline','motivation','systems','consistency','habits','infrastructure'],
+    title: 'Motivation Is Weather. Discipline Is Infrastructure. Stop Confusing Them.',
+    excerpt: 'Motivation arrives when conditions are favourable. Discipline operates when conditions are not. The soldier who only moves when inspired has already lost the campaign — he simply has not acknowledged it yet.',
+    url: '/dispatches/motivation-vs-discipline.html'
+  },
+  {
+    slug: 'dispatch-003',
+    date: '2026-03-14', day: '14', monthYear: 'March\n2026', month: 'March 2026',
+    theatre: 'prayer-clarity', theatreLabel: 'Prayer &amp; Inner Clarity',
+    stage: 'awakening', stageLabel: 'Stage I &middot; Awakening',
+    tags: ['clarity','prayer','discernment','focus','obedience','assignment'],
+    title: 'The Loudest Voice in the Room Is Not Always the One You Should Obey',
+    excerpt: 'There is a difference between the urgency that comes from other people\'s expectations and the clarity that comes from knowing your own assignment. One produces noise. The other produces direction.',
+    url: '/dispatches/the-loudest-voice.html'
+  },
+  {
+    slug: 'dispatch-004',
+    date: '2026-03-07', day: '7', monthYear: 'March\n2026', month: 'March 2026',
+    theatre: 'execution-results', theatreLabel: 'Execution &amp; Results',
+    stage: 'structuring', stageLabel: 'Stage III &middot; Structuring',
+    tags: ['execution','systems','vision','results','architecture','productivity'],
+    title: 'Your Vision Is Not the Problem. Your Systems Are.',
+    excerpt: 'You do not rise to your goals. You fall to your systems. Every person with a clear vision and an empty result has the same root diagnosis — not a deficit of ambition, but a deficit of operational architecture.',
+    url: '/dispatches/vision-not-the-problem.html'
+  },
+  {
+    slug: 'dispatch-005',
+    date: '2026-02-28', day: '28', monthYear: 'Feb\n2026', month: 'February 2026',
+    theatre: 'leadership-stewardship', theatreLabel: 'Leadership &amp; Stewardship',
+    stage: 'ascension', stageLabel: 'Stage V &middot; Ascension',
+    tags: ['stewardship','deployment','gifts','accountability','legacy','calling'],
+    title: 'Everything You Have Been Given Was Given to Be Deployed, Not Admired',
+    excerpt: 'The difference between a talent and a tool is deployment. A talent sits inside the person. A tool changes something in the world. The moment you decide to deploy what you have been given is the moment your assignment becomes operational.',
+    url: '/dispatches/deploy-not-admire.html'
+  }
+];
+
+/* ── STATE ── */
+let activeFilters = {};  // { theatre: 'x', stage: 'y', tag: 'z' }
+let searchQuery = '';
+let sortOrder = 'newest';
+
+/* ── RENDER ── */
+function renderEntry(d) {
+  const tagPills = d.tags.map(t =>
+    '<span class="de-tag">' + t + '</span>'
+  ).join('');
+  const my = d.monthYear.split('\n');
+  return '<a href="' + d.url + '" class="dispatch-entry" data-date="' + d.date + '" data-theatre="' + d.theatre + '" data-stage="' + d.stage + '" data-tags="' + d.tags.join(',') + '">'
+    + '<div class="de-date-col"><span class="de-day">' + d.day + '</span><span class="de-month-year">' + (my[0]||'') + '<br>' + (my[1]||'') + '</span></div>'
+    + '<div class="de-content">'
+    + '<div class="de-meta"><span class="de-theatre">' + d.theatreLabel + '</span><span class="de-meta-sep">·</span><span class="de-stage">' + d.stageLabel + '</span></div>'
+    + '<div class="de-title">' + d.title + '</div>'
+    + '<div class="de-excerpt">' + d.excerpt + '</div>'
+    + '<div class="de-tags">' + tagPills + '</div>'
+    + '</div>'
+    + '<div class="de-arrow-col"><span class="de-arrow">→</span></div>'
+    + '</a>';
+}
+
+function applyFilters() {
+  let results = DISPATCHES.slice();
+
+  // Search
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    results = results.filter(d =>
+      d.title.toLowerCase().includes(q) ||
+      d.excerpt.toLowerCase().includes(q) ||
+      d.tags.some(t => t.includes(q)) ||
+      d.theatreLabel.toLowerCase().replace(/&amp;/g,'&').includes(q)
+    );
+  }
+
+  // Theatre filter
+  if (activeFilters.theatre) {
+    results = results.filter(d => d.theatre === activeFilters.theatre);
+  }
+  // Stage filter
+  if (activeFilters.stage) {
+    results = results.filter(d => d.stage === activeFilters.stage);
+  }
+  // Tag filter
+  if (activeFilters.tag) {
+    results = results.filter(d => d.tags.includes(activeFilters.tag));
+  }
+
+  // Sort
+  if (sortOrder === 'newest') results.sort((a,b) => b.date.localeCompare(a.date));
+  else if (sortOrder === 'oldest') results.sort((a,b) => a.date.localeCompare(b.date));
+  else if (sortOrder === 'az') results.sort((a,b) => a.title.localeCompare(b.title));
+  else if (sortOrder === 'za') results.sort((a,b) => b.title.localeCompare(a.title));
+
+  const grid = document.getElementById('archiveGrid');
+  const noRes = document.getElementById('noResults');
+  const count = document.getElementById('resultsCount');
+  const total = document.getElementById('total-count');
+
+  if (results.length === 0) {
+    grid.innerHTML = '';
+    noRes.style.display = 'block';
+  } else {
+    noRes.style.display = 'none';
+    grid.innerHTML = results.map(renderEntry).join('');
+  }
+
+  const n = results.length;
+  count.textContent = n + (n === 1 ? ' letter' : ' letters');
+  total.textContent = DISPATCHES.length;
+
+  renderActiveBadges();
+}
+
+function renderActiveBadges() {
+  const row = document.getElementById('activeFiltersRow');
+  const count = document.getElementById('resultsCount');
+  // Remove old badges
+  row.querySelectorAll('.active-filter-badge').forEach(b => b.remove());
+
+  const labels = { theatre: 'Theatre', stage: 'Stage', tag: 'Topic' };
+  Object.entries(activeFilters).forEach(([type, val]) => {
+    const chip = document.querySelector('.filter-chip[data-filter="' + type + '"][data-value="' + val + '"]');
+    const label = chip ? chip.textContent.trim() : val;
+    const badge = document.createElement('span');
+    badge.className = 'active-filter-badge';
+    badge.innerHTML = labels[type] + ': ' + label + '<button aria-label="Remove filter">&times;</button>';
+    badge.querySelector('button').addEventListener('click', () => {
+      delete activeFilters[type];
+      document.querySelectorAll('[data-filter="' + type + '"]').forEach(c => c.classList.remove('active'));
+      applyFilters();
+    });
+    row.insertBefore(badge, count);
+  });
+
+  if (searchQuery) {
+    const badge = document.createElement('span');
+    badge.className = 'active-filter-badge';
+    badge.innerHTML = '&ldquo;' + searchQuery + '&rdquo;<button aria-label="Clear search">&times;</button>';
+    badge.querySelector('button').addEventListener('click', () => {
+      searchQuery = '';
+      document.getElementById('searchInput').value = '';
+      applyFilters();
+    });
+    row.insertBefore(badge, count);
+  }
+}
+
+/* ── EVENT LISTENERS ── */
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', function() {
+    const type = this.dataset.filter;
+    const val  = this.dataset.value;
+    if (activeFilters[type] === val) {
+      delete activeFilters[type];
+      this.classList.remove('active');
+    } else {
+      // Deactivate siblings of same type
+      document.querySelectorAll('[data-filter="' + type + '"]').forEach(c => c.classList.remove('active'));
+      activeFilters[type] = val;
+      this.classList.add('active');
+    }
+    applyFilters();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  searchQuery = this.value.trim();
+  applyFilters();
+});
+
+document.getElementById('sortSelect').addEventListener('change', function() {
+  sortOrder = this.value;
+  applyFilters();
+});
+
+document.getElementById('clearAll').addEventListener('click', function() {
+  activeFilters = {};
+  searchQuery = '';
+  sortOrder = 'newest';
+  document.getElementById('searchInput').value = '';
+  document.getElementById('sortSelect').value = 'newest';
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  applyFilters();
+});
+
+/* ── NAV ── */
+const bNav = document.getElementById('bNav');
+window.addEventListener('scroll', () => bNav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+const menuBtn = document.getElementById('menuBtn'), mobileDrawer = document.getElementById('mobileDrawer'),
+      drawerOverlay = document.getElementById('drawerOverlay'), drawerClose = document.getElementById('drawerClose');
+function openDrawer(){mobileDrawer.classList.add('open');mobileDrawer.removeAttribute('aria-hidden');drawerOverlay.classList.add('visible');menuBtn.classList.add('open');menuBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function closeDrawer(){mobileDrawer.classList.remove('open');mobileDrawer.setAttribute('aria-hidden','true');drawerOverlay.classList.remove('visible');menuBtn.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+menuBtn.addEventListener('click',openDrawer);drawerClose.addEventListener('click',closeDrawer);drawerOverlay.addEventListener('click',closeDrawer);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+
+/* ── URL PARAM PRELOAD ── */
+function initFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  ['theatre','stage','tag'].forEach(type => {
+    const val = params.get(type);
+    if (val) {
+      const chip = document.querySelector('[data-filter="' + type + '"][data-value="' + val + '"]');
+      if (chip) { chip.classList.add('active'); activeFilters[type] = val; }
+    }
+  });
+  const q = params.get('q');
+  if (q) { searchQuery = q; document.getElementById('searchInput').value = q; }
+}
+
+/* ── INIT ── */
+initFromURL();
+applyFilters();
+</script>
+</body>
+</html>

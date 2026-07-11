@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The War Within Creed — Daily Declaration | The War Within</title>
+<meta name="description" content="The War Within Creed — a daily declaration naming all seventeen battlegrounds, the lies rejected, the truths embraced, and the commitment renewed each morning before the day's first demand arrives.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   ROOT & RESET — shared TheWarWithin design system
+═══════════════════════════════════════════════════════════ */
+:root {
+  --abyss:        #0E0806;
+  --void:         #130705;
+  --iron:         #2A0C06;
+  --mist:         #9B3A1C;
+  --edge:         #D4A017;
+  --crimson:      #8B1A1A;
+  --aged-gold:    #B8922A;
+  --white:        #F2EDE4;
+  --white-dim:    rgba(242,237,228,0.55);
+  --white-ghost:  rgba(242,237,228,0.10);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:#D4A017 #130705; }
+
+::-webkit-scrollbar { width:8px; }
+::-webkit-scrollbar-track { background:var(--void); border-left:1px solid var(--iron); }
+::-webkit-scrollbar-thumb {
+  background:linear-gradient(to bottom,#B8922A,#D4A017 30%,#FFD700 50%,#D4A017 70%,#B8922A);
+  border-radius:2px; border:1px solid #2A0C06;
+}
+
+body {
+  background:var(--abyss);
+  color:var(--white);
+  font-family:'Crimson Pro',Georgia,serif;
+  font-size:19px;
+  line-height:1.78;
+  overflow-x:hidden;
+}
+
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.reading-progress { position:fixed; top:0; left:0; right:0; height:3px; background:var(--void); z-index:1000; }
+.reading-progress-fill { height:100%; width:0%; background:linear-gradient(to right,var(--crimson),var(--edge)); transition:width .1s; }
+
+/* ── NAV ── */
+.b-nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 52px; height:84px;
+  background:rgba(14,8,6,0); border-bottom:1px solid transparent;
+  transition:background .3s, border-color .3s;
+}
+.b-nav.scrolled { background:rgba(14,8,6,.94); border-bottom-color:var(--iron); backdrop-filter:blur(8px); }
+.b-nav-brand { font-family:'Cinzel',serif; font-size:13px; letter-spacing:.28em; color:var(--edge); text-decoration:none; text-transform:uppercase; }
+.b-nav-center { display:flex; gap:34px; list-style:none; }
+.b-nav-center a { font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.18em; color:var(--white-dim); text-decoration:none; text-transform:uppercase; transition:color .22s; }
+.b-nav-center a:hover { color:var(--edge); }
+.b-nav-links { list-style:none; }
+.nav-order { font-family:'Cinzel',serif; font-size:10.5px; letter-spacing:.2em; color:var(--abyss); background:var(--edge); padding:11px 22px; text-decoration:none; text-transform:uppercase; transition:background .25s; }
+.nav-order:hover { background:var(--aged-gold); }
+.b-nav-menu-btn { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; }
+.b-nav-menu-btn span { width:22px; height:1.5px; background:var(--edge); transition:.25s; }
+
+.drawer-overlay { position:fixed; inset:0; z-index:600; background:rgba(0,0,0,.7); backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity .35s; }
+.drawer-overlay.active { opacity:1; pointer-events:all; }
+.mobile-drawer { position:fixed; top:0; right:0; bottom:0; z-index:700; width:min(340px,90vw); background:var(--void); border-left:1px solid var(--iron); display:flex; flex-direction:column; transform:translateX(100%); transition:transform .38s cubic-bezier(.4,0,.2,1); }
+.mobile-drawer:not([aria-hidden]) { transform:translateX(0); }
+.drawer-header { display:flex; align-items:center; justify-content:space-between; padding:20px 24px; border-bottom:1px solid var(--iron); }
+.drawer-brand { font-family:'Cinzel',serif; font-size:11px; letter-spacing:.3em; color:#B8922A; text-decoration:none; text-transform:uppercase; }
+.drawer-close { background:none; border:1px solid rgba(212,160,23,.3); width:34px; height:34px; cursor:pointer; position:relative; transition:border-color .25s; }
+.drawer-close:hover { border-color:var(--edge); }
+.drawer-close::before, .drawer-close::after { content:''; position:absolute; top:50%; left:50%; width:14px; height:1.5px; background:rgba(242,237,228,0.55); transform-origin:center; }
+.drawer-close::before { transform:translate(-50%,-50%) rotate(45deg); }
+.drawer-close::after { transform:translate(-50%,-50%) rotate(-45deg); }
+.drawer-nav { display:flex; flex-direction:column; padding:24px 20px; gap:2px; overflow-y:auto; flex:1; }
+.drawer-nav a { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.24em; color:rgba(242,237,228,0.55); text-decoration:none; text-transform:uppercase; padding:11px 14px; border:1px solid transparent; transition:all .22s; position:relative; }
+.drawer-nav a:hover, .drawer-nav a.active { color:var(--white); border-color:rgba(212,160,23,.18); background:rgba(212,160,23,.04); }
+.drawer-nav-label { font-family:'Cinzel',serif; font-size:8px; letter-spacing:.36em; color:rgba(212,160,23,.5); text-transform:uppercase; padding:8px 14px 4px; }
+.drawer-cta-wrap { padding:20px 24px; border-top:1px solid var(--iron); }
+.drawer-cta { display:block; text-align:center; font-family:'Cinzel',serif; font-size:10px; letter-spacing:.28em; text-decoration:none; text-transform:uppercase; color:var(--abyss); background:var(--edge); padding:14px 24px; transition:all .25s; }
+.drawer-cta:hover { background:#B8922A; }
+
+/* ── HERO ── */
+.hero-bracket { position:fixed; width:28px; height:28px; border-color:rgba(212,160,23,.35); z-index:400; pointer-events:none; }
+.hero-bracket.tl { top:18px; left:18px; border-top:1px solid; border-left:1px solid; }
+.hero-bracket.tr { top:18px; right:18px; border-top:1px solid; border-right:1px solid; }
+.hero-bracket.bl { bottom:18px; left:18px; border-bottom:1px solid; border-left:1px solid; }
+.hero-bracket.br { bottom:18px; right:18px; border-bottom:1px solid; border-right:1px solid; }
+
+#hero { padding:180px 52px 90px; max-width:900px; margin:0 auto; text-align:center; position:relative; }
+
+.hero-classification {
+  display:inline-block; font-family:'Cinzel',serif; font-size:9px; letter-spacing:.26em;
+  color:var(--mist); border:1px solid rgba(155,58,28,.4); padding:7px 16px; text-transform:uppercase;
+  margin-bottom:28px;
+}
+
+.hero-eyebrow {
+  font-family:'Cinzel',serif; font-size:11px; letter-spacing:.3em; color:var(--edge);
+  text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; justify-content:center; gap:16px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after { content:''; width:32px; height:1px; }
+.hero-eyebrow::before { background:linear-gradient(to right,transparent,var(--crimson)); }
+.hero-eyebrow::after  { background:linear-gradient(to left, transparent,var(--crimson)); }
+
+.hero-title {
+  font-family:'Cormorant Garamond',serif; font-weight:600; font-size:clamp(40px,6vw,68px);
+  line-height:1.05; letter-spacing:-.01em; margin-bottom:8px;
+}
+.hero-title .title-sub {
+  display:block; font-size:clamp(16px,2vw,21px); font-weight:400; font-style:italic;
+  color:var(--white-dim); margin-top:14px; letter-spacing:0;
+}
+
+.hero-rule { width:64px; height:1px; background:var(--crimson); margin:32px auto; }
+
+.hero-subtitle {
+  font-family:'Cinzel',serif; font-size:11.5px; letter-spacing:.18em;
+  color:var(--mist); text-transform:uppercase; max-width:560px; margin:0 auto 36px;
+}
+
+.hero-decree { max-width:700px; margin:0 auto 0; text-align:left; font-size:18px; }
+.hero-decree p { margin-bottom:18px; color:var(--white-dim); }
+.hero-decree p:last-child { margin-bottom:0; }
+.hero-decree strong { color:var(--edge); }
+.hero-decree em { color:var(--aged-gold); font-style:italic; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider { display:flex; align-items:center; justify-content:center; padding:50px 0; }
+.divider-diamond { width:9px; height:9px; background:var(--crimson); transform:rotate(45deg); }
+
+/* ── TOOL ARTICLE — long-form prose module ── */
+.tool-article { max-width:720px; margin:0 auto; padding:0 52px 100px; }
+
+.ta-label {
+  font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.32em; color:var(--mist);
+  text-transform:uppercase; display:block; margin-bottom:14px; text-align:center;
+}
+.ta-heading {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(26px,3.2vw,36px); font-weight:600;
+  text-align:center; margin-bottom:36px; line-height:1.2;
+}
+.ta-heading em { color:var(--edge); font-style:italic; }
+
+.tool-article p { color:var(--white-dim); margin-bottom:22px; }
+.tool-article p.lede {
+  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; color:var(--white);
+  line-height:1.55; margin-bottom:40px; text-align:center;
+}
+.tool-article strong { color:var(--white); font-weight:600; }
+.tool-article em { color:var(--edge); font-style:italic; }
+
+.ta-section-title {
+  font-family:'Cinzel',serif; font-size:13px; letter-spacing:.16em; color:var(--edge);
+  text-transform:uppercase; margin:54px 0 18px; padding-top:30px; border-top:1px solid var(--iron);
+}
+.ta-section-title:first-of-type { padding-top:0; border-top:none; margin-top:30px; }
+
+.ta-list { list-style:none; margin-bottom:24px; }
+.ta-list li {
+  position:relative; padding-left:26px; margin-bottom:14px; color:var(--white-dim);
+}
+.ta-list li::before {
+  content:''; position:absolute; left:0; top:9px; width:6px; height:6px;
+  background:var(--crimson); transform:rotate(45deg);
+}
+.ta-list li strong { color:var(--white); }
+
+.ta-pullquote {
+  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:25px; color:var(--white);
+  line-height:1.5; border-left:2px solid var(--crimson); padding-left:28px; margin:40px 0;
+}
+
+.ta-prayer {
+  background:var(--void); border:1px solid var(--iron); padding:44px 40px; margin:44px 0;
+  position:relative;
+}
+.ta-prayer::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(to right,transparent,var(--crimson),transparent);
+}
+.ta-prayer p { font-style:italic; color:var(--white-dim); margin-bottom:18px; }
+.ta-prayer .prayer-address { color:var(--edge); font-weight:600; font-style:normal; font-family:'Cormorant Garamond',serif; font-size:21px; margin-bottom:24px; }
+.ta-prayer .prayer-amen { text-align:right; color:var(--edge); font-weight:600; font-style:normal; margin-top:28px; margin-bottom:0; }
+
+.ta-commit-box {
+  border:1px solid var(--mist); background:rgba(155,58,28,.06); padding:36px 38px; margin:44px 0;
+}
+.ta-commit-box .commit-line {
+  border-bottom:1px solid rgba(242,237,228,.25); display:inline-block; min-width:280px; margin:0 4px;
+}
+.ta-commit-box .sig-row { display:flex; flex-wrap:wrap; gap:32px; margin-top:28px; }
+.ta-commit-box .sig-field { flex:1; min-width:200px; }
+.ta-commit-box .sig-label { display:block; font-family:'Cinzel',serif; font-size:9px; letter-spacing:.2em; color:var(--mist); text-transform:uppercase; margin-bottom:6px; }
+.ta-commit-box .sig-line { border-bottom:1px solid rgba(242,237,228,.3); height:32px; }
+
+.ta-deploy-grid { display:grid; gap:16px; margin-top:8px; }
+.deploy-step { display:flex; gap:16px; align-items:flex-start; }
+.deploy-num { font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic; color:var(--crimson); flex-shrink:0; width:28px; }
+.deploy-step p { margin-bottom:0; }
+
+/* ── FOOTER ── */
+.footer-band { display:grid; grid-template-columns:1fr auto 1fr; border-top:1px solid rgba(139,26,26,.3); }
+.fband-cell { padding:26px 40px; text-decoration:none; display:flex; flex-direction:column; gap:4px; transition:background .22s; }
+.fband-cell:hover { background:rgba(212,160,23,.04); }
+.fband-cell:first-child { border-right:1px solid var(--iron); }
+.fband-cell:last-child { border-left:1px solid var(--iron); text-align:right; }
+.fbc-dir { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.2em; color:var(--mist); text-transform:uppercase; }
+.fbc-title { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; color:var(--white); }
+.fbc-num { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.16em; color:var(--white-dim); text-transform:uppercase; }
+.fband-center { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:20px; }
+.fbc-ctr-lbl { font-family:'Cinzel',serif; font-size:8px; letter-spacing:.24em; color:var(--mist); text-transform:uppercase; }
+.btn-sm { font-family:'Cinzel',serif; font-size:9px; letter-spacing:.16em; color:var(--edge); border:1px solid rgba(212,160,23,.35); padding:9px 18px; text-decoration:none; text-transform:uppercase; transition:all .22s; }
+.btn-sm:hover { background:rgba(212,160,23,.08); border-color:var(--edge); }
+
+.foot-strip { display:flex; align-items:center; justify-content:space-between; padding:24px 52px; flex-wrap:wrap; gap:16px; border-top:1px solid var(--iron); }
+.foot-copy-left { font-family:'Cinzel',serif; font-size:10px; letter-spacing:.1em; color:var(--white-dim); }
+.foot-links, .foot-legal { display:flex; gap:22px; list-style:none; }
+.foot-links a, .foot-legal a { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:.1em; color:var(--white-dim); text-decoration:none; text-transform:uppercase; transition:color .22s; }
+.foot-links a:hover, .foot-legal a:hover { color:var(--edge); }
+
+@media(max-width:1060px) {
+  .b-nav-center { display:none; }
+}
+@media(max-width:760px) {
+  .b-nav { padding:0 22px; }
+  .b-nav-links { display:none; }
+  .b-nav-menu-btn { display:flex; }
+  #hero { padding:140px 26px 60px; }
+  .tool-article { padding:0 26px 70px; }
+  .footer-band { grid-template-columns:1fr; }
+  .fband-cell, .fband-cell:first-child, .fband-cell:last-child { border:none; border-top:1px solid var(--iron); text-align:left; }
+  .foot-strip { flex-direction:column; text-align:center; padding:28px 24px; }
+  .foot-links { justify-content:center; flex-wrap:wrap; }
+}
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill" id="progressFill"></div></div>
+
+<div class="hero-bracket tl"></div>
+<div class="hero-bracket tr"></div>
+<div class="hero-bracket bl"></div>
+<div class="hero-bracket br"></div>
+
+<nav class="b-nav" id="bNav" aria-label="Main navigation">
+  <a href="/" class="b-nav-brand">The War Within</a>
+  <ul class="b-nav-center" aria-label="Site navigation">
+    <li><a href="/get-started.html">Get Started</a></li>
+    <li><a href="/join-the-movement.html">Join The Movement</a></li>
+    <li><a href="/find-your-aq.html">Find Your AQ</a></li>
+    <li><a href="/resources.html">Resources</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+  <ul class="b-nav-links">
+    <li><a href="/order.html" class="nav-order">Order Now</a></li>
+  </ul>
+  <button class="b-nav-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <div class="drawer-header">
+    <a href="/" class="drawer-brand">The War Within</a>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu"></button>
+  </div>
+  <nav class="drawer-nav" aria-label="Mobile navigation">
+    <span class="drawer-nav-label">Navigation</span>
+    <a href="/get-started.html">Get Started</a>
+    <a href="/join-the-movement.html">Join The Movement</a>
+    <a href="/find-your-aq.html">Find Your AQ</a>
+    <a href="/resources.html">Resources</a>
+    <a href="/about.html">About</a>
+    <span class="drawer-nav-label" style="margin-top:8px;">Campaign</span>
+    <a href="/all-battles.html">Campaign Map</a>
+    <a href="/armory.html" class="active">Armoury</a>
+    <a href="/war-letters.html">War Letters</a>
+  </nav>
+  <div class="drawer-cta-wrap">
+    <a href="/order.html" class="drawer-cta">Order Now</a>
+  </div>
+</aside>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-classification">Foundation Weapon · Deploy at Battle 1</div>
+  <div class="hero-eyebrow">The Armoury</div>
+  <h1 class="hero-title">
+    The War Within Creed
+    <span class="title-sub">A Daily Declaration for the Length of the Campaign</span>
+  </h1>
+  <div class="hero-rule"></div>
+  <p class="hero-subtitle">Seventeen Battlegrounds Named · One Declaration Renewed</p>
+  <div class="hero-decree">
+    <p>This is not a statement to read once and feel moved by. It is a declaration to return to <strong>daily</strong> — the recalibration that exists for the exact moment your resolve weakens and the comfort of retreat starts to sound reasonable.</p>
+    <p><em>Read it before the day's first demand reaches you. Then go and fight well.</em></p>
+  </div>
+</section>
+
+<div class="section-divider"><div class="divider-diamond"></div></div>
+
+<!-- ═══ THE CREED ═══ -->
+<article class="tool-article">
+
+  <span class="ta-label">The Declaration</span>
+  <h2 class="ta-heading">I Am a <em>Warrior.</em></h2>
+
+  <p class="lede">Not by choice, but by design.</p>
+
+  <p>The moment I drew breath, I entered a field already at war. The war within began before I had language for it, and it will not end until my last day on this earth.</p>
+
+  <p>I do not fight alone. God Himself is invested in this campaign. The Spirit is not a spectator to my transformation — He is the strategist beside me.</p>
+
+  <h3 class="ta-section-title">I Name the Seventeen Battlegrounds</h3>
+  <p>I will daily contend for:</p>
+  <ul class="ta-list">
+    <li><strong>Purpose</strong> over aimless motion</li>
+    <li><strong>Identity</strong> over borrowed performance</li>
+    <li><strong>Stewardship of my time, energy, and attention</strong> over wasteful drift</li>
+    <li><strong>Purity of heart</strong> over poison wearing the face of wisdom</li>
+    <li><strong>Honour</strong> over entitlement</li>
+    <li><strong>Clear speech</strong> over relational chaos</li>
+    <li><strong>Healthy connection</strong> over isolation dressed as independence</li>
+    <li><strong>Governed structure</strong> over unaccountable freedom</li>
+    <li><strong>Spiritual vitality</strong> over a prayer life reduced to performance</li>
+    <li><strong>Bodily discipline</strong> over neglect disguised as spirituality</li>
+    <li><strong>A renewed mind</strong> over inherited lies</li>
+    <li><strong>Social maturity</strong> over relational immaturity</li>
+    <li><strong>Disciplined action</strong> over the comfort I keep calling rest</li>
+    <li><strong>Continuous learning</strong> over the stagnation that calls itself contentment</li>
+    <li><strong>Humility</strong> over the pride that wears the mask of confidence</li>
+    <li><strong>Wise stewardship of money</strong> over scarcity, fear, and self-sabotage</li>
+    <li><strong>Decisive execution</strong> over the preparation I keep mistaking for progress</li>
+  </ul>
+
+  <h3 class="ta-section-title">I Understand the Nature of This War</h3>
+  <ul class="ta-list">
+    <li>It is <strong>daily, not finished</strong> — victory here is a direction, not a destination.</li>
+    <li>It is <strong>internal before it is ever external</strong> — I cannot govern what I have not first mastered in myself.</li>
+    <li>It is <strong>spiritual as much as psychological</strong> — discipline is worship, and transformation is obedience.</li>
+    <li>It is <strong>progressive, not perfect</strong> — I will fail, and I will not stay down when I do.</li>
+  </ul>
+
+  <h3 class="ta-section-title">I Reject These Lies</h3>
+  <ul class="ta-list">
+    <li>That I am a victim of my circumstances rather than the architect of my response.</li>
+    <li>That comfort is peace, and ease is success.</li>
+    <li>That I can thrive without discipline, without community, without surrender.</li>
+    <li>That tomorrow is guaranteed and delay costs nothing.</li>
+    <li>That my gifts exempt me from the work of character.</li>
+    <li>That accountability is weakness rather than armour.</li>
+  </ul>
+
+  <h3 class="ta-section-title">I Embrace These Truths</h3>
+  <ul class="ta-list">
+    <li>I am <strong>fearfully and wonderfully made</strong>, assigned a purpose before I had a name for it.</li>
+    <li>I am <strong>dependent by design</strong> — wired for communion with God and community with others.</li>
+    <li>I am <strong>becoming, not arrived</strong>. Growth is the daily evidence, not the final proof.</li>
+    <li>My <strong>worth is fixed</strong> in what God has already declared. My <strong>growth is variable</strong>, governed by what I choose today.</li>
+    <li><strong>Discipline liberates. Humility strengthens. Execution honours vision</strong> — an idea without action is a tomb for potential.</li>
+  </ul>
+
+  <div class="ta-pullquote">
+    "The keeping is only legitimate insofar as it serves the operating."
+  </div>
+
+  <h3 class="ta-section-title">I Commit to These Disciplines</h3>
+
+  <p><strong>Daily</strong> — prayer before productivity, deliberate movement, reading that expands me, honour given to at least one person, one avoided task executed.</p>
+
+  <p><strong>Weekly</strong> — an honest audit of where my time, energy, and attention actually went; reconnection with those who hold me accountable; one uncomfortable discipline practised on purpose; one act of service that costs me something; one of the seventeen battlegrounds named as the weakest and addressed directly.</p>
+
+  <p><strong>Monthly</strong> — an audit against my Personal Identity Statement; an honest look at my finances; teaching that challenges rather than flatters me; the repair or the deepening of one significant relationship.</p>
+
+  <p><strong>Quarterly</strong> — a review of the year's goals against the year's evidence; the systems that are failing named and rebuilt; fasting and direction sought for the season ahead; wins celebrated, losses extracted for their lessons.</p>
+
+  <h3 class="ta-section-title">I Declare What Defines Me, and What Does Not</h3>
+
+  <p>I am <strong>not</strong> defined by my past failures or my past successes. Not by the opinions others hold of me. Not by my emotions or my circumstances. Not by my output or my performance.</p>
+
+  <p>I <strong>am</strong> defined by whose I am — a child of God, carrying His image, already loved before I produced anything worth loving. By who I am becoming through daily surrender. By what I represent in my values and my principles. By how I steward what has been placed in my hands.</p>
+
+  <h3 class="ta-section-title">I Accept What This Costs</h3>
+
+  <p>Discomfort I would rather avoid. Humility my ego resists. Patience my impatience despises. Accountability my pride rejects. Obscurity when visibility tempts. Discipline when ease seduces. Truth when a comfortable lie would cost less today.</p>
+
+  <p>I accept these costs, because every cost paid here is an investment in character, in capacity, and in what outlasts me.</p>
+
+  <h3 class="ta-section-title">I Hold to These Promises</h3>
+
+  <p>He who began this work in me will carry it to completion <em>(Philippians 1:6)</em>. I can do what this requires through the One who strengthens me <em>(Philippians 4:13)</em>. Greater is He who is in me than anything I am facing <em>(1 John 4:4)</em>. God gives grace to the humble and resists the proud <em>(James 4:6)</em>. In all things, He is working this for my good <em>(Romans 8:28)</em>.</p>
+
+  <h3 class="ta-section-title">The Declaration</h3>
+
+  <div class="ta-prayer">
+    <p class="prayer-address">Father,</p>
+    <p>Today I choose the narrow path over the broad road. I choose transformation over comfort. I choose obedience over convenience.</p>
+    <p>I will fight this — not against flesh and blood, but against every force within me that resists what You have already called good.</p>
+    <p>When I am weak, be my strength. When I am confused, be my clarity. When I am tempted to quit, be my resolve. When I am proud, humble me. When I am fearful, embolden me. When I delay, move me to act.</p>
+    <p>I cannot win this war by my own strength. But through You, I am more than what is required to win it.</p>
+    <p>Make me a warrior of light — someone who conquers the self to serve others, who masters the internal to carry the external with integrity, who wins the private battles so the public ones can be fought honestly.</p>
+    <p>Let my life testify not to perfection, but to relentless pursuit. Not to arrival, but to faithful direction. Not to self-made success, but to grace that sustained the transformation.</p>
+    <p>I am Yours. This war is ours. Lead me — one day, one battle, one choice at a time.</p>
+    <p class="prayer-amen">Amen.</p>
+  </div>
+
+  <h3 class="ta-section-title">Your Commitment</h3>
+
+  <div class="ta-commit-box">
+    <p style="margin-bottom:0;">I, <span class="commit-line">&nbsp;</span> on this day <span class="commit-line" style="min-width:160px;">&nbsp;</span>, commit to fight the war within with intentionality, humility, and relentless consistency.</p>
+    <p style="margin-top:18px;">This is not a decision made once. It is a recommitment made daily. When I drift, when I fail, when I forget — I will return here, and I will begin again, for as many times as it takes.</p>
+    <div class="sig-row">
+      <div class="sig-field">
+        <span class="sig-label">Signature</span>
+        <div class="sig-line"></div>
+      </div>
+      <div class="sig-field">
+        <span class="sig-label">Witness (Optional)</span>
+        <div class="sig-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="ta-section-title">How to Deploy This Creed</h3>
+
+  <div class="ta-deploy-grid">
+    <div class="deploy-step"><span class="deploy-num">01</span><p>Read it daily, before the day's first demand reaches you.</p></div>
+    <div class="deploy-step"><span class="deploy-num">02</span><p>Memorise the lines that meet you exactly where you are struggling.</p></div>
+    <div class="deploy-step"><span class="deploy-num">03</span><p>Personalise it — name the specific battles this season is asking of you.</p></div>
+    <div class="deploy-step"><span class="deploy-num">04</span><p>Share it with whoever holds you accountable. Give them permission to call you back to it.</p></div>
+    <div class="deploy-step"><span class="deploy-num">05</span><p>Revise it as you grow. Your convictions hold; their expression deepens.</p></div>
+    <div class="deploy-step"><span class="deploy-num">06</span><p>Return to it after failure. This is not a standard you are condemned by. It is a destination you are still walking toward.</p></div>
+  </div>
+
+</article>
+
+<nav class="footer-band" aria-label="Page navigation">
+  <a href="/armory.html" class="fband-cell">
+    <span class="fbc-dir">← Back</span>
+    <span class="fbc-title">The Armoury</span>
+    <span class="fbc-num">All Strategic Instruments</span>
+  </a>
+  <div class="fband-center">
+    <span class="fbc-ctr-lbl">The Campaign</span>
+    <a href="/all-battles.html" class="btn-sm">All 17 Battles</a>
+  </div>
+  <a href="/battle-1.html" class="fband-cell">
+    <span class="fbc-dir">Begin →</span>
+    <span class="fbc-title">Battle 1</span>
+    <span class="fbc-num">The Blind Warrior</span>
+  </a>
+</nav>
+
+<footer class="foot-strip" aria-label="Site footer">
+  <span class="foot-copy-left">© 2026 · TheWarWithin.you</span>
+  <ul class="foot-links" aria-label="Site links">
+    <li><a href="/start-here.html">Start Here</a></li>
+    <li><a href="/all-battles.html">Campaign Map</a></li>
+    <li><a href="/armory.html">Armoury</a></li>
+    <li><a href="/about.html">The Architect</a></li>
+    <li><a href="/war-letters.html">War Letters</a></li>
+  </ul>
+  <ul class="foot-legal" aria-label="Legal links">
+    <li><a href="/privacy.html">Privacy Policy</a></li>
+    <li><a href="/terms.html">Terms</a></li>
+  </ul>
+</footer>
+
+<script>
+const fill = document.getElementById('progressFill');
+window.addEventListener('scroll', () => {
+  const pct = document.documentElement.scrollTop /
+    (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  if(fill) fill.style.width = pct + '%';
+}, { passive:true });
+
+const bNav = document.getElementById('bNav');
+window.addEventListener('scroll', () => {
+  bNav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive:true });
+
+const menuBtn = document.getElementById('menuBtn');
+const mobileDrawer = document.getElementById('mobileDrawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+const drawerClose = document.getElementById('drawerClose');
+function openDrawer(){
+  mobileDrawer.removeAttribute('aria-hidden');
+  drawerOverlay.classList.add('active');
+  menuBtn.classList.add('open');
+  menuBtn.setAttribute('aria-expanded','true');
+  document.body.style.overflow='hidden';
+}
+function closeDrawer(){
+  mobileDrawer.setAttribute('aria-hidden','true');
+  drawerOverlay.classList.remove('active');
+  menuBtn.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+menuBtn.addEventListener('click', openDrawer);
+drawerClose.addEventListener('click', closeDrawer);
+drawerOverlay.addEventListener('click', closeDrawer);
+</script>
+</body>
+</html>

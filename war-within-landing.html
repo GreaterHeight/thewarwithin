@@ -1,0 +1,2988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The War Within — Segun Samuel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --abyss:      #0E0806;
+    --void:       #130705;
+    --iron:       #2A0C06;
+    --mist:       #9B3A1C;
+    --edge:       #D4A017;
+    --crimson:    #8B1A1A;
+    --aged-gold:  #B8922A;
+    --white:      #F2EDE4;
+    --white-dim:  rgba(242,237,228,0.55);
+    --white-ghost:rgba(242,237,228,0.10);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  /* ── DEEP GOLD SCROLLBAR ── */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--void);
+    border-left: 1px solid var(--iron);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      to bottom,
+      #B8922A 0%,
+      #D4A017 25%,
+      #FFD700 50%,
+      #D4A017 75%,
+      #B8922A 100%
+    );
+    border-radius: 2px;
+    border: 1px solid #2A0C06;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      to bottom,
+      #D4A017 0%,
+      #FFD700 30%,
+      #FFF5A0 50%,
+      #FFD700 70%,
+      #D4A017 100%
+    );
+  }
+  ::-webkit-scrollbar-corner {
+    background: var(--void);
+  }
+  /* Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #D4A017 #130705;
+  }
+
+  body {
+    background: var(--abyss);
+    color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.55;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 500;
+    padding: 22px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(14,8,6,0.97) 0%, transparent 100%);
+  }
+  .nav-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--edge);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--abyss);
+    background: var(--edge);
+    padding: 10px 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid var(--edge);
+    transition: background 0.25s, color 0.25s;
+  }
+  .nav-cta:hover { background: transparent; color: var(--edge); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 32px 90px;
+    overflow: hidden;
+  }
+  #hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 65% 70% at 50% 25%, rgba(139,26,26,0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 50% 85%, rgba(212,160,23,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.38em;
+    color: var(--edge);
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.1s forwards;
+    position: relative; z-index: 2;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(68px, 11vw, 136px);
+    font-weight: 600;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.25s forwards;
+    position: relative; z-index: 2;
+  }
+  /* Gold shimmer on both title words */
+  .hero-title,
+  .hero-title .accent {
+    background: linear-gradient(
+      105deg,
+      #D4A017 15%,
+      #F5E07A 30%,
+      #FFD700 42%,
+      #FFF5A0 50%,
+      #FFD700 58%,
+      #F5E07A 70%,
+      #D4A017 85%,
+      #B8922A 92%,
+      #D4A017 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeUp 1s ease 0.25s forwards, goldShimmer 3.4s ease-in-out infinite;
+  }
+  .hero-title .accent {
+    animation: fadeUp 1s ease 0.25s forwards, goldShimmer 3.4s ease-in-out 0.5s infinite;
+  }
+  @keyframes goldShimmer {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(10px, 1.3vw, 13px);
+    letter-spacing: 0.24em;
+    color: var(--mist);
+    text-transform: uppercase;
+    max-width: 580px;
+    margin: 22px auto 54px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.42s forwards;
+    position: relative; z-index: 2;
+  }
+
+  /* ── CONFRONTATIONAL MANIFESTO TEXT ── */
+  .hero-manifesto {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--white);
+    max-width: 760px;
+    margin: 0 auto 52px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    animation: fadeUp 1.1s ease 0.55s forwards;
+    position: relative;
+    z-index: 2;
+    padding: 36px 40px;
+    border-top: 1px solid rgba(139,26,26,0.5);
+    border-bottom: 1px solid rgba(139,26,26,0.5);
+    background: rgba(242,237,228,0.03);
+  }
+  .hero-manifesto strong {
+    color: var(--edge);
+    font-weight: 700;
+    font-size: 1.08em;
+  }
+  .hero-manifesto em {
+    font-style: italic;
+    color: var(--pale-gold, #F2DE8C);
+  }
+  @media (max-width: 700px) {
+    .hero-manifesto {
+      font-size: clamp(17px, 4.5vw, 22px);
+      padding: 24px 20px;
+    }
+  }
+
+  /* ── HERO KNOCKOUT LINE ── */
+  .hero-knockout {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--white);
+    max-width: 680px;
+    margin: 0 auto 44px;
+    text-align: center;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── ABOUT SECTION MANIFESTO ── */
+  .about-manifesto {
+    margin: 28px 0 32px;
+    padding: 28px 32px;
+    border-left: 3px solid var(--edge);
+    background: rgba(212,160,23,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .about-manifesto p {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.75;
+    color: var(--white);
+    margin: 0;
+  }
+  .about-manifesto strong {
+    color: var(--edge);
+    font-weight: 700;
+  }
+  .about-manifesto em {
+    font-style: italic;
+    color: var(--aged-gold);
+  }
+  .about-manifesto-close {
+    font-size: clamp(18px, 1.9vw, 23px) !important;
+    padding-top: 10px;
+    border-top: 1px solid rgba(139,26,26,0.35);
+    margin-top: 4px !important;
+  }
+
+  .hero-quote-wrap {
+    max-width: 660px;
+    margin: 0 auto 64px;
+    border-left: 2px solid var(--edge);
+    padding: 6px 0 6px 28px;
+    text-align: left;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.62s forwards;
+    position: relative; z-index: 2;
+  }
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.2vw, 23px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white-dim);
+    line-height: 1.55;
+  }
+  .hero-quote cite {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--edge);
+    font-style: normal;
+    margin-top: 12px;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.82s forwards;
+    position: relative; z-index: 2;
+  }
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--abyss);
+    background: var(--edge);
+    padding: 16px 40px;
+    text-decoration: none;
+    border: 1px solid var(--edge);
+    transition: all 0.28s;
+  }
+  .btn-primary:hover { background: var(--aged-gold); border-color: var(--aged-gold); }
+  .btn-ghost {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: transparent;
+    padding: 16px 40px;
+    text-decoration: none;
+    border: 1px solid rgba(242,237,228,0.2);
+    transition: all 0.28s;
+  }
+  .btn-ghost:hover { border-color: var(--edge); color: var(--edge); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.6s forwards;
+    z-index: 2;
+  }
+  .scroll-hint span {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 44px;
+    background: linear-gradient(to bottom, var(--edge), transparent);
+    animation: scrollPulse 2.2s ease-in-out infinite;
+  }
+
+  /* SECTION SHARED */
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--edge);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: block;
+  }
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4.8vw, 60px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  .section-body {
+    font-size: clamp(16px, 1.8vw, 19px);
+    color: var(--white-dim);
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* ABOUT */
+  #about {
+    padding: 110px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--crimson);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.6vw, 30px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.5;
+    border-left: 2px solid var(--edge);
+    padding-left: 28px;
+    margin: 40px 0;
+  }
+  .about-stat {
+    padding: 30px 0;
+    border-top: 1px solid var(--crimson);
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 68px;
+    font-weight: 300;
+    color: var(--edge);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+  .stat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--crimson), transparent);
+  }
+  .divider-diamond {
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--crimson);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .divider-diamond::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    background: var(--edge);
+    opacity: 0.5;
+  }
+
+  /* BATTLES */
+  #battles-bg {
+    background: #130705;
+    margin-top: 0;
+  }
+  .battles-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px 60px;
+  }
+  .battles-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 68px;
+  }
+  .battles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .battle-card {
+    background: var(--abyss);
+    padding: 26px 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    border: 1px solid transparent;
+    transition: border-color 0.22s, background 0.22s;
+    cursor: default;
+  }
+  .battle-card:hover {
+    border-color: var(--crimson);
+    background: rgba(139,26,26,0.12);
+  }
+  .battle-card:hover .battle-num { color: var(--edge); }
+  .battle-num {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--mist);
+    transition: color 0.22s;
+    padding-top: 5px;
+    min-width: 26px;
+    flex-shrink: 0;
+  }
+  .battle-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 5px;
+    line-height: 1.2;
+  }
+  .battle-desc {
+    font-size: 14px;
+    color: var(--white-dim);
+    line-height: 1.55;
+  }
+
+  /* TESTIMONIALS */
+  #social-proof {
+    background: rgba(19,7,5,0.5);
+    border-top: 1px solid var(--crimson);
+    border-bottom: 1px solid var(--crimson);
+    padding: 80px 48px;
+  }
+  .proof-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 40px;
+  }
+  .testimonial {
+    padding: 32px;
+    border: 1px solid var(--crimson);
+    background: rgba(14,8,6,0.7);
+    position: relative;
+  }
+  .testimonial::before {
+    content: '\201C';
+    position: absolute;
+    top: 12px; left: 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    line-height: 1;
+    color: var(--iron);
+    opacity: 0.55;
+  }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--white-dim);
+    line-height: 1.65;
+    margin-bottom: 20px;
+    padding-top: 22px;
+  }
+  .testimonial-name {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--edge);
+    text-transform: uppercase;
+  }
+  .testimonial-role {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* AUTHOR */
+  #author {
+    padding: 110px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--crimson);
+  }
+  .author-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .author-avatar {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--void);
+    border: 1px solid var(--crimson);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .author-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 55%, rgba(212,160,23,0.14) 100%);
+  }
+  .author-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 88px;
+    font-weight: 300;
+    color: var(--aged-gold);
+    opacity: 0.45;
+    letter-spacing: -0.04em;
+  }
+  .author-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.36em;
+    color: var(--edge);
+    border: 1px solid var(--crimson);
+    display: inline-block;
+    padding: 7px 14px;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+  .author-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5.5vw, 68px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 28px;
+  }
+  .author-bio {
+    font-size: 18px;
+    color: var(--white-dim);
+    line-height: 1.82;
+    margin-bottom: 20px;
+  }
+  .author-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .badge {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--aged-gold);
+    border: 1px solid var(--crimson);
+    padding: 7px 14px;
+    text-transform: uppercase;
+  }
+
+  /* FINAL CTA */
+  #cta {
+    background: var(--crimson);
+    padding: 110px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(139,26,26,0.4) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-inner { max-width: 680px; margin: 0 auto; position: relative; }
+  .cta-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    color: var(--edge);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .cta-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 7vw, 80px);
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+  .cta-sub {
+    font-size: 19px;
+    color: rgba(242,237,228,0.68);
+    margin-bottom: 52px;
+    line-height: 1.75;
+  }
+  .cta-note {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+    margin-top: 24px;
+  }
+
+  /* ── COMPANION SITE SECTION ── */
+  #companion {
+    padding: 110px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--crimson);
+  }
+  .companion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .companion-screen {
+    background: var(--void);
+    border: 1px solid var(--crimson);
+    border-radius: 8px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .companion-screen::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--crimson), var(--edge), var(--crimson));
+  }
+  .companion-screen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,160,23,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .companion-url {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--edge);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .url-dot { width: 8px; height: 8px; background: var(--edge); border-radius: 50%; flex-shrink:0; }
+  .companion-feature {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(139,26,26,0.3);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .companion-feature:last-child { border-bottom: none; }
+  .feature-icon {
+    width: 36px; height: 36px;
+    border: 1px solid var(--aged-gold);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--edge);
+  }
+  .feature-title {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .feature-desc {
+    font-size: 15px;
+    color: var(--white-dim);
+    line-height: 1.5;
+  }
+
+  /* ── VALUE STACK ── */
+  #value-stack {
+    background: var(--void);
+    padding: 100px 48px;
+  }
+  .value-stack-inner { max-width: 900px; margin: 0 auto; }
+  .stack-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(139,26,26,0.3);
+    gap: 24px;
+  }
+  .stack-item:last-of-type { border-bottom: none; }
+  .stack-name { font-family: 'Crimson Pro', Georgia, serif; font-size: 19px; color: var(--white); flex: 1; }
+  .stack-name em { color: var(--aged-gold); font-style: italic; }
+  .stack-value {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--white-dim);
+    text-decoration: line-through;
+    text-decoration-color: rgba(139,26,26,0.6);
+    white-space: nowrap;
+  }
+  .stack-total {
+    margin-top: 32px;
+    padding: 28px 32px;
+    background: rgba(212,160,23,0.06);
+    border: 1px solid var(--aged-gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .stack-total-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+  }
+  .stack-total-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--edge);
+    letter-spacing: -0.02em;
+  }
+  .stack-your-price {
+    margin-top: 16px;
+    padding: 28px 32px;
+    background: var(--crimson);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stack-your-price::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 100% at 0% 50%, rgba(212,160,23,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .stack-your-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .stack-your-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--edge);
+    letter-spacing: -0.02em;
+  }
+
+  /* ── PRICING TIERS ── */
+  #pricing {
+    padding: 110px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--crimson);
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 64px;
+  }
+  .pricing-card {
+    border: 1px solid var(--crimson);
+    padding: 40px 32px;
+    position: relative;
+    background: var(--void);
+    transition: border-color 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .pricing-card:hover { border-color: var(--aged-gold); }
+  .pricing-card.featured {
+    border-color: var(--edge);
+    background: rgba(212,160,23,0.05);
+  }
+  .pricing-card.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--edge);
+    color: var(--abyss);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    padding: 5px 18px;
+    white-space: nowrap;
+  }
+  .tier-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    color: var(--edge);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .tier-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  .tier-price-ngn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--edge);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .tier-price-usd {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--aged-gold);
+    margin-top: 6px;
+    margin-bottom: 28px;
+  }
+  .tier-divider { height: 1px; background: rgba(139,26,26,0.4); margin-bottom: 24px; }
+  .tier-features { list-style: none; flex: 1; margin-bottom: 32px; }
+  .tier-features li {
+    font-size: 15px;
+    color: var(--white-dim);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(139,26,26,0.2);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
+  }
+  .tier-features li:last-child { border-bottom: none; }
+  .tier-features li::before { content: '—'; color: var(--edge); flex-shrink: 0; font-family: 'Cinzel', serif; font-size: 11px; }
+  .tier-features li.inactive { opacity: 0.35; }
+  .tier-features li.inactive::before { color: var(--crimson); content: '✕'; }
+  .btn-tier {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    padding: 16px 24px;
+    display: block;
+    transition: all 0.25s;
+    margin-top: auto;
+  }
+  .btn-tier-primary { background: var(--edge); color: var(--abyss); border: 1px solid var(--edge); }
+  .btn-tier-primary:hover { background: var(--aged-gold); border-color: var(--aged-gold); }
+  .btn-tier-ghost { background: transparent; color: var(--white); border: 1px solid rgba(242,237,228,0.2); }
+  .btn-tier-ghost:hover { border-color: var(--edge); color: var(--edge); }
+
+  /* ── COST ANCHOR ── */
+  #cost-anchor {
+    background: rgba(139,26,26,0.08);
+    border-top: 1px solid var(--crimson);
+    border-bottom: 1px solid var(--crimson);
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .anchor-inner { max-width: 760px; margin: 0 auto; }
+  .anchor-compare {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin: 48px 0;
+    align-items: center;
+  }
+  .anchor-item { text-align: center; flex: 1; min-width: 130px; }
+  .anchor-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--white-dim);
+    letter-spacing: -0.03em;
+    text-decoration: line-through;
+    text-decoration-color: rgba(139,26,26,0.5);
+  }
+  .anchor-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .anchor-vs {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--crimson);
+  }
+  .anchor-verdict {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.6vw, 28px);
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.55;
+    border-left: 2px solid var(--edge);
+    padding-left: 28px;
+    text-align: left;
+    margin-top: 40px;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  #compare table tbody tr {
+    border-bottom: 1px solid rgba(139,26,26,0.2);
+    transition: background 0.2s;
+  }
+  #compare table tbody tr:hover { background: rgba(212,160,23,0.04); }
+  #compare table td {
+    padding: 14px 14px;
+    color: var(--white-dim);
+    vertical-align: middle;
+  }
+  #compare table td:first-child {
+    color: var(--white);
+    font-size: 16px;
+  }
+  #compare table td:nth-child(3) {
+    background: rgba(212,160,23,0.04);
+    border-left: 1px solid rgba(212,160,23,0.15);
+    border-right: 1px solid rgba(212,160,23,0.15);
+  }
+  .check  { color: var(--edge);    font-size: 18px; text-align:center; display:block; }
+  .cross  { color: rgba(139,26,26,0.5); font-size:16px; text-align:center; display:block; }
+  .partial{ color: var(--aged-gold); font-size:13px; text-align:center; display:block; font-family:'Cinzel',serif; letter-spacing:0.1em; }
+
+  /* FORMAT SELECTOR */
+  .format-selector {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 40px 0 56px;
+  }
+  .format-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    border: 1px solid rgba(139,26,26,0.5);
+    background: transparent;
+    color: var(--white-dim);
+    cursor: pointer;
+    transition: all 0.22s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .format-btn:hover { border-color: var(--aged-gold); color: var(--aged-gold); }
+  .format-btn.active {
+    border-color: var(--edge);
+    color: var(--abyss);
+    background: var(--edge);
+  }
+  .format-icon { font-size: 14px; }
+
+  /* ── GIFT EDITION CARD ── */
+  .gift-card {
+    border: 1px solid var(--aged-gold);
+    background: linear-gradient(135deg, rgba(184,146,42,0.08) 0%, rgba(212,160,23,0.03) 100%);
+    padding: 40px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    grid-column: span 2;
+    transition: border-color 0.25s;
+  }
+  .gift-card:hover { border-color: var(--edge); }
+  .gift-card::before {
+    content: 'GIFT EDITION';
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--aged-gold);
+    color: var(--abyss);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    padding: 5px 18px;
+    white-space: nowrap;
+  }
+  .gift-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .gift-desc {
+    font-size: 16px;
+    color: var(--white-dim);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+  .gift-ideal {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .gift-recipients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .gift-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--aged-gold);
+    border: 1px solid rgba(184,146,42,0.4);
+    padding: 5px 12px;
+    text-transform: uppercase;
+  }
+
+  /* ── PRICING GRID 4-UP ── */
+  .pricing-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 64px;
+  }
+
+  /* ── PRE-ORDER TABS ── */
+  .po-tab-bar {
+    display: flex;
+    gap: 0;
+    max-width: 680px;
+    margin: 32px auto 0;
+    border: 1px solid var(--crimson);
+  }
+  .po-tab {
+    flex: 1;
+    padding: 18px 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    transition: all 0.22s;
+    position: relative;
+    text-align: center;
+  }
+  .po-tab:first-child { border-right: 1px solid var(--crimson); }
+  .po-tab.active {
+    background: rgba(212,160,23,0.08);
+    color: var(--edge);
+  }
+  .po-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--edge);
+  }
+  .po-tab:hover { color: var(--aged-gold); }
+  .po-tab-badge {
+    display: inline-block;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    padding: 2px 7px;
+    margin-left: 8px;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+  .po-tab-badge.free {
+    background: rgba(139,26,26,0.3);
+    color: var(--aged-gold);
+    border: 1px solid rgba(139,26,26,0.5);
+  }
+  .po-tab-badge.paid {
+    background: var(--edge);
+    color: var(--abyss);
+  }
+  .po-panel { display: none; }
+  .po-panel.active { display: block; }
+
+  /* ── PRE-ORDER BUNDLE CARDS ── */
+  .po-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 900px;
+    margin: 36px auto 0;
+  }
+  .po-card {
+    border: 1px solid var(--crimson);
+    padding: 28px 22px;
+    background: var(--void);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.22s;
+    position: relative;
+  }
+  .po-card:hover { border-color: var(--aged-gold); }
+  .po-card.po-featured {
+    border-color: var(--edge);
+    background: rgba(212,160,23,0.05);
+  }
+  .po-card.po-featured::before {
+    content: 'BEST VALUE';
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--edge);
+    color: var(--abyss);
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    padding: 4px 14px;
+    white-space: nowrap;
+  }
+  .po-card-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--edge);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .po-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .po-card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--edge);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+  }
+  .po-card-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--aged-gold);
+    margin-bottom: 18px;
+  }
+  .po-divider { height: 1px; background: rgba(139,26,26,0.3); margin-bottom: 16px; }
+  .po-includes {
+    list-style: none;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  .po-includes li {
+    font-size: 14px;
+    color: var(--white-dim);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(139,26,26,0.15);
+    display: flex;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .po-includes li:last-child { border-bottom: none; }
+  .po-includes li::before {
+    content: '—';
+    color: var(--edge);
+    flex-shrink: 0;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+  }
+  .po-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 16px;
+    display: block;
+    transition: all 0.22s;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+  }
+  .po-btn-primary {
+    background: var(--edge);
+    color: var(--abyss);
+    border: 1px solid var(--edge);
+  }
+  .po-btn-primary:hover { background: var(--aged-gold); }
+  .po-btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(242,237,228,0.2);
+  }
+  .po-btn-ghost:hover { border-color: var(--edge); color: var(--edge); }
+  .po-commander {
+    max-width: 900px;
+    margin: 16px auto 0;
+    border: 1px solid var(--aged-gold);
+    background: rgba(212,160,23,0.04);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+  }
+  .po-commander::before {
+    content: "COMMANDER'S EDITION";
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--aged-gold);
+    color: var(--abyss);
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    padding: 4px 16px;
+    white-space: nowrap;
+  }
+  .po-incentive {
+    max-width: 900px;
+    margin: 24px auto 0;
+    padding: 20px 28px;
+    border: 1px solid rgba(139,26,26,0.4);
+    background: rgba(139,26,26,0.06);
+    text-align: center;
+  }
+  .po-incentive-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    color: var(--edge);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .po-incentive-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 16px;
+    color: var(--white-dim);
+    line-height: 1.65;
+  }
+  .po-incentive-text strong { color: var(--edge); }
+  .po-selar-note {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 900px;
+    margin: 16px auto 0;
+  }
+  @media (max-width: 700px) {
+    .po-grid { grid-template-columns: 1fr; }
+    .po-commander { grid-template-columns: 1fr; text-align: center; }
+    .po-tab { font-size: 9px; padding: 14px 12px; letter-spacing: 0.14em; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--abyss);
+    border-top: 1px solid var(--crimson);
+    padding: 44px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    color: var(--edge);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .footer-links {
+    display: flex;
+    gap: 28px;
+  }
+  .footer-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--aged-gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--edge); }
+  .footer-copy {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--mist);
+    text-transform: uppercase;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.4; transform: scaleY(1); }
+    50%      { opacity: 1;   transform: scaleY(1.18); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(34px);
+    transition: opacity 0.85s ease, transform 0.85s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .delay-1 { transition-delay: 0.12s; }
+  .delay-2 { transition-delay: 0.24s; }
+  .delay-3 { transition-delay: 0.38s; }
+  .delay-4 { transition-delay: 0.52s; }
+  .delay-5 { transition-delay: 0.66s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    #about, #author, #companion, #pricing, #compare { padding: 80px 24px; }
+    .about-grid, .battles-header, .author-grid, .companion-grid { grid-template-columns: 1fr; gap: 40px; }
+    .proof-inner { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-grid-4 { grid-template-columns: 1fr 1fr; }
+    .gift-card { grid-column: span 2; }
+    .gift-inner { grid-template-columns: 1fr; gap: 20px; }
+    .battles-inner { padding: 80px 24px 48px; }
+    #social-proof, #cta, #value-stack, #cost-anchor { padding: 80px 24px; }
+    .anchor-compare { gap: 24px; }
+    .stack-total, .stack-your-price { flex-direction: column; gap: 8px; text-align: center; }
+    footer { flex-direction: column; text-align: center; gap: 18px; }
+  }
+  @media (max-width: 600px) {
+    .pricing-grid-4 { grid-template-columns: 1fr; }
+    .gift-card { grid-column: span 1; }
+    .format-selector { gap: 8px; }
+    .format-btn { font-size: 9px; padding: 10px 14px; }
+  }
+
+  .hero-book-wrap {
+    margin: 32px auto 8px;
+    opacity: 0;
+    animation: fadeUp 1.1s ease forwards 0.4s;
+    max-width: 560px;
+    width: 100%;
+  }
+  .hero-book-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 24px 60px rgba(139,26,26,0.55));
+    transition: transform 0.5s ease;
+  }
+  .hero-book-img:hover { transform: scale(1.02); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── PRE-LAUNCH / WAITLIST ── */
+  #waitlist-form {
+    max-width: 680px;
+    margin: 36px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .wl-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .wl-row-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .wl-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .wl-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+  }
+  .wl-input, .wl-select {
+    background: rgba(242,237,228,0.05);
+    border: 1px solid rgba(139,26,26,0.6);
+    color: var(--white);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .wl-input::placeholder { color: var(--white-dim); }
+  .wl-input:focus, .wl-select:focus { border-color: var(--edge); }
+  .wl-input.error, .wl-select.error { border-color: var(--edge); animation: shake 0.3s ease; }
+  .wl-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4A017' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .wl-select option {
+    background: #130705;
+    color: #F2EDE4;
+  }
+  .wl-checkbox-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .wl-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    padding: 10px 12px;
+    border: 1px solid rgba(139,26,26,0.4);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .wl-checkbox-item:hover { border-color: var(--aged-gold); }
+  .wl-checkbox-item input[type="checkbox"] {
+    accent-color: var(--edge);
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .wl-checkbox-item input[type="checkbox"]:checked + .wl-checkbox-label {
+    color: var(--edge);
+  }
+  .wl-checkbox-item:has(input:checked) {
+    border-color: var(--edge);
+    background: rgba(212,160,23,0.05);
+  }
+  .wl-checkbox-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .wl-divider {
+    height: 1px;
+    background: rgba(139,26,26,0.3);
+    margin: 4px 0;
+  }
+  .wl-submit {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    background: var(--edge);
+    color: var(--abyss);
+    border: 1px solid var(--edge);
+    padding: 16px 28px;
+    cursor: pointer;
+    transition: all 0.22s;
+    width: 100%;
+    margin-top: 6px;
+  }
+  .wl-submit:hover { background: var(--aged-gold); border-color: var(--aged-gold); }
+  .wl-note {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .wl-success {
+    display: none;
+    text-align: center;
+    padding: 36px 28px;
+    border: 1px solid var(--edge);
+    background: rgba(212,160,23,0.06);
+    max-width: 680px;
+    margin: 36px auto 0;
+  }
+  .wl-success-icon { font-size: 40px; margin-bottom: 14px; }
+  .wl-success-head {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--edge);
+    margin-bottom: 10px;
+  }
+  .wl-success-body {
+    font-size: 18px;
+    color: var(--white-dim);
+    line-height: 1.7;
+  }
+  .wl-summary {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: rgba(242,237,228,0.04);
+    border: 1px solid rgba(139,26,26,0.3);
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--aged-gold);
+    text-transform: uppercase;
+    text-align: left;
+    line-height: 2;
+  }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+  @media (max-width: 600px) {
+    .wl-row-2 { grid-template-columns: 1fr; }
+    .wl-checkbox-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Pre-launch pricing overlay */
+  .prelaunch-bundle {
+    border: 1px solid var(--crimson);
+    padding: 32px 28px;
+    background: var(--void);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.72;
+    pointer-events: none;
+  }
+  .prelaunch-bundle::after {
+    content: 'Available at Launch';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--edge);
+    text-transform: uppercase;
+    background: rgba(14,8,6,0.7);
+  }
+  .prelaunch-featured::after {
+    background: rgba(14,8,6,0.75);
+    border: 1px solid var(--edge);
+  }
+
+  /* Coming soon badge */
+  .coming-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.38em;
+    color: var(--abyss);
+    background: var(--edge);
+    padding: 6px 16px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  /* Release countdown label */
+  #launch-bar-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.38em;
+    color: var(--edge);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Segun Samuel</a>
+  <a class="nav-cta" href="#waitlist">Join the Waitlist</a>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <span class="coming-badge">Coming Soon — Join the Waitlist</span>
+  <p class="hero-eyebrow">A New Book by Segun Samuel</p>
+
+  <h1 class="hero-title">The War<br><span class="accent">Within</span></h1>
+
+  <div class="hero-book-wrap">
+    <img
+      src="/WarCoverBack3D_Mockup.png"
+      alt="The War Within — 3D Book Mockup by Segun Samuel"
+      class="hero-book-img"
+    />
+  </div>
+
+  <p class="hero-subtitle">17 Inner Battles You Must Win to Master Purpose, Power, and Destiny</p>
+
+  <div class="hero-quote-wrap">
+    <p class="hero-quote">
+      "I don't understand myself, for I want to do what is right, but I don't do it, instead I do what I hate."
+      <cite>— Romans 7:15 NLT</cite>
+    </p>
+  </div>
+
+  <p class="hero-knockout reveal">The greatest enemy you will ever face<br>has your name.</p>
+
+  <div class="hero-cta-group">
+    <a href="#waitlist" class="btn-primary">Enlist Before the War Begins</a>
+    <a href="#battles" class="btn-ghost">See All 17 Battles</a>
+  </div>
+
+
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <span class="section-label reveal">The Book</span>
+      <h2 class="section-heading reveal delay-1">
+        Every great destiny<br>begins with an<br><em>inner war.</em>
+      </h2>
+
+      <!-- MANIFESTO — moved from hero -->
+      <div class="about-manifesto reveal delay-2">
+        <p><strong>Most books comfort you. This one confronts you.</strong></p>
+        <p>It is a mirror that will not let you look away. A weapon loaded with truth. A map drawn in the fire of Scripture, strategy, and hard-won wisdom. <em>The War Within</em> does not flatter you into transformation — it <strong>operates</strong> on you. It names what you have been avoiding. It exposes what has been holding you. It equips you to defeat what has been defeating you.</p>
+        <p class="about-manifesto-close"><strong>This is not a book for the comfortable.<br>It is a battle plan for the serious.</strong></p>
+      </div>
+
+      <div class="about-pull reveal delay-3">
+        "The battlefield is not out there. It is the six inches between your ears — and the eighteen inches between your head and your heart."
+      </div>
+      <p class="section-body reveal delay-4">
+        Before you can walk in your purpose, lead with power, or step into your destiny, you must first face the battles raging within. This is not a book about theory. It is a field manual for the soul — forged from Scripture, sharpened by strategy, written for those who are tired of losing to themselves.
+      </p>
+	  
+    </div>
+    <div>
+      <div class="about-stat reveal">
+        <div class="stat-number">17</div>
+        <div class="stat-label">Inner Battles Mapped &amp; Conquered</div>
+      </div>
+      <div class="about-stat reveal delay-1">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Framework That Changes Everything</div>
+      </div>
+      <div class="about-stat reveal delay-2">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Possibilities When You Win the War Within</div>
+      </div>
+      <p class="section-body reveal delay-3" style="margin-top:28px;">
+        The enemy most leaders never name is themselves. This book names them — all seventeen — and equips you to face each one with clarity, courage, and divine intelligence.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div style="padding: 0;"><div class="section-divider reveal"><div class="divider-diamond"></div></div></div>
+
+<!-- ═══════════════ BATTLES ═══════════════ -->
+<div id="battles-bg">
+  <div class="battles-inner">
+    <div class="battles-header">
+      <div>
+        <span class="section-label reveal">17 Chapters. 17 Battles.</span>
+        <h2 class="section-heading reveal delay-1">Know your enemy.<br>Win the war.</h2>
+      </div>
+      <p class="section-body reveal delay-2">
+        Drawn from the lives of Daniel, Joseph, Moses, Nehemiah, Paul, and modern leaders like Nelson Mandel, Volodymyr Zelensky — these are the inner conflicts that separate those who dream from those who deliver.
+      </p>
+    </div>
+  </div>
+
+  <div class="battles-grid" id="battles">
+    <div class="battle-card reveal"><span class="battle-num">01</span><div><div class="battle-name">The Battle of Identity</div><div class="battle-desc">Who you believe you are determines what you will allow yourself to become.</div></div></div>
+    <div class="battle-card reveal delay-1"><span class="battle-num">02</span><div><div class="battle-name">The Battle of Fear</div><div class="battle-desc">Fear is not your instinct — it is your enemy wearing the mask of wisdom.</div></div></div>
+    <div class="battle-card reveal delay-2"><span class="battle-num">03</span><div><div class="battle-name">The Battle of T.E.A.</div><div class="battle-desc">You cannot manage what you have not protected. Reclaim your Time, Energy, and Attention.</div></div></div>
+    <div class="battle-card reveal"><span class="battle-num">04</span><div><div class="battle-name">The Battle of Purpose</div><div class="battle-desc">Most people are busy. Few are on assignment. There is a profound difference.</div></div></div>
+    <div class="battle-card reveal delay-1"><span class="battle-num">05</span><div><div class="battle-name">The Battle of Vision</div><div class="battle-desc">Without a clear picture of where you are going, you will wander in circles that feel like progress.</div></div></div>
+    <div class="battle-card reveal delay-2"><span class="battle-num">06</span><div><div class="battle-name">The Battle of the Mind</div><div class="battle-desc">The mind is the most contested battlefield. Whoever controls it controls your entire life.</div></div></div>
+    <div class="battle-card reveal"><span class="battle-num">07</span><div><div class="battle-name">The Battle of Discipline</div><div class="battle-desc">Desire without discipline is just a beautiful lie you tell yourself every single morning.</div></div></div>
+    <div class="battle-card reveal delay-1"><span class="battle-num">08</span><div><div class="battle-name">The Battle of Comparison</div><div class="battle-desc">Your assignment is singular. The moment you compare, you compete with the wrong opponent.</div></div></div>
+    <div class="battle-card reveal delay-2"><span class="battle-num">09</span><div><div class="battle-name">The Battle of Offence</div><div class="battle-desc">You cannot carry bitterness and still run your race. One of them must go.</div></div></div>
+    <div class="battle-card reveal"><span class="battle-num">10</span><div><div class="battle-name">The Battle of Ego</div><div class="battle-desc">Pride does not announce itself. It simply makes you unteachable — and therefore unstoppable in the wrong direction.</div></div></div>
+    <div class="battle-card reveal delay-1"><span class="battle-num">11</span><div><div class="battle-name">The Battle of Relationships</div><div class="battle-desc">You will not outgrow the people you refuse to outgrow. Choose your circle prophetically.</div></div></div>
+    <div class="battle-card reveal delay-2"><span class="battle-num">12</span><div><div class="battle-name">The Battle of Delayed Gratification</div><div class="battle-desc">The season of preparation is not wasted time. It is the most productive season of your life.</div></div></div>
+    <div class="battle-card reveal"><span class="battle-num">13</span><div><div class="battle-name">The Battle of Failure &amp; Setback</div><div class="battle-desc">Failure is not a verdict on your destiny. It is a curriculum for your character.</div></div></div>
+    <div class="battle-card reveal delay-1"><span class="battle-num">14</span><div><div class="battle-name">The Battle of Comfort</div><div class="battle-desc">Comfort is the luxury tax on unrealized potential. Someone is paying — and it is your future self.</div></div></div>
+    <div class="battle-card reveal delay-2"><span class="battle-num">15</span><div><div class="battle-name">The Battle of Calling vs Career</div><div class="battle-desc">A career feeds your present. A calling shapes your legacy. You were built for more than a salary.</div></div></div>
+    <div class="battle-card reveal"><span class="battle-num">16</span><div><div class="battle-name">The Battle of Stewardship</div><div class="battle-desc">What you do with what you have been given is the only answer that matters on the day of accounting.</div></div></div>
+    <div class="battle-card reveal delay-1"><span class="battle-num">17</span><div><div class="battle-name">The Battle of Legacy</div><div class="battle-desc">Legacy is not what you leave behind. It is what you build while you are still here.</div></div></div>
+  </div>
+  <div style="height:80px;"></div>
+</div>
+
+<!-- ═══════════════ COMPANION SITE ═══════════════ -->
+<section id="companion">
+  <div class="companion-grid">
+    <div>
+      <span class="section-label reveal">The Battle System</span>
+      <h2 class="section-heading reveal delay-1">This is not a book.<br>It is a <em>complete<br>arsenal.</em></h2>
+      <p class="section-body reveal delay-2">
+        Every chapter of <em>The War Within</em> connects to a companion platform — packed with video teachings, audio reinforcements, and battle resources for each of the 17 inner conflicts. A single purchase unlocks the full system.
+      </p>
+      <div class="about-pull reveal delay-3" style="margin-top:32px;">
+        "What a book tells you, the system helps you apply, internalise, and live."
+      </div>
+    </div>
+    <div class="companion-screen reveal delay-2">
+      <div class="companion-url">
+        <div class="url-dot"></div>
+        TheWarWithin.you
+      </div>
+      <div class="companion-feature">
+        <div class="feature-icon">▶</div>
+        <div>
+          <div class="feature-title">Chapter Video Teachings</div>
+          <div class="feature-desc">A video message for every battle — deeper, longer, more personal than the printed chapter.</div>
+        </div>
+      </div>
+      <div class="companion-feature">
+        <div class="feature-icon">♫</div>
+        <div>
+          <div class="feature-title">Audio Reinforcement Library</div>
+          <div class="feature-desc">Listen on the go. Each battle has an audio companion to reinforce the teaching while you drive, train, or pray.</div>
+        </div>
+      </div>
+      <div class="companion-feature">
+        <div class="feature-icon">⊞</div>
+        <div>
+          <div class="feature-title">Chapter Resources &amp; Tools</div>
+          <div class="feature-desc">Additional frameworks, declarations, strategic exercises, and reference materials for each of the 17 battles.</div>
+        </div>
+      </div>
+      <div class="companion-feature">
+        <div class="feature-icon">↻</div>
+        <div>
+          <div class="feature-title">Living Platform — Always Growing</div>
+          <div class="feature-desc">New content added over time. System owners receive all updates automatically at no extra cost.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ VALUE STACK ═══════════════ -->
+<div id="value-stack">
+  <div class="value-stack-inner">
+    <span class="section-label reveal" style="text-align:center;display:block;">The Full Arsenal Bundle</span>
+    <h2 class="section-heading reveal delay-1" style="text-align:center;margin-bottom:12px;">Everything inside<br>our most popular bundle</h2>
+    <p class="section-body reveal delay-2" style="text-align:center;margin:0 auto 48px;">This is what every Full Arsenal buyer receives — and what each component is worth if purchased separately. Buying separately costs $93. The Full Arsenal bundle costs $27 at launch.</p>
+
+    <div class="stack-item reveal">
+      <div class="stack-name">The War Within — <em>Print Book</em> (17 chapters)</div>
+      <div class="stack-value price-stack" data-ngn="₦15,000" data-usd="$12.99">$12.99</div>
+    </div>
+    <div class="stack-item reveal delay-1">
+      <div class="stack-name">The War Within — <em>Companion Workbook</em></div>
+      <div class="stack-value price-stack" data-ngn="₦9,000" data-usd="$7.99">$7.99</div>
+    </div>
+    <div class="stack-item reveal delay-2">
+      <div class="stack-name">The War Within — <em>Main Book eBook</em> (Kindle / PDF)</div>
+      <div class="stack-value price-stack" data-ngn="₦5,000" data-usd="$7.99">$7.99</div>
+    </div>
+    <div class="stack-item reveal">
+      <div class="stack-name">The War Within — <em>Workbook eBook</em> (Interactive PDF)</div>
+      <div class="stack-value price-stack" data-ngn="₦3,500" data-usd="$5.99">$5.99</div>
+    </div>
+    <div class="stack-item reveal delay-1">
+      <div class="stack-name">The War Within — <em>Audiobook</em> (narrated by Segun Samuel)</div>
+      <div class="stack-value price-stack" data-ngn="₦8,000" data-usd="$9.99">$9.99</div>
+    </div>
+    <div class="stack-item reveal delay-2">
+      <div class="stack-name">Chapter-by-Chapter <em>Video Teachings</em> (17 videos)</div>
+      <div class="stack-value price-stack" data-ngn="₦30,000" data-usd="$22">$22</div>
+    </div>
+    <div class="stack-item reveal">
+      <div class="stack-name"><em>Audio Reinforcement Library</em> (17 recordings)</div>
+      <div class="stack-value price-stack" data-ngn="₦15,000" data-usd="$11">$11</div>
+    </div>
+    <div class="stack-item reveal delay-1">
+      <div class="stack-name">Additional <em>Chapter Resources, Frameworks &amp; Tools</em></div>
+      <div class="stack-value price-stack" data-ngn="₦20,000" data-usd="$15">$15</div>
+    </div>
+    <div class="stack-item reveal delay-2">
+      <div class="stack-name"><em>Lifetime access</em> to the companion platform — including all future updates</div>
+      <div class="stack-value price-stack" data-ngn="Priceless" data-usd="Priceless">Priceless</div>
+    </div>
+
+    <div class="stack-total reveal">
+      <div class="stack-total-label">Total Standalone Value — Tier 2 Items</div>
+      <div class="stack-total-value price-primary" data-ngn="₦105,500" data-usd="$93">$93</div>
+    </div>
+    <div class="stack-your-price reveal">
+      <div>
+        <div class="stack-your-label">Your Investment — The Full Arsenal Bundle</div>
+        <div style="font-size:15px;color:rgba(242,237,228,0.55);margin-top:6px;font-family:'Crimson Pro',serif;">That is not a book price. That is a programme price.</div>
+      </div>
+      <div class="stack-your-value price-primary" data-ngn="₦35,000" data-usd="$27">$27</div>
+    </div>
+
+    <!-- Tier 2 CTA anchored directly to the stack -->
+    <div class="reveal" style="display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap;">
+      <a href="#waitlist" class="btn-primary" style="font-size:13px;">Secure Your Launch Price</a>
+      <a href="#compare" class="btn-ghost" style="font-size:13px;">Compare All Bundles ↓</a>
+    </div>
+    <p class="reveal" style="text-align:center;margin-top:16px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:var(--aged-gold);text-transform:uppercase;">Join the waitlist now — these prices are only guaranteed for launch week.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ COMPARISON TABLE ═══════════════ -->
+<section id="compare" style="padding:100px 48px;max-width:1200px;margin:0 auto;border-top:1px solid var(--crimson);">
+  <span class="section-label reveal" style="text-align:center;display:block;">Side by Side</span>
+  <h2 class="section-heading reveal delay-1" style="text-align:center;margin-bottom:12px;">What each bundle includes</h2>
+  <p class="section-body reveal delay-2" style="text-align:center;margin:0 auto 52px;">Three bundles. Every format. No ambiguity. No upgrade confusion.</p>
+
+  <div class="reveal" style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-family:'Crimson Pro',Georgia,serif;font-size:17px;">
+
+      <!-- Header row -->
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:16px 20px;border-bottom:2px solid var(--crimson);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.25em;color:var(--aged-gold);text-transform:uppercase;font-weight:400;min-width:200px;">What's Included</th>
+          <th style="padding:16px 14px;border-bottom:2px solid var(--crimson);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:var(--white-dim);text-transform:uppercase;font-weight:400;text-align:center;white-space:nowrap;">Tier 1<br><span class="price-primary" data-ngn="₦15,000" data-usd="$12.99" style="color:var(--edge);font-size:13px;">$12.99</span></th>
+          <th style="padding:16px 14px;border-bottom:2px solid var(--edge);background:rgba(212,160,23,0.06);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:var(--edge);text-transform:uppercase;font-weight:400;text-align:center;white-space:nowrap;">Tier 2 ★<br><span class="price-primary" data-ngn="₦35,000" data-usd="$27" style="color:var(--edge);font-size:13px;">$27</span></th>
+          <th style="padding:16px 14px;border-bottom:2px solid var(--crimson);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:var(--white-dim);text-transform:uppercase;font-weight:400;text-align:center;white-space:nowrap;">Hardcover<br><span class="price-primary" data-ngn="₦40,000" data-usd="$32" style="color:var(--edge);font-size:13px;">$32</span></th>
+          <th style="padding:16px 14px;border-bottom:2px solid var(--crimson);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:var(--white-dim);text-transform:uppercase;font-weight:400;text-align:center;white-space:nowrap;">Gift Edition<br><span class="price-primary" data-ngn="₦50,000" data-usd="$39" style="color:var(--edge);font-size:13px;">$39</span></th>
+          <th style="padding:16px 14px;border-bottom:2px solid var(--crimson);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:var(--white-dim);text-transform:uppercase;font-weight:400;text-align:center;white-space:nowrap;">Commander's<br><span class="price-primary" data-ngn="₦75,000" data-usd="$59" style="color:var(--edge);font-size:13px;">$59</span></th>
+        </tr>
+      </thead>
+
+      <tbody id="compare-body">
+      </tbody>
+
+    </table>
+  </div>
+
+  <!-- CTA row below table -->
+  <div class="reveal" style="display:flex;gap:16px;justify-content:center;margin-top:48px;flex-wrap:wrap;">
+    <a href="#waitlist" class="btn-primary">Secure Your Launch Price</a>
+    <a href="#waitlist" class="btn-ghost">Join the Waitlist</a>
+  </div>
+</section>
+
+<!-- ═══════════════ LAUNCH COUNTDOWN ═══════════════ -->
+<div id="launch-bar" style="background:var(--crimson);padding:20px 48px;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 0%,rgba(212,160,23,0.18) 0%,transparent 70%);pointer-events:none;"></div>
+  <p id="launch-bar-label">The War Within Drops In</p>
+  <div style="display:flex;justify-content:center;gap:32px;align-items:baseline;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div id="cd-days" style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--white);line-height:1;letter-spacing:-0.03em;">30</div>
+      <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:var(--aged-gold);text-transform:uppercase;margin-top:4px;">Days</div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:rgba(242,237,228,0.3);line-height:1;">:</div>
+    <div style="text-align:center;">
+      <div id="cd-hours" style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--white);line-height:1;letter-spacing:-0.03em;">00</div>
+      <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:var(--aged-gold);text-transform:uppercase;margin-top:4px;">Hours</div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:rgba(242,237,228,0.3);line-height:1;">:</div>
+    <div style="text-align:center;">
+      <div id="cd-mins" style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--white);line-height:1;letter-spacing:-0.03em;">00</div>
+      <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:var(--aged-gold);text-transform:uppercase;margin-top:4px;">Minutes</div>
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:rgba(242,237,228,0.3);line-height:1;">:</div>
+    <div style="text-align:center;">
+      <div id="cd-secs" style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--edge);line-height:1;letter-spacing:-0.03em;">00</div>
+      <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;color:var(--aged-gold);text-transform:uppercase;margin-top:4px;">Seconds</div>
+    </div>
+  </div>
+  <p style="font-family:'Crimson Pro',serif;font-size:16px;color:rgba(242,237,228,0.65);margin-top:14px;">Join the waitlist now. Waitlist members receive launch-week pricing — the lowest this will ever be.</p>
+</div>
+
+<!-- ═══════════════ PRICING BUNDLES ═══════════════ -->
+<section id="pricing">
+  <span class="section-label reveal" style="text-align:center;display:block;">The Bundles</span>
+  <h2 class="section-heading reveal delay-1" style="text-align:center;">Three Bundles.<br>One Battle System.</h2>
+  <p class="section-body reveal delay-2" style="text-align:center;margin:0 auto;">Every bundle is complete — nothing to upgrade, nothing hidden. Join the waitlist to secure launch-week pricing before the book drops.</p>
+
+  <!-- PRE-LAUNCH NOTICE -->
+  <div class="reveal delay-3" style="max-width:700px;margin:32px auto 0;border:1px solid var(--edge);padding:18px 28px;background:rgba(212,160,23,0.05);text-align:center;">
+    <span style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;color:var(--edge);text-transform:uppercase;">Pre-Launch</span>
+    <p style="font-family:'Crimson Pro',serif;font-size:16px;color:var(--white-dim);margin-top:8px;line-height:1.6;">
+      The War Within is being published. Join the waitlist below to be first in line,
+      receive weekly battle dispatches before launch, and lock in launch-week pricing —
+      <strong style="color:var(--edge);">the lowest these bundles will ever be.</strong>
+    </p>
+  </div>
+
+  <!-- 3 BUNDLE CARDS -->
+  <div class="pricing-grid" style="margin-top:48px;">
+
+    <!-- BUNDLE 1: THE BOOK -->
+    <div class="pricing-card prelaunch-bundle reveal">
+      <div class="tier-label">Bundle 1</div>
+      <div class="tier-name">The Book</div>
+
+      <div style="margin-bottom:6px;">
+        <span class="price-primary" data-ngn="₦15,000" data-usd="$12.99" style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--edge);letter-spacing:-0.03em;line-height:1;">$12.99</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+        <span class="price-secondary" data-ngn="Launch price · Rises to ₦20,000" data-usd="Launch price · Rises to $17.99" style="font-family:'Cinzel',serif;font-size:10px;color:var(--aged-gold);letter-spacing:0.15em;">Launch price · Rises to $17.99</span>
+      </div>
+      <div class="tier-price-usd" style="font-family:'Cinzel',serif;font-size:10px;color:var(--mist);letter-spacing:0.15em;margin-bottom:24px;">
+        Choose: Paperback · Hardcover (<span class="price-secondary" data-ngn="₦22,000" data-usd="$19.99" style="display:inline;">$19.99</span>) · eBook (<span class="price-secondary" data-ngn="₦5,000" data-usd="$7.99" style="display:inline;">$7.99</span>) · Audio (<span class="price-secondary" data-ngn="₦8,000" data-usd="$9.99" style="display:inline;">$9.99</span>)
+      </div>
+
+      <div class="tier-divider"></div>
+      <ul class="tier-features">
+        <li>The War Within in your chosen format</li>
+        <li>17 chapters of kingdom battle intelligence</li>
+        <li>Romans 7:15 battle framework throughout</li>
+        <li>One free chapter on TheWarWithin.you</li>
+        <li class="inactive">Companion workbook</li>
+        <li class="inactive">eBook or audiobook (unless chosen)</li>
+        <li class="inactive">Video &amp; audio teachings</li>
+        <li class="inactive">Full companion platform access</li>
+      </ul>
+      <a href="#waitlist" class="btn-tier btn-tier-ghost" style="pointer-events:auto;position:relative;z-index:3;">Notify Me at Launch</a>
+    </div>
+
+    <!-- BUNDLE 2: THE BATTLE KIT — FEATURED -->
+    <div class="pricing-card featured prelaunch-featured reveal delay-1">
+      <div class="tier-label">Bundle 2 — Best Value</div>
+      <div class="tier-name">The Battle Kit</div>
+
+      <div style="margin-bottom:6px;">
+        <span class="price-primary" data-ngn="₦22,000" data-usd="$17.99" style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--edge);letter-spacing:-0.03em;line-height:1;">$17.99</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
+        <span class="price-secondary" data-ngn="Launch price · Rises to ₦30,000" data-usd="Launch price · Rises to $24.99" style="font-family:'Cinzel',serif;font-size:10px;color:var(--aged-gold);letter-spacing:0.15em;">Launch price · Rises to $24.99</span>
+      </div>
+
+      <div class="tier-divider"></div>
+      <ul class="tier-features">
+        <li>The War Within — Paperback</li>
+        <li>The War Within — Companion Workbook</li>
+        <li>Main book eBook (Kindle / PDF)</li>
+        <li>Workbook eBook (Interactive PDF)</li>
+        <li>One free chapter preview on TheWarWithin.you</li>
+        <li class="inactive">Audiobook</li>
+        <li class="inactive">Video &amp; audio teachings</li>
+        <li class="inactive">Full companion platform access</li>
+      </ul>
+      <a href="#waitlist" class="btn-tier btn-tier-primary" style="pointer-events:auto;position:relative;z-index:3;">Secure Launch Price</a>
+    </div>
+
+    <!-- BUNDLE 3: THE FULL ARSENAL -->
+    <div class="pricing-card prelaunch-bundle reveal delay-2">
+      <div class="tier-label">Bundle 3 — Complete</div>
+      <div class="tier-name" style="position:relative;z-index:2;">The Full Arsenal</div>
+
+      <div style="margin-bottom:6px;">
+        <span class="price-primary" data-ngn="₦35,000" data-usd="$27" style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--edge);letter-spacing:-0.03em;line-height:1;">$27</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
+        <span class="price-secondary" data-ngn="Launch price · Rises to ₦45,000" data-usd="Launch price · Rises to $39" style="font-family:'Cinzel',serif;font-size:10px;color:var(--aged-gold);letter-spacing:0.15em;">Launch price · Rises to $39</span>
+      </div>
+
+      <div class="tier-divider"></div>
+      <ul class="tier-features">
+        <li>The War Within — Paperback</li>
+        <li>The War Within — Companion Workbook</li>
+        <li>Main book eBook (Kindle / PDF)</li>
+        <li>Workbook eBook (Interactive PDF)</li>
+        <li>Audiobook (narrated by Segun Samuel)</li>
+        <li>Chapter video teachings (17 videos)</li>
+        <li>Audio reinforcement library (17 recordings)</li>
+        <li>Chapter resources, frameworks &amp; tools</li>
+        <li>Lifetime access to TheWarWithin.you</li>
+        <li>All future platform updates — free</li>
+      </ul>
+      <a href="#waitlist" class="btn-tier btn-tier-ghost" style="pointer-events:auto;position:relative;z-index:3;">Notify Me at Launch</a>
+    </div>
+
+  </div>
+
+  <!-- COMMANDER'S EDITION — full width -->
+  <div class="reveal" style="margin-top:24px;border:1px solid var(--aged-gold);background:rgba(212,160,23,0.04);padding:40px 36px;max-width:1200px;margin-left:auto;margin-right:auto;position:relative;">
+    <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--aged-gold);color:var(--abyss);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.28em;padding:5px 20px;white-space:nowrap;">COMMANDER'S EDITION</div>
+    <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;flex-wrap:wrap;">
+      <div>
+        <div class="tier-label" style="margin-bottom:8px;">For those who want direct access</div>
+        <div class="tier-name" style="font-size:clamp(24px,3vw,36px);margin-bottom:16px;">Everything in The Full Arsenal<br>+ Live Cohort with Segun Samuel</div>
+        <ul class="tier-features" style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+          <li>Everything in The Full Arsenal</li>
+          <li>Hardcover edition included</li>
+          <li>17-week live cohort — one battle per week</li>
+          <li>Live Q&amp;A sessions with Segun Samuel</li>
+          <li>Private community of kingdom leaders</li>
+          <li>Personalised battle assessment</li>
+          <li>Priority access to future masterclasses</li>
+          <li>IBONK Certificate of Completion</li>
+        </ul>
+      </div>
+      <div style="text-align:center;min-width:200px;">
+        <div class="price-primary" data-ngn="₦75,000" data-usd="$59" style="font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:600;color:var(--edge);line-height:1;letter-spacing:-0.03em;">$59</div>
+        <div class="price-secondary" data-ngn="Launch price · Rises to ₦100,000" data-usd="Launch price · Rises to $79" style="font-family:'Cinzel',serif;font-size:10px;color:var(--aged-gold);letter-spacing:0.15em;margin:8px 0 20px;">Launch price · Rises to $79</div>
+        <a href="#waitlist" class="btn-tier btn-tier-primary" style="white-space:nowrap;">Join the Waitlist</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GIFT EDITION -->
+  <div class="gift-card reveal" style="margin-top:24px;">
+    <div class="gift-inner">
+      <div>
+        <div class="tier-label">The War Within — Gift Edition</div>
+        <div class="tier-name" style="font-size:clamp(26px,3vw,36px);">Give the war.<br>Give the victory.</div>
+        <p class="gift-desc">The hardcover in a branded gift box, with a printed audio access card tucked inside. Given by a pastor to their leadership team. By a CEO to their management circle. By a parent to a graduating child.</p>
+        <div class="gift-ideal">Ideal for</div>
+        <div class="gift-recipients">
+          <span class="gift-tag">Pastors &amp; Leaders</span>
+          <span class="gift-tag">Corporate Gifts</span>
+          <span class="gift-tag">Graduation</span>
+          <span class="gift-tag">Church Teams</span>
+          <span class="gift-tag">Conference Gifts</span>
+        </div>
+      </div>
+      <div>
+        <div class="tier-label">What's Inside the Box</div>
+        <ul class="tier-features" style="margin-bottom:24px;">
+          <li>Hardcover edition</li>
+          <li>Branded gift box &amp; sleeve</li>
+          <li>Printed audiobook access card</li>
+          <li>Companion platform access (1 year)</li>
+          <li>Personalised gift message (on request)</li>
+        </ul>
+        <div class="price-primary" data-ngn="₦50,000" data-usd="$39" style="font-size:52px;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--edge);letter-spacing:-0.02em;">$39</div>
+        <div class="price-secondary" data-ngn="Per gift set · Bulk rates for 5+ copies" data-usd="Per gift set · Bulk rates for 5+ copies" style="font-family:'Cinzel',serif;font-size:10px;color:var(--aged-gold);letter-spacing:0.15em;margin:6px 0 20px;">Per gift set · Bulk rates for 5+ copies</div>
+        <a href="#waitlist" class="btn-tier btn-tier-primary">Notify Me at Launch</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="reveal" style="text-align:center;margin-top:32px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.22em;color:var(--aged-gold);text-transform:uppercase;">
+    Team, Community, Organisation, &amp; Fellowship Bulk Rates &nbsp;·&nbsp; 10+ Copies from ₦10,000 per bundle &nbsp;·&nbsp; Contact Segun directly.
+  </p>
+</section>
+
+<!-- ═══════════════ COST ANCHOR ═══════════════ -->
+<section id="cost-anchor">
+  <div class="anchor-inner">
+    <span class="section-label reveal" style="text-align:center;display:block;">The Value Comparison</span>
+    <h2 class="section-heading reveal delay-1" id="anchor-heading" data-ngn="What else costs ₦35,000?" data-usd="What else costs $27?">What else costs $27?</h2>
+
+    <div class="anchor-compare reveal delay-2">
+      <div class="anchor-item">
+        <div class="anchor-price price-primary" data-ngn="₦75,000" data-usd="$60">$60</div>
+        <div class="anchor-label">Conference Ticket</div>
+      </div>
+      <div class="anchor-vs">vs</div>
+      <div class="anchor-item">
+        <div class="anchor-price price-primary" data-ngn="₦50,000" data-usd="$37">$37</div>
+        <div class="anchor-label">One Coaching Session</div>
+      </div>
+      <div class="anchor-vs">vs</div>
+      <div class="anchor-item">
+        <div class="anchor-price price-primary" data-ngn="₦200,000" data-usd="$148">$148</div>
+        <div class="anchor-label">Mastermind Entry</div>
+      </div>
+      <div class="anchor-vs">vs</div>
+      <div class="anchor-item">
+        <div class="anchor-price price-primary" data-ngn="₦35,000" data-usd="$27" style="color:var(--edge);text-decoration:none;">$27</div>
+        <div class="anchor-label" style="color:var(--edge);">The Full Arsenal</div>
+      </div>
+    </div>
+
+    <div class="anchor-verdict reveal delay-3" id="anchor-verdict"
+      data-ngn='"The Full Arsenal gives you the book, workbook, both eBooks, the audiobook, 17 video teachings, 17 audio reinforcements, and lifetime platform access — for ₦35,000 during launch. That is not a book price. That is a programme price. And after launch it rises to ₦45,000 permanently."\'
+      data-usd='"The Full Arsenal gives you the book, workbook, both eBooks, the audiobook, 17 video teachings, 17 audio reinforcements, and lifetime platform access — for $27 during launch. That is not a book price. That is a programme price. And after launch it rises to $39 permanently."\'>
+      "The Full Arsenal gives you the book, workbook, both eBooks, the audiobook, 17 video teachings, 17 audio reinforcements, and lifetime platform access — for $27 during launch. That is not a book price. That is a programme price. And after launch it rises to $39 permanently."
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+<section id="social-proof">
+  <div class="proof-inner">
+    <div class="testimonial reveal">
+      <p class="testimonial-text">This is the book I wish I had at the start of my leadership journey. Segun writes like a general — with authority, precision, and genuine love for those in the fight.</p>
+      <div class="testimonial-name">Kingdom Leader</div>
+      <div class="testimonial-role">CEO &amp; Marketplace Apostle</div>
+    </div>
+    <div class="testimonial reveal delay-1">
+      <p class="testimonial-text">Every chapter cut deep and brought light simultaneously. The Battle of T.E.A. alone is worth the entire book. I read it twice in one week.</p>
+      <div class="testimonial-name">Marketplace Professional</div>
+      <div class="testimonial-role">Business Strategist, Lagos</div>
+    </div>
+    <div class="testimonial reveal delay-2">
+      <p class="testimonial-text">Segun seamlessly weaves Scripture, rare depth of human nature and psychology with strategy into a battle plan that is both prophetic and practical. This is a rare and necessary book.</p>
+      <div class="testimonial-name">Church Leader</div>
+      <div class="testimonial-role">Pastor &amp; Entrepreneur</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AUTHOR ═══════════════ -->
+<section id="author">
+  <div class="author-grid">
+    <div>
+      <div class="author-avatar reveal">
+        <span class="author-initials">SS</span>
+      </div>
+    </div>
+    <div>
+      <span class="author-tag reveal">About the Author</span>
+      <h2 class="author-name reveal delay-1">Segun Samuel</h2>
+      <p class="author-bio reveal delay-2">
+        Segun Samuel is a systems thinker, teacher, coach, and strategist whose strategic foresight mentoring spans individuals, builders, organisations, and nations. Positioned as a Data Polymath and Legacy Architect at the intersection of Technology, Spirituality, and Business (<strong style="color:var(--edge);font-weight:500;">TECHSPIBUS</strong>), he integrates engineering rigor, militant spiritual wisdom, philosophical depth, strategic intelligence, and apostolic-prophetic tradition — to develop leaders and architect institutions for generational impact.
+      </p>
+      <p class="author-bio reveal delay-3">
+        His work draws from ancient wisdom, forging a voice that calls leaders to operate at the highest convergence of Spirit and strategy. He carries a distinct gift — offered specifically for the people assigned to benefit from it.
+      </p>
+      <p class="author-bio reveal delay-4">
+        Fulfilling his destiny under God, he daily amplifies the capacity embedded in his core — making disciples of Individuals, Businesses, Organisations, Nations, and the Kingdom (<strong style="color:var(--edge);font-weight:500;">IBONK</strong>) through creative solutions, teachings, coaching, and mentoring; persuading his beneficiaries to observe, learn, and apply all he has been entrusted with across Technology, Spirituality, and Business — extending the frontiers of God's kingdom and drawing many to righteousness.
+      </p>
+      <p class="author-bio reveal delay-5">
+        He believes that if he has influenced your thinking, behaviour, or development in any way, you are both a testimony and a seal of his Strategic Foresight and apostolic assignment in the marketplace.
+      </p>
+      <div class="author-badges reveal delay-5">
+	  <span class="badge">Solution Engineer</span>
+        <span class="badge">Data Polymath</span>
+        <span class="badge">Legacy Architect</span>
+        <span class="badge">Systems Thinker</span>
+        <span class="badge">Coach &amp; Strategist</span>
+		<span class="badge">Strategic Foresight Mentor</span>
+        <span class="badge">IBONK</span>
+        <span class="badge">TECHSPIBUS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WAITLIST & PRE-ORDER ═══════════════ -->
+<section id="waitlist">
+  <div class="cta-inner" style="max-width:960px;">
+    <p class="cta-eyebrow reveal">The War Does Not Wait for the Book. It's ongoing.</p>
+    <h2 class="cta-heading reveal delay-1">You are already at War.<br>Choose how you enlist.</h2>
+    <p class="cta-sub reveal delay-2">
+      Join the waitlist for free — or lock in your bundle with a pre-order now and receive everything the moment the book drops on July 10th, 2026.
+    </p>
+
+    <!-- TAB BAR -->
+    <div class="po-tab-bar reveal delay-3">
+      <button class="po-tab active" onclick="switchTab('waitlist-panel', this)">
+        ✉ &nbsp;Join the Waitlist
+        <span class="po-tab-badge free">FREE</span>
+      </button>
+      <button class="po-tab" onclick="switchTab('preorder-panel', this)">
+        ⚔ &nbsp;Pre-Order Now
+        <span class="po-tab-badge paid">SECURE YOUR COPY</span>
+      </button>
+    </div>
+
+    <!-- ══ PANEL A: FREE WAITLIST ══ -->
+    <div id="waitlist-panel" class="po-panel active">
+
+      <!-- WAITLIST FORM -->
+      <div id="waitlist-form" style="max-width:680px;margin:32px auto 0;">
+
+        <div class="wl-row-2">
+          <div class="wl-field">
+            <label class="wl-label" for="wl-firstname">First Name *</label>
+            <input type="text" id="wl-firstname" class="wl-input" placeholder="e.g. Segun" />
+          </div>
+          <div class="wl-field">
+            <label class="wl-label" for="wl-lastname">Last Name *</label>
+            <input type="text" id="wl-lastname" class="wl-input" placeholder="e.g. Samuel" />
+          </div>
+        </div>
+
+        <div class="wl-row-2" style="margin-top:12px;">
+          <div class="wl-field">
+            <label class="wl-label" for="wl-email">Email Address *</label>
+            <input type="email" id="wl-email" class="wl-input" placeholder="your@email.com" />
+          </div>
+          <div class="wl-field">
+            <label class="wl-label" for="wl-phone">WhatsApp Number</label>
+            <input type="tel" id="wl-phone" class="wl-input" placeholder="+234 800 000 0000" />
+          </div>
+        </div>
+
+        <div class="wl-row-2" style="margin-top:12px;">
+          <div class="wl-field">
+            <label class="wl-label" for="wl-country">Country *</label>
+            <select id="wl-country" class="wl-select">
+              <option value="" disabled selected>Select your country</option>
+              <option value="NG">Nigeria</option>
+              <option value="GH">Ghana</option>
+              <option value="KE">Kenya</option>
+              <option value="ZA">South Africa</option>
+              <option value="UK">United Kingdom</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="AU">Australia</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+          <div class="wl-field">
+            <label class="wl-label" for="wl-source">How Did You Hear About This?</label>
+            <select id="wl-source" class="wl-select">
+              <option value="" disabled selected>Select one</option>
+              <option value="substack">Substack / Newsletter</option>
+              <option value="instagram">Instagram</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="twitter">Twitter / X</option>
+              <option value="facebook">Facebook</option>
+              <option value="friend">Friend or Colleague</option>
+              <option value="church">Church / Ministry</option>
+              <option value="google">Google Search</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="wl-divider" style="margin:18px 0;"></div>
+
+        <div class="wl-field">
+          <label class="wl-label">Which Format Are You Interested In? (Select all that apply) *</label>
+          <div class="wl-checkbox-row">
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-paperback" value="paperback" />
+              <span class="wl-checkbox-label">📖 Paperback</span>
+            </label>
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-hardcover" value="hardcover" />
+              <span class="wl-checkbox-label">📚 Hardcover</span>
+            </label>
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-ebook" value="ebook" />
+              <span class="wl-checkbox-label">📱 eBook</span>
+            </label>
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-audio" value="audiobook" />
+              <span class="wl-checkbox-label">🎧 Audiobook</span>
+            </label>
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-kit" value="battle-kit" />
+              <span class="wl-checkbox-label">⚔ Battle Kit</span>
+            </label>
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-arsenal" value="full-arsenal" />
+              <span class="wl-checkbox-label">🏹 Full Arsenal</span>
+            </label>
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-gift" value="gift-edition" />
+              <span class="wl-checkbox-label">🎁 Gift Edition</span>
+            </label>
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-commander" value="commanders-edition" />
+              <span class="wl-checkbox-label">🎖 Commander's</span>
+            </label>
+            <label class="wl-checkbox-item">
+              <input type="checkbox" id="wl-fmt-bulk" value="bulk-ministry" />
+              <span class="wl-checkbox-label">⛪ Bulk / Team</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="wl-divider" style="margin:18px 0;"></div>
+
+        <div class="wl-row-2">
+          <div class="wl-field">
+            <label class="wl-label" for="wl-intent">Buying For</label>
+            <select id="wl-intent" class="wl-select">
+              <option value="" disabled selected>Select one</option>
+              <option value="self">Myself</option>
+              <option value="gift-individual">A Gift (Individual)</option>
+              <option value="gift-team">My Team / Leadership</option>
+              <option value="church">My Church / Ministry</option>
+              <option value="conference">Conference / Event</option>
+              <option value="corporate">Corporate Organisation</option>
+            </select>
+          </div>
+          <div class="wl-field">
+            <label class="wl-label" for="wl-quantity">Estimated Quantity</label>
+            <select id="wl-quantity" class="wl-select">
+              <option value="" disabled selected>How many copies?</option>
+              <option value="1">1 copy</option>
+              <option value="2-5">2–5 copies</option>
+              <option value="6-10">6–10 copies</option>
+              <option value="11-25">11–25 copies</option>
+              <option value="26-50">26–50 copies</option>
+              <option value="50+">50+ copies</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="wl-submit" style="margin-top:18px;" onclick="submitWaitlist()">✉ &nbsp; Enlist Now — Secure My Launch Price</button>
+        <p class="wl-note" style="margin-top:10px;">No spam · One battle dispatch per week · Unsubscribe at any time · Launching July 10, 2026</p>
+        <p class="wl-note" style="margin-top:6px;">Ready to pay now? <button onclick="switchTab('preorder-panel', document.querySelectorAll('.po-tab')[1])" style="background:none;border:none;color:var(--edge);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;text-decoration:underline;">Pre-Order Instead →</button></p>
+      </div>
+
+      <!-- WAITLIST SUCCESS STATE -->
+      <div class="wl-success" id="wl-success">
+        <div class="wl-success-icon">⚔</div>
+        <div class="wl-success-head">You are enlisted.</div>
+        <div class="wl-success-body">
+          Welcome to the pre-launch list. Watch your inbox — your first battle dispatch arrives this week.<br><br>
+          <strong style="color:var(--edge);">Your launch-week pricing is reserved until July 10, 2026.</strong><br><br>
+          <button onclick="switchTab('preorder-panel', document.querySelectorAll('.po-tab')[1])" style="background:var(--edge);border:none;color:var(--abyss);font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;padding:14px 28px;cursor:pointer;margin-top:8px;">Pre-Order Now Instead →</button>
+        </div>
+        <div class="wl-summary" id="wl-summary"></div>
+      </div>
+
+    </div><!-- end waitlist-panel -->
+
+    <!-- ══ PANEL B: PRE-ORDER ══ -->
+    <div id="preorder-panel" class="po-panel">
+
+      <!-- Pre-order incentive banner -->
+      <div class="po-incentive" style="margin-top:32px;">
+        <div class="po-incentive-label">🎁 Pre-Order Exclusive — Only for Early Buyers</div>
+        <p class="po-incentive-text">
+          Every pre-order receives <strong>a private pre-launch audio message from Segun Samuel</strong> — a personal dispatch covering the battle he considers the most decisive of all 17. Not in the book. Not on the platform. Exclusively for those who commit before July 10th.
+        </p>
+      </div>
+
+      <!-- 3 Bundle cards -->
+      <div class="po-grid">
+
+        <!-- Bundle 1 -->
+        <div class="po-card">
+          <div class="po-card-label">Bundle 1</div>
+          <div class="po-card-name">The Book</div>
+          <div class="po-card-price price-primary" data-ngn="₦15,000" data-usd="$12.99">$12.99</div>
+          <div class="po-card-sub price-secondary" data-ngn="Paperback · eBook ₦5,000 · Audio ₦8,000" data-usd="Paperback · eBook $7.99 · Audio $9.99">Paperback · eBook $7.99 · Audio $9.99</div>
+          <div class="po-divider"></div>
+          <ul class="po-includes">
+            <li>Book in your chosen format</li>
+            <li>17 battles of kingdom intelligence</li>
+            <li>Romans 7:15 battle framework</li>
+            <li>Pre-order exclusive audio message</li>
+          </ul>
+          <a href="#" class="po-btn po-btn-ghost"
+             onclick="handlePreOrder('The Book', this); return false;">
+            Pre-Order The Book
+          </a>
+        </div>
+
+        <!-- Bundle 2 — Featured -->
+        <div class="po-card po-featured">
+          <div class="po-card-label">Bundle 2</div>
+          <div class="po-card-name">The Battle Kit</div>
+          <div class="po-card-price price-primary" data-ngn="₦22,000" data-usd="$17.99">$17.99</div>
+          <div class="po-card-sub price-secondary" data-ngn="Launch price · Rises to ₦30,000" data-usd="Launch price · Rises to $24.99">Launch price · Rises to $24.99</div>
+          <div class="po-divider"></div>
+          <ul class="po-includes">
+            <li>Paperback + companion workbook</li>
+            <li>Main book eBook (Kindle / PDF)</li>
+            <li>Workbook eBook (Interactive PDF)</li>
+            <li>Pre-order exclusive audio message</li>
+          </ul>
+          <a href="#" class="po-btn po-btn-primary"
+             onclick="handlePreOrder('The Battle Kit', this); return false;">
+            Pre-Order The Battle Kit
+          </a>
+        </div>
+
+        <!-- Bundle 3 -->
+        <div class="po-card">
+          <div class="po-card-label">Bundle 3</div>
+          <div class="po-card-name">The Full Arsenal</div>
+          <div class="po-card-price price-primary" data-ngn="₦35,000" data-usd="$27">$27</div>
+          <div class="po-card-sub price-secondary" data-ngn="Launch price · Rises to ₦45,000" data-usd="Launch price · Rises to $39">Launch price · Rises to $39</div>
+          <div class="po-divider"></div>
+          <ul class="po-includes">
+            <li>Print book + workbook</li>
+            <li>Both eBooks + audiobook</li>
+            <li>17 video teachings + audio library</li>
+            <li>Lifetime companion platform access</li>
+            <li>Pre-order exclusive audio message</li>
+          </ul>
+          <a href="#" class="po-btn po-btn-ghost"
+             onclick="handlePreOrder('The Full Arsenal', this); return false;">
+            Pre-Order The Full Arsenal
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Commander's Edition full-width -->
+      <div class="po-commander">
+        <div>
+          <div class="po-card-label" style="margin-bottom:6px;">Everything in The Full Arsenal + Live Cohort</div>
+          <div class="po-card-name" style="font-size:26px;margin-bottom:10px;">The Commander's Edition</div>
+          <ul class="po-includes" style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0;">
+            <li>Everything in The Full Arsenal</li>
+            <li>Hardcover edition included</li>
+            <li>17-week live cohort with Segun</li>
+            <li>Live Q&amp;A sessions</li>
+            <li>Private kingdom leaders community</li>
+            <li>IBONK Certificate of Completion</li>
+          </ul>
+        </div>
+        <div style="text-align:center;min-width:200px;">
+          <div class="po-card-price price-primary" data-ngn="₦75,000" data-usd="$59" style="font-size:48px;">$59</div>
+          <div class="po-card-sub price-secondary" data-ngn="Launch price · Rises to ₦100,000" data-usd="Launch price · Rises to $79" style="margin-bottom:16px;">Launch price · Rises to $79</div>
+          <a href="#" class="po-btn po-btn-primary"
+             onclick="handlePreOrder('The Commander\'s Edition', this); return false;"
+             style="white-space:nowrap;">
+            Pre-Order Commander's Edition
+          </a>
+        </div>
+      </div>
+
+      <!-- Selar payment note -->
+      <div class="po-incentive" style="margin-top:20px;">
+        <div class="po-incentive-label">💳 Secure Payment via Selar</div>
+        <p class="po-incentive-text">
+          Pre-orders are processed securely through <strong>Selar</strong>. Pay in Naira or USD. Your bundle is delivered in full on <strong>July 10th, 2026</strong>. Physical books are shipped within 5–7 business days of launch. Digital files are delivered instantly on launch day.
+        </p>
+      </div>
+
+      <p class="po-selar-note" style="margin-top:16px;">
+        Questions about your pre-order? Contact <strong>segun@segunsamuel.com</strong>
+      </p>
+
+    </div><!-- end preorder-panel -->
+
+    <p class="cta-note reveal delay-4" style="margin-top:36px;">
+      Launching July 10th, 2026 &nbsp;·&nbsp; Print &amp; Digital &amp; Audio &nbsp;·&nbsp; TheWarWithin.you
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-brand" href="#">Segun Samuel</a>
+  <div class="footer-links">
+    <a href="https://techspibus.substack.com/">Substack</a>
+    <a href="https://www.instagram.com/thesegunsamuel/">Instagram</a>
+    <a href="https://www.linkedin.com/in/thesegunsamuel/">LinkedIn</a>
+    <a href="https://segunsamuel.com">segunsamuel.com</a>
+  </div>
+  <span class="footer-copy">&copy; 2025 Segun Samuel &nbsp;·&nbsp; TECHSPIBUS</span>
+</footer>
+
+<script>
+  // ── SCROLL REVEAL ─────────────────────────────────────────────
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── COMPARISON TABLE ──────────────────────────────────────────
+  const Y = '<span class="check">✔</span>';
+  const N = '<span class="cross">✕</span>';
+  const P = (t) => `<span class="partial">${t}</span>`;
+
+  // Columns: Bundle 1 (Book) | Bundle 2 (Battle Kit) | Bundle 3 (Full Arsenal) | Commander's | Gift
+  const rows = [
+    ['Print Book (Paperback)',             Y,              Y,              Y,              Y,              N],
+    ['Print Book (Hardcover)',             P('Add-on'),    N,              N,              Y,              Y],
+    ['Companion Workbook',                N,              Y,              Y,              Y,              N],
+    ['Main Book eBook',                   P('Add-on'),    Y,              Y,              Y,              Y],
+    ['Workbook eBook (Interactive PDF)',  N,              Y,              Y,              Y,              N],
+    ['Audiobook',                         P('Add-on'),    N,              Y,              Y,              Y],
+    ['Chapter Video Teachings (17)',      N,              N,              Y,              Y,              N],
+    ['Audio Reinforcement Library (17)',  N,              N,              Y,              Y,              N],
+    ['Chapter Resources &amp; Tools',     N,              N,              Y,              Y,              N],
+    ['Companion Platform Access',         P('1 chapter'), P('1 chapter'), Y,              Y,              P('1 year')],
+    ['All Future Platform Updates',       N,              N,              Y,              Y,              N],
+    ['Branded Gift Box &amp; Sleeve',     N,              N,              N,              N,              Y],
+    ['Printed Audiobook Access Card',     N,              N,              N,              N,              Y],
+    ['17-Week Live Cohort',               N,              N,              N,              Y,              N],
+    ['Live Q&amp;A with Segun Samuel',    N,              N,              N,              Y,              N],
+    ['Private Kingdom Community',         N,              N,              N,              Y,              N],
+    ['Personalised Battle Assessment',    N,              N,              N,              Y,              N],
+    ['IBONK Completion Certificate',      N,              N,              N,              Y,              N],
+  ];
+
+  const thead_prices = [
+    { label: 'The Book',        ngn: '₦15,000', usd: '$12.99' },
+    { label: 'Battle Kit',      ngn: '₦22,000', usd: '$17.99' },
+    { label: 'Full Arsenal ★',  ngn: '₦35,000', usd: '$27'    },
+    { label: "Commander's",     ngn: '₦75,000', usd: '$59'    },
+    { label: 'Gift Edition',    ngn: '₦50,000', usd: '$39'    },
+  ];
+
+  // Build table header dynamically so currency switcher works
+  const theadRow = document.querySelector('#compare table thead tr');
+  if (theadRow) {
+    theadRow.innerHTML = '<th style="text-align:left;padding:16px 20px;border-bottom:2px solid var(--crimson);font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:0.25em;color:var(--aged-gold);text-transform:uppercase;font-weight:400;min-width:200px;">What\'s Included</th>' +
+      thead_prices.map((p, i) => {
+        const isFeatured = i === 2;
+        const borderCol  = isFeatured ? 'var(--edge)' : 'var(--crimson)';
+        const bgCol      = isFeatured ? 'rgba(212,160,23,0.06)' : 'transparent';
+        const textCol    = isFeatured ? 'var(--edge)' : 'var(--white-dim)';
+        return `<th style="padding:16px 14px;border-bottom:2px solid ${borderCol};background:${bgCol};font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;color:${textCol};text-transform:uppercase;font-weight:400;text-align:center;white-space:nowrap;">
+          ${p.label}<br>
+          <span class="price-primary" data-ngn="${p.ngn}" data-usd="${p.usd}" style="color:var(--edge);font-size:13px;">${p.usd}</span>
+        </th>`;
+      }).join('');
+  }
+
+  const tbody = document.getElementById('compare-body');
+  if (tbody) {
+    rows.forEach(([label, ...cols]) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${label}</td>` +
+        cols.map((c, i) => {
+          const bg = i === 2 ? 'background:rgba(212,160,23,0.04);border-left:1px solid rgba(212,160,23,0.12);border-right:1px solid rgba(212,160,23,0.12);' : '';
+          return `<td style="text-align:center;${bg}">${c}</td>`;
+        }).join('');
+      tbody.appendChild(tr);
+    });
+  }
+
+  // ── LAUNCH COUNTDOWN TIMER ────────────────────────────────────
+  // Set your launch end date here — 30 days from now by default
+  // Change this to your actual launch deadline date
+  (function() {
+    const LAUNCH_KEY = 'tww_release_date';
+    // Release date: July 10, 2026
+    const RELEASE_DATE = '2026-07-10T00:00:00';
+    let endDate = RELEASE_DATE; // Always use the fixed release date
+    localStorage.setItem(LAUNCH_KEY, endDate);
+    const end = new Date(endDate).getTime();
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const now  = Date.now();
+      const diff = end - now;
+      if (diff <= 0) {
+        // Launch price expired — hide the bar or show expired message
+        const bar = document.getElementById('launch-bar');
+        if (bar) bar.innerHTML = '<p style="font-family:\'Cinzel\',serif;font-size:11px;letter-spacing:0.3em;color:var(--edge);text-transform:uppercase;text-align:center;padding:16px;">Launch Pricing Has Ended · Full Prices Now Apply</p>';
+        return;
+      }
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000)  / 60000);
+      const secs  = Math.floor((diff % 60000)    / 1000);
+
+      const d = document.getElementById('cd-days');
+      const h = document.getElementById('cd-hours');
+      const m = document.getElementById('cd-mins');
+      const s = document.getElementById('cd-secs');
+      if (d) d.textContent = pad(days);
+      if (h) h.textContent = pad(hours);
+      if (m) m.textContent = pad(mins);
+      if (s) s.textContent = pad(secs);
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // ── CURRENCY SWITCHER ─────────────────────────────────────────
+  // Covers ALL price-bearing elements:
+  //   .price-primary  — large tier prices, stack totals
+  //   .price-secondary — subtitle lines under tier prices
+  //   .price-stack    — individual value stack item prices
+  //   #anchor-heading — dynamic heading text
+  //   #anchor-verdict — dynamic verdict paragraph
+
+  function swapAll(attr) {
+    document.querySelectorAll(
+      '.price-primary, .price-secondary, .price-stack'
+    ).forEach(el => {
+      const val = el.dataset[attr];
+      if (val !== undefined) el.textContent = val;
+    });
+    const ah = document.getElementById('anchor-heading');
+    if (ah && ah.dataset[attr]) ah.textContent = ah.dataset[attr];
+    const av = document.getElementById('anchor-verdict');
+    if (av && av.dataset[attr]) av.textContent = av.dataset[attr];
+  }
+
+  function applyNGN() {
+    swapAll('ngn');
+    localStorage.setItem('tww_currency', 'NGN');
+    showCurrencyBadge('NGN — ₦');
+  }
+
+  function applyUSD() {
+    swapAll('usd');
+    localStorage.setItem('tww_currency', 'USD');
+    showCurrencyBadge('USD — $');
+  }
+
+  function showCurrencyBadge(label) {
+    const existing = document.getElementById('currency-badge');
+    if (existing) existing.remove();
+    const badge = document.createElement('div');
+    badge.id = 'currency-badge';
+    badge.textContent = 'Prices shown in ' + label;
+    badge.style.cssText = [
+      'position:fixed',
+      'bottom:24px',
+      'right:24px',
+      'background:rgba(14,8,6,0.94)',
+      'border:1px solid #B8922A',
+      'color:#B8922A',
+      'font-family:Cinzel,serif',
+      'font-size:10px',
+      'letter-spacing:0.2em',
+      'text-transform:uppercase',
+      'padding:10px 18px',
+      'z-index:9999',
+      'border-radius:2px',
+      'opacity:1',
+      'transition:opacity 1.5s ease'
+    ].join(';');
+    document.body.appendChild(badge);
+    setTimeout(() => { badge.style.opacity = '0'; }, 3500);
+    setTimeout(() => { badge.remove(); }, 5200);
+  }
+
+  // ── STEP 1: Apply cached currency IMMEDIATELY (no flash) ──────
+  const cached = localStorage.getItem('tww_currency');
+  if (cached === 'NGN') { swapAll('ngn'); }
+  // USD is already the HTML default — no swap needed for cached USD
+
+  // ── STEP 2: Detect location and confirm / update ──────────────
+  let currencyApplied = !!cached; // if cached, skip badge on first load
+
+  const fallback = setTimeout(() => {
+    if (!currencyApplied) { applyUSD(); currencyApplied = true; }
+  }, 3500);
+
+  fetch('https://ipapi.co/json/')
+    .then(r => r.json())
+    .then(data => {
+      clearTimeout(fallback);
+      const isNG = data.country_code === 'NG';
+      const detected = isNG ? 'NGN' : 'USD';
+      // Only re-apply + show badge if different from cache (or no cache)
+      if (!cached || cached !== detected) {
+        currencyApplied = true;
+        isNG ? applyNGN() : applyUSD();
+      }
+    })
+    .catch(() => {
+      if (!currencyApplied) { applyUSD(); currencyApplied = true; }
+    });
+
+  // ── TAB SWITCHER ──────────────────────────────────────────────
+  function switchTab(panelId, btn) {
+    // Deactivate all tabs and panels
+    document.querySelectorAll('.po-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.po-panel').forEach(p => p.classList.remove('active'));
+    // Activate selected
+    if (btn) btn.classList.add('active');
+    const panel = document.getElementById(panelId);
+    if (panel) panel.classList.add('active');
+    // Scroll to waitlist section smoothly
+    document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── PRE-ORDER HANDLER ─────────────────────────────────────────
+  // Replace the href values below with your actual Selar pre-order URLs
+  // once you have created the products on Selar.co
+  const PREORDER_LINKS = {
+    'The Book':                 'https://selar.co/thewarwithin-book', // e.g. https://selar.co/thewarwithin-book
+    'The Battle Kit':           'https://selar.co/thewarwithin-battlekit', // e.g. https://selar.co/thewarwithin-battlekit
+    'The Full Arsenal':         'https://selar.co/thewarwithin-fullarsenal', // e.g. https://selar.co/thewarwithin-fullarsenal
+    "The Commander's Edition":  'https://selar.co/thewarwithin-commanders', // e.g. https://selar.co/thewarwithin-commanders
+  };
+
+  function handlePreOrder(bundle, btnEl) {
+    const url = PREORDER_LINKS[bundle];
+    if (!url || url === '#') {
+      // Selar links not yet configured — show a helpful message
+      const note = document.getElementById('po-coming-note');
+      if (!note) {
+        const p = document.createElement('p');
+        p.id = 'po-coming-note';
+        p.style.cssText = 'font-family:Cinzel,serif;font-size:10px;letter-spacing:0.2em;color:var(--edge);text-transform:uppercase;text-align:center;margin-top:16px;';
+        p.textContent = 'Pre-order checkout opening soon — join the waitlist above to be notified first.';
+        btnEl.closest('.po-card, .po-commander').after(p);
+        setTimeout(() => { if (p.parentNode) p.remove(); }, 5000);
+      }
+      return;
+    }
+    // Open Selar checkout in new tab
+    window.open(url, '_blank', 'noopener');
+  }
+  function submitWaitlist() {
+    const firstName = document.getElementById('wl-firstname').value.trim();
+    const lastName  = document.getElementById('wl-lastname').value.trim();
+    const email     = document.getElementById('wl-email').value.trim();
+    const phone     = document.getElementById('wl-phone').value.trim();
+    const country   = document.getElementById('wl-country').value;
+    const source    = document.getElementById('wl-source').value;
+    const intent    = document.getElementById('wl-intent').value;
+    const quantity  = document.getElementById('wl-quantity').value;
+
+    // Collect selected formats
+    const fmtIds = [
+      'wl-fmt-paperback','wl-fmt-hardcover','wl-fmt-ebook',
+      'wl-fmt-audio','wl-fmt-kit','wl-fmt-arsenal',
+      'wl-fmt-gift','wl-fmt-commander','wl-fmt-bulk'
+    ];
+    const formats = fmtIds
+      .filter(id => document.getElementById(id).checked)
+      .map(id => document.getElementById(id).value);
+
+    // ── Validation ───────────────────────────────────────────────
+    let valid = true;
+    const mark = (id) => {
+      const el = document.getElementById(id);
+      if (el) { el.classList.add('error'); setTimeout(() => el.classList.remove('error'), 1000); }
+      valid = false;
+    };
+    if (!firstName) mark('wl-firstname');
+    if (!lastName)  mark('wl-lastname');
+    if (!email || !email.includes('@')) mark('wl-email');
+    if (!country)   mark('wl-country');
+    if (formats.length === 0) {
+      // Highlight the checkbox section
+      document.querySelectorAll('.wl-checkbox-item').forEach(el => {
+        el.style.borderColor = 'var(--edge)';
+        setTimeout(() => el.style.borderColor = '', 1200);
+      });
+      valid = false;
+    }
+    if (!valid) return;
+
+    // ── Build data object ─────────────────────────────────────────
+    const data = {
+      firstName, lastName, email, phone,
+      country, source, intent, quantity,
+      formats,
+      date: new Date().toISOString(),
+      releaseDate: 'July 10, 2026'
+    };
+
+    // ── Wire to EmailJS (uncomment and add your credentials) ──────
+    // emailjs.send('YOUR_SERVICE_ID', 'YOUR_WAITLIST_TEMPLATE_ID', {
+    //   first_name:   firstName,
+    //   last_name:    lastName,
+    //   email:        email,
+    //   phone:        phone,
+    //   country:      country,
+    //   source:       source,
+    //   intent:       intent,
+    //   quantity:     quantity || 'Not specified',
+    //   formats:      formats.join(', '),
+    //   to_email:     'segun@segunsamuel.com'
+    // });
+
+    // ── Persist locally ───────────────────────────────────────────
+    localStorage.setItem('tww_waitlist', JSON.stringify(data));
+
+    // ── Build summary for success state ──────────────────────────
+    const formatLabels = {
+      'paperback': 'Paperback', 'hardcover': 'Hardcover', 'ebook': 'eBook',
+      'audiobook': 'Audiobook', 'battle-kit': 'Battle Kit',
+      'full-arsenal': 'Full Arsenal', 'gift-edition': 'Gift Edition',
+      'commanders-edition': "Commander's Edition", 'bulk-ministry': 'Bulk / Ministry'
+    };
+    const fmtDisplay = formats.map(f => formatLabels[f] || f).join(' · ');
+    const summaryEl = document.getElementById('wl-summary');
+    if (summaryEl) {
+      summaryEl.innerHTML = [
+        `Name: ${firstName} ${lastName}`,
+        `Email: ${email}`,
+        phone ? `WhatsApp: ${phone}` : null,
+        `Country: ${country}`,
+        `Interested In: ${fmtDisplay}`,
+        intent  ? `Buying For: ${intent}`  : null,
+        quantity ? `Quantity: ${quantity}` : null,
+      ].filter(Boolean).join('<br>');
+    }
+
+    // ── Show success state ────────────────────────────────────────
+    document.getElementById('waitlist-form').style.display = 'none';
+    const success = document.getElementById('wl-success');
+    success.style.display = 'block';
+    success.style.opacity  = '1';
+    success.style.transform = 'none';
+
+    // Scroll to success message
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // If already signed up, show success state immediately on load
+  (function() {
+    const saved = localStorage.getItem('tww_waitlist');
+    if (!saved) return;
+    try {
+      const data = JSON.parse(saved);
+      const wlf = document.getElementById('waitlist-form');
+      const wls = document.getElementById('wl-success');
+      const sum = document.getElementById('wl-summary');
+      if (wlf) wlf.style.display = 'none';
+      if (wls) { wls.style.display = 'block'; wls.style.opacity = '1'; wls.style.transform = 'none'; }
+      if (sum && data.formats) {
+        const formatLabels = {
+          'paperback': 'Paperback', 'hardcover': 'Hardcover', 'ebook': 'eBook',
+          'audiobook': 'Audiobook', 'battle-kit': 'Battle Kit',
+          'full-arsenal': 'Full Arsenal', 'gift-edition': 'Gift Edition',
+          'commanders-edition': "Commander's Edition", 'bulk-ministry': 'Bulk / Ministry'
+        };
+        const fmtDisplay = data.formats.map(f => formatLabels[f] || f).join(' · ');
+        sum.innerHTML = [
+          data.firstName ? `Name: ${data.firstName} ${data.lastName}` : null,
+          data.email     ? `Email: ${data.email}` : null,
+          data.phone     ? `WhatsApp: ${data.phone}` : null,
+          data.country   ? `Country: ${data.country}` : null,
+          fmtDisplay     ? `Interested In: ${fmtDisplay}` : null,
+          data.intent    ? `Buying For: ${data.intent}` : null,
+          data.quantity  ? `Quantity: ${data.quantity}` : null,
+        ].filter(Boolean).join('<br>');
+      }
+    } catch(e) {}
+  })();
+
+</script>
+
+</body>
+</html>
