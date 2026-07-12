@@ -8,61 +8,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="/site.css">
 <style>
-  :root {
-    --abyss:      #0E0806;
-    --void:       #130705;
-    --iron:       #2A0C06;
-    --mist:       #9B3A1C;
-    --edge:       #D4A017;
-    --crimson:    #8B1A1A;
-    --aged-gold:  #B8922A;
-    --white:      #F2EDE4;
-    --white-dim:  rgba(242,237,228,0.55);
-    --white-ghost:rgba(242,237,228,0.10);
-  }
-
-  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
-
-  /* ── DEEP GOLD SCROLLBAR ── */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--void);
-    border-left: 1px solid var(--iron);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-      to bottom,
-      #B8922A 0%,
-      #D4A017 25%,
-      #FFD700 50%,
-      #D4A017 75%,
-      #B8922A 100%
-    );
-    border-radius: 2px;
-    border: 1px solid #2A0C06;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(
-      to bottom,
-      #D4A017 0%,
-      #FFD700 30%,
-      #FFF5A0 50%,
-      #FFD700 70%,
-      #D4A017 100%
-    );
-  }
-  ::-webkit-scrollbar-corner {
-    background: var(--void);
-  }
+/* ── DEEP GOLD SCROLLBAR ── */
+  
+  
+  
+  
+  
   /* Firefox */
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: #D4A017 #130705;
-  }
+  
 
   body {
     background: var(--abyss);
@@ -74,15 +29,7 @@
   }
 
   /* Grain */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.55;
-  }
+  
 
   /* NAV */
   nav {
@@ -1446,12 +1393,10 @@
   }
 
   /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
+  
     to   { opacity: 1; transform: translateY(0); }
   }
-  @keyframes fadeIn {
-    from { opacity: 0; }
+  
     to   { opacity: 1; }
   }
   @keyframes scrollPulse {
@@ -1510,8 +1455,7 @@
   }
   .hero-book-img:hover { transform: scale(1.02); }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+  
     to   { opacity: 1; transform: translateY(0); }
   }
 
@@ -1736,8 +1680,11 @@
     margin-bottom: 10px;
   }
 </style>
+<script src="/consent.js"></script>
 </head>
 <body>
+<div id="site-nav"></div>
+<script src="/nav.js"></script>
 
 <!-- NAV -->
 <nav>
@@ -2984,5 +2931,7 @@
 
 </script>
 
+<div id="site-footer"></div>
+<script src="/footer.js"></script>
 </body>
 </html>

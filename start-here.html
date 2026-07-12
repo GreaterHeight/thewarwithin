@@ -4,56 +4,27 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <meta charset="UTF-8">
   <!-- ── Google Analytics 4 ── -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-39E56ELNQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-39E56ELNQ5', {
-      page_path: window.location.pathname,
-      send_page_view: true
-    });
-  </script>
-  <!-- ── Microsoft Clarity ── -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","x5hzkv6naq");
-  </script>
+  
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Start Here — Before You Enter the War | The War Within</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="/site.css">
 <style>
 /* ═══════════════════════════════════════════════════════════
    ROOT & RESET
 ═══════════════════════════════════════════════════════════ */
-:root {
-  --abyss:       #0E0806;
-  --void:        #130705;
-  --iron:        #2A0C06;
-  --mist:        #9B3A1C;
-  --edge:        #D4A017;
-  --crimson:     #8B1A1A;
-  --aged-gold:   #B8922A;
-  --white:       #F2EDE4;
-  --white-dim:   rgba(242,237,228,0.55);
-  --white-ghost: rgba(242,237,228,0.10);
-}
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:#D4A017 #130705; }
 
-::-webkit-scrollbar { width:8px; }
-::-webkit-scrollbar-track { background:var(--void); border-left:1px solid var(--iron); }
-::-webkit-scrollbar-thumb {
-  background:linear-gradient(to bottom,#B8922A,#D4A017 30%,#FFD700 50%,#D4A017 70%,#B8922A);
-  border-radius:2px; border:1px solid #2A0C06;
-}
+
+
+
+
+
+
 
 body {
   background:var(--abyss);
@@ -65,20 +36,15 @@ body {
 }
 
 /* Grain overlay */
-body::before {
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:900; opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-}
+
 
 /* ═══════════════════════════════════════════════════════════
    ANIMATIONS
 ═══════════════════════════════════════════════════════════ */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(26px); }
+
   to   { opacity:1; transform:translateY(0); }
 }
-@keyframes fadeIn {
-  from { opacity:0; } to { opacity:1; }
+ to { opacity:1; }
 }
 @keyframes goldShimmer {
   0%   { background-position:200% center; }
@@ -1382,8 +1348,8 @@ footer {
   .b-nav { padding:0 16px; height:96px; gap:14px; }
   .nav-logo-img { height:80px; }
 }
-
 </style>
+<script src="/consent.js"></script>
 </head>
 <body>
 
@@ -1413,62 +1379,8 @@ footer {
 </div>
 
 <!-- ── NAVIGATION ── -->
-<nav class="b-nav" id="bNav" aria-label="Main navigation">
-
-  <a href="/" class="b-nav-brand"><img src="/logo.png" alt="The War Within — 17 Battles, One Mission" class="nav-logo-img"></a>
-
-  <!-- Central site-wide links (replaces b-nav-progress) -->
-  <ul class="b-nav-center" aria-label="Site navigation">   
-	  <li><a href="/start-here.html">Start</a></li>
-	 <li><a href="/join-the-movement.html">Join The Movement</a></li>
-    <li><a href="/all-battles.html">Campaign Map</a></li>
-   <li><a href="/armory.html">Resources</a></li>
-	<li><a href="/about.html">About</a></li>
-
-  </ul>
-
-  <!-- Right: Order Now (desktop) + Menu button (mobile) -->
-  <ul class="b-nav-links">
-    <li><a href="/order.html" class="nav-order">Order Now</a></li>
-  </ul>
-
-  <!-- Mobile menu trigger -->
-  <button class="b-nav-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-</nav>
-
-<!-- Drawer overlay -->
-<div class="drawer-overlay" id="drawerOverlay"></div>
-
-<!-- Mobile navigation drawer -->
-<aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-
-  <div class="drawer-header">
-    <a href="/" class="drawer-brand"><img src="/logo.png" alt="The War Within — 17 Battles, One Mission" class="drawer-logo-img"></a>
-    <button class="drawer-close" id="drawerClose" aria-label="Close menu"></button>
-  </div>
-
-  <nav class="drawer-nav" aria-label="Mobile navigation">
-    <span class="drawer-nav-label">Navigation</span>
-    <a href="/start-here.html">Start</a>
-    <a href="/join-the-movement.html">Join The Movement</a>
-    <a href="/armory.html">Resources</a>
-    <a href="/about.html">About</a>
-    <span class="drawer-nav-label" style="margin-top:8px;">Campaign</span>
-    <a href="/all-battles.html">Campaign Map</a>
-    <a href="/battle-1.html">Battle 1</a>
-    <a href="/war-letters.html">War Letters</a>
-  </nav>
-
-  <div class="drawer-cta-wrap">
-    <a href="/order.html" class="drawer-cta">Order Now</a>
-  </div>
-
-</aside>
+<div id="site-nav"></div>
+<script src="/nav.js"></script>
 
 <!-- ═══════════════════════════════════════════════════════════
      SECTION 1 — HERO
@@ -2078,58 +1990,8 @@ footer {
 <div class="footer-band"><a href="/brand.html" class="fband-cell"><span class="fdir">← Previous</span><span class="ftitle">The Philosophy</span><span class="fnum">Brand &amp; Worldview</span></a><div class="fband-center"><span class="fctr">The Campaign</span><a href="/all-battles.html" class="btn-sm">All 17 Battles</a></div><a href="/battle-1.html" class="fband-cell"><span class="fdir">Next →</span><span class="ftitle">The Blind Warrior</span><span class="fnum">Battle 1</span></a></div>
 <div class="foot-strip"><span class="foot-copy-left">© 2026 · TheWarWithin.you</span><ul class="foot-links"><li><a href="/start-here.html">Start Here</a></li><li><a href="/all-battles.html">Campaign Map</a></li><li><a href="/armory.html">Armoury</a></li><li><a href="/about.html">The Architect</a></li><li><a href="/war-letters.html">War Letters</a></li></ul><ul class="foot-legal"><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms</a></li></ul></div>
 
-<script>
-/* Reading progress */
-const fill = document.getElementById('progressFill');
-window.addEventListener('scroll', () => {
-  const pct = document.documentElement.scrollTop /
-    (document.documentElement.scrollHeight - window.innerHeight) * 100;
-  fill.style.width = pct + '%';
-}, { passive: true });
 
-/* Nav + ticker scroll state */
-const bNav = document.getElementById('bNav');
-const ticker = document.getElementById('ticker');
-let tickerHidden = false;
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY > 60;
-  bNav.classList.toggle('scrolled', window.scrollY > 60);
-  /* Hide ticker after first scroll */
-  if (window.scrollY > 120 && !tickerHidden) {
-    ticker.style.transition = 'opacity .5s ease, transform .5s ease';
-    ticker.style.opacity = '0';
-    ticker.style.transform = 'translateY(-100%)';
-    tickerHidden = true;
-  }
-}, { passive: true });
-
-
-/* Mobile drawer */
-const menuBtn       = document.getElementById('menuBtn');
-const mobileDrawer  = document.getElementById('mobileDrawer');
-const drawerOverlay = document.getElementById('drawerOverlay');
-const drawerClose   = document.getElementById('drawerClose');
-function openDrawer() {
-  mobileDrawer.classList.add('open'); mobileDrawer.removeAttribute('aria-hidden');
-  drawerOverlay.classList.add('visible'); menuBtn.classList.add('open');
-  menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden';
-}
-function closeDrawer() {
-  mobileDrawer.classList.remove('open'); mobileDrawer.setAttribute('aria-hidden','true');
-  drawerOverlay.classList.remove('visible'); menuBtn.classList.remove('open');
-  menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow='';
-}
-menuBtn.addEventListener('click', openDrawer);
-drawerClose.addEventListener('click', closeDrawer);
-drawerOverlay.addEventListener('click', closeDrawer);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
-
-/* Scroll reveal */
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
-revealEls.forEach(el => io.observe(el));
-</script>
+<div id="site-footer"></div>
+<script src="/footer.js"></script>
 </body>
 </html>

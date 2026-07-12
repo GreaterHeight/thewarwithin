@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partials Implementation Guide — The War Within</title>
+<style>
+  body { font-family: 'Courier New', monospace; background: #0E0806; color: #F2EDE4; padding: 40px; max-width: 900px; margin: 0 auto; line-height: 1.7; }
+  h1 { color: #D4A017; font-size: 22px; border-bottom: 1px solid #8B1A1A; padding-bottom: 12px; margin-bottom: 28px; }
+  h2 { color: #B8922A; font-size: 15px; margin-top: 40px; margin-bottom: 12px; letter-spacing: .1em; text-transform: uppercase; }
+  h3 { color: rgba(242,237,228,0.7); font-size: 13px; margin-top: 24px; margin-bottom: 8px; }
+  p, li { color: rgba(242,237,228,0.7); font-size: 14px; }
+  code { background: #1A0402; color: #D4A017; padding: 2px 6px; font-size: 13px; }
+  pre { background: #130705; border: 1px solid #2A0C06; border-left: 3px solid #8B1A1A; padding: 20px 24px; overflow-x: auto; font-size: 13px; color: #F2EDE4; margin: 12px 0 20px; }
+  .note { background: rgba(139,26,26,0.12); border: 1px solid rgba(139,26,26,.4); border-left: 3px solid #8B1A1A; padding: 14px 18px; margin: 16px 0; font-size: 13px; color: rgba(242,237,228,0.7); }
+  .ok { border-left-color: #B8922A; background: rgba(184,146,42,0.08); }
+  strong { color: #F2EDE4; }
+  hr { border: none; border-top: 1px solid #2A0C06; margin: 40px 0; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<h1>⚔ The War Within — Partials Implementation Guide</h1>
+<p>This guide tells you exactly what to do in each existing HTML file to switch from copy-pasted nav/footer to the shared JS partial system. Read this fully before touching any file.</p>
+
+<hr>
+
+<h2>1. New Files to Deploy</h2>
+<p>Copy these four files to your website root (same level as <code>index.html</code>):</p>
+<ul>
+  <li><strong>site.css</strong> — all shared CSS (design tokens, nav, footer, drawer, responsive)</li>
+  <li><strong>nav.js</strong> — injects top nav + mobile drawer into every page</li>
+  <li><strong>footer.js</strong> — injects shared foot-strip into every page (with optional battle band)</li>
+  <li><strong>consent.js</strong> — GDPR + NDPR cookie consent banner, deferred analytics loading</li>
+</ul>
+
+<hr>
+
+<h2>2. What to Remove from Every Existing Page</h2>
+<p>In each HTML file, find and <strong>delete</strong> the following blocks:</p>
+
+<h3>A. The inline &lt;style&gt; block — replace with a link tag</h3>
+<p>Delete everything between <code>&lt;style&gt;</code> and <code>&lt;/style&gt;</code> and replace with:</p>
+<pre>&lt;link rel="stylesheet" href="/site.css"&gt;</pre>
+<div class="note">⚠ Each page has page-specific CSS inside the &lt;style&gt; block too. <strong>Keep those rules.</strong> Move them to a second &lt;style&gt; tag immediately after the &lt;link&gt; tag. Only delete the shared sections (design tokens, nav, drawer, footer, responsive for those elements).</div>
+
+<h3>B. The GA4 + Clarity scripts in &lt;head&gt;</h3>
+<p>Delete these two blocks entirely — consent.js will load them conditionally based on user choice:</p>
+<pre>&lt;!-- DELETE THIS --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-39E56ELNQ5"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-39E56ELNQ5', { ... });
+&lt;/script&gt;
+
+&lt;!-- AND DELETE THIS --&gt;
+&lt;script type="text/javascript"&gt;
+  (function(c,l,a,r,i,t,y){ ... })(window,document,"clarity","script","x5hzkv6naq");
+&lt;/script&gt;</pre>
+
+<h3>C. The nav HTML block</h3>
+<p>Delete everything from <code>&lt;nav class="b-nav"</code> through <code>&lt;/aside&gt;</code> (includes the nav, drawer-overlay div, and mobile-drawer aside).</p>
+
+<h3>D. The footer-band nav (battle pages only)</h3>
+<p>Delete the <code>&lt;nav class="footer-band"&gt;...&lt;/nav&gt;</code> block on battle pages. It will be rebuilt by footer.js using data attributes (see Section 4 below).</p>
+
+<h3>E. The foot-strip footer</h3>
+<p>Delete <code>&lt;footer class="foot-strip"&gt;...&lt;/footer&gt;</code>.</p>
+
+<h3>F. The nav/drawer JavaScript block</h3>
+<p>Delete the <code>&lt;script&gt;</code> block that contains the reading bar, nav scroll, drawer open/close, and intersection observer logic. nav.js handles all of this.</p>
+
+<hr>
+
+<h2>3. What to Add to Every Page</h2>
+
+<h3>In &lt;head&gt; — add these in this order:</h3>
+<pre>&lt;!-- Shared stylesheet --&gt;
+&lt;link rel="stylesheet" href="/site.css"&gt;
+
+&lt;!-- Consent: must come BEFORE any analytics (replaces GA + Clarity script tags) --&gt;
+&lt;script src="/consent.js"&gt;&lt;/script&gt;</pre>
+
+<h3>At the TOP of &lt;body&gt; (first line inside &lt;body&gt;):</h3>
+<pre>&lt;!-- Nav placeholder: nav.js replaces this with the full nav + drawer --&gt;
+&lt;div id="site-nav"&gt;&lt;/div&gt;
+&lt;script src="/nav.js"&gt;&lt;/script&gt;</pre>
+<div class="note ok">✓ nav.js runs synchronously after the placeholder, so there is no flash of missing nav. The reading bar, scroll behaviour, and drawer all wire up automatically.</div>
+
+<h3>At the BOTTOM of &lt;body&gt; (last element before &lt;/body&gt;):</h3>
+<pre>&lt;!-- Footer placeholder: footer.js replaces this with the foot-strip --&gt;
+&lt;div id="site-footer"&gt;&lt;/div&gt;
+&lt;script src="/footer.js"&gt;&lt;/script&gt;</pre>
+
+<hr>
+
+<h2>4. Battle Pages: Footer Band (Prev/Next Navigation)</h2>
+<p>For pages that have the battle-to-battle navigation band, pass the data as attributes on the placeholder:</p>
+<pre>&lt;div id="site-footer"
+     data-prev-url="/battle-9.html"
+     data-prev-title="When the Spirit Starves"
+     data-prev-num="Battle 9"
+     data-next-url="/battle-11.html"
+     data-next-title="The Inner Saboteur"
+     data-next-num="Battle 11"
+     data-next-label="Stage IV →"&gt;
+&lt;/div&gt;
+&lt;script src="/footer.js"&gt;&lt;/script&gt;</pre>
+<p>If any of these attributes are absent, footer.js renders no footer-band (correct behaviour for non-battle pages like FAQ, About, etc.).</p>
+
+<p><strong>Battle reference table:</strong></p>
+<pre>battle-1.html  → prev: (none)             next: battle-2  "The Mask of Confusion"   "Battle 2"
+battle-2.html  → prev: battle-1            next: battle-3  "The Draining Spiral"     "Battle 3"
+battle-3.html  → prev: battle-2            next: battle-4  "The Poisoned Heart"      "Battle 4 — Stage II →"
+battle-4.html  → prev: battle-3            next: battle-5  "The Closed Heaven"       "Battle 5"
+battle-5.html  → prev: battle-4            next: battle-6  "The Tongue and the Trade" "Battle 6"
+battle-6.html  → prev: battle-5            next: battle-7  "Broken Bridges"          "Battle 7"
+battle-7.html  → prev: battle-6            next: battle-8  "The Invisible Prison"    "Battle 8 — Stage III →"
+battle-8.html  → prev: battle-7            next: battle-9  "When the Spirit Starves" "Battle 9"
+battle-9.html  → prev: battle-8            next: battle-10 "The Neglected Temple"    "Battle 10"
+battle-10.html → prev: battle-9            next: battle-11 "The Inner Saboteur"      "Battle 11 — Stage IV →"
+battle-11.html → prev: battle-10           next: battle-12 "The Isolation Trap"      "Battle 12"
+battle-12.html → prev: battle-11           next: battle-13 "The Comfort Conspiracy"  "Battle 13"
+battle-13.html → prev: battle-12           next: battle-14 "The Starved Mind"        "Battle 14"
+battle-14.html → prev: battle-13           next: battle-15 "The Fallen Crown"        "Battle 15 — Stage V →"
+battle-15.html → prev: battle-14           next: battle-16 "The Broken Vault"        "Battle 16"
+battle-16.html → prev: battle-15           next: battle-17 "The Execution Gap"       "Battle 17"
+battle-17.html → prev: battle-16           next: (none)</pre>
+
+<hr>
+
+<h2>5. Page-Specific CSS: What to Keep</h2>
+<p>After removing the shared CSS, add a second <code>&lt;style&gt;</code> block for page-unique styles:</p>
+<pre>&lt;link rel="stylesheet" href="/site.css"&gt;
+&lt;style&gt;
+/* ── Battle 10 page-specific styles only ── */
+#hero { ... }
+.concepts-grid { ... }
+/* etc. */
+&lt;/style&gt;</pre>
+
+<hr>
+
+<h2>6. The Cookie Consent System (GDPR + NDPR)</h2>
+<p>consent.js handles everything automatically once it is in <code>&lt;head&gt;</code>. Here is what it does:</p>
+<ul>
+  <li><strong>First visit:</strong> shows a banner after 800ms with three options — Accept All, Necessary Only, Manage.</li>
+  <li><strong>Accept All:</strong> loads GA4 + Clarity immediately, saves consent to localStorage for 180 days.</li>
+  <li><strong>Necessary Only:</strong> blocks GA4 and Clarity entirely, saves choice for 180 days.</li>
+  <li><strong>Manage:</strong> opens a panel with an Analytics toggle and full NDPA/GDPR legal text.</li>
+  <li><strong>Returning visitors:</strong> banner does not show. Analytics loads silently if previously consented.</li>
+  <li><strong>Floating button:</strong> a small "Cookie Preferences" button appears bottom-left on all pages, allowing users to change their choice at any time.</li>
+  <li><strong>IP anonymisation:</strong> GA4 is configured with <code>anonymize_ip: true</code> (required for GDPR).</li>
+</ul>
+<div class="note ok">✓ The NDPA 2023 and NDPR 2019 require a lawful basis for processing personal data. Consent (opt-in) is the basis used here. The consent record is stored client-side. For a more robust NDPA implementation, you should also update your Privacy Policy to explicitly mention Nigerian data subjects' rights (access, rectification, erasure, portability, objection) and name a Data Protection Officer or contact for Nigerian residents. The privacy.html page should be updated to reflect this.</div>
+
+<hr>
+
+<h2>7. Updated Privacy Policy Required</h2>
+<p>Your existing privacy.html needs a dedicated Cookies section and an NDPA/GDPR rights section. Add the following content to privacy.html:</p>
+<pre>## Cookies and Analytics
+
+We use cookies and similar tracking technologies. You can control
+your preferences at any time via the Cookie Preferences button
+that appears on every page.
+
+**Necessary cookies** are required for the site to function and
+cannot be disabled.
+
+**Analytics cookies** (Google Analytics 4, Microsoft Clarity) help
+us understand how visitors engage the campaign. These are only
+activated with your explicit consent. IP addresses are anonymised.
+We do not use analytics data for advertising or sell it to third parties.
+
+## Your Rights (GDPR / NDPA 2023)
+
+If you are in the European Union or Nigeria, you have the right to:
+- Access the personal data we hold about you
+- Request correction of inaccurate data
+- Request erasure of your data
+- Object to processing
+- Data portability
+
+To exercise these rights, contact: info@techspibus.com</pre>
+
+<hr>
+
+<h2>8. Complete &lt;head&gt; Template for Battle Pages</h2>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;link rel="icon" type="image/png" href="/favicon.png"&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;[Page Title] | The War Within&lt;/title&gt;
+&lt;meta name="description" content="[Page description]"&gt;
+&lt;!-- ... other meta, OG, Twitter, JSON-LD tags (keep these) ... --&gt;
+
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&amp;family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&amp;family=Cinzel:wght@400;500;600&amp;display=swap" rel="stylesheet"&gt;
+
+&lt;!-- 1. Shared stylesheet --&gt;
+&lt;link rel="stylesheet" href="/site.css"&gt;
+
+&lt;!-- 2. Page-specific CSS only --&gt;
+&lt;style&gt;
+  /* only rules unique to this page */
+&lt;/style&gt;
+
+&lt;!-- 3. Consent (replaces GA + Clarity script tags) --&gt;
+&lt;script src="/consent.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 4. Nav partial --&gt;
+&lt;div id="site-nav"&gt;&lt;/div&gt;
+&lt;script src="/nav.js"&gt;&lt;/script&gt;
+
+&lt;!-- ════ PAGE CONTENT ════ --&gt;
+&lt;main id="main-content"&gt;
+  ...
+&lt;/main&gt;
+
+&lt;!-- 5. Footer partial (with battle band data if applicable) --&gt;
+&lt;div id="site-footer"
+     data-prev-url="/battle-9.html"
+     data-prev-title="When the Spirit Starves"
+     data-prev-num="Battle 9"
+     data-next-url="/battle-11.html"
+     data-next-title="The Inner Saboteur"
+     data-next-num="Battle 11"
+     data-next-label="Stage IV →"&gt;
+&lt;/div&gt;
+&lt;script src="/footer.js"&gt;&lt;/script&gt;
+
+&lt;!-- 6. Page-specific JS (audio player, etc.) --&gt;
+&lt;script&gt;
+  /* page-specific JS only — nav/drawer/reading bar handled by nav.js */
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<hr>
+<p style="font-size:12px;color:rgba(242,237,228,0.3);margin-top:40px;">TheWarWithin.you · Partials Implementation Guide · July 2026</p>
+
+</body>
+</html>

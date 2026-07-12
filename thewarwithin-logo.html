@@ -7,25 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,600&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
 <style>
-  :root {
-    --abyss:    #0E0806;
-    --void:     #130705;
-    --iron:     #2A0C06;
-    --mist:     #9B3A1C;
-    --edge:     #D4A017;
-    --crimson:  #8B1A1A;
-    --aged:     #B8922A;
-    --white:    #F2EDE4;
-    --white-d:  rgba(242,237,228,.55);
-  }
-  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
-  ::-webkit-scrollbar { width:6px; }
-  ::-webkit-scrollbar-track { background:var(--void); }
-  ::-webkit-scrollbar-thumb { background:var(--aged); border-radius:2px; }
-
-  body {
+body {
     background: var(--abyss);
     color: var(--white);
     font-family: 'Crimson Pro', Georgia, serif;
@@ -37,8 +21,7 @@
     0%   { background-position: 200% center; }
     100% { background-position: -200% center; }
   }
-  @keyframes fadeIn {
-    from { opacity:0; transform:translateY(12px); }
+  
     to   { opacity:1; transform:translateY(0); }
   }
   @keyframes pulseGlow {
@@ -209,8 +192,11 @@
     .full-width    { grid-column: 1; }
   }
 </style>
+<script src="/consent.js"></script>
 </head>
 <body>
+<div id="site-nav"></div>
+<script src="/nav.js"></script>
 
 <header class="page-header">
   <p class="page-header-eyebrow">Brand Identity · Logo System</p>
@@ -688,5 +674,7 @@
   </div>
 </section>
 
+<div id="site-footer"></div>
+<script src="/footer.js"></script>
 </body>
 </html>

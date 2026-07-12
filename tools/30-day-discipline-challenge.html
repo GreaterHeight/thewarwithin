@@ -9,32 +9,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="/site.css">
 <style>
 /* ═══════════════════════════════════════════════════════════
    ROOT & RESET — shared TheWarWithin design system
 ═══════════════════════════════════════════════════════════ */
-:root {
-  --abyss:        #0E0806;
-  --void:         #130705;
-  --iron:         #2A0C06;
-  --mist:         #9B3A1C;
-  --edge:         #D4A017;
-  --crimson:      #8B1A1A;
-  --aged-gold:    #B8922A;
-  --white:        #F2EDE4;
-  --white-dim:    rgba(242,237,228,0.55);
-  --white-ghost:  rgba(242,237,228,0.10);
-}
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:#D4A017 #130705; }
 
-::-webkit-scrollbar { width:8px; }
-::-webkit-scrollbar-track { background:var(--void); border-left:1px solid var(--iron); }
-::-webkit-scrollbar-thumb {
-  background:linear-gradient(to bottom,#B8922A,#D4A017 30%,#FFD700 50%,#D4A017 70%,#B8922A);
-  border-radius:2px; border:1px solid #2A0C06;
-}
+
+
+
+
+
+
 
 body {
   background:var(--abyss);
@@ -45,10 +32,7 @@ body {
   overflow-x:hidden;
 }
 
-body::before {
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+
 
 .reading-progress { position:fixed; top:0; left:0; right:0; height:3px; background:var(--void); z-index:1000; }
 .reading-progress-fill { height:100%; width:0%; background:linear-gradient(to right,var(--crimson),var(--edge)); transition:width .1s; }
@@ -291,8 +275,8 @@ body::before {
   .track-card { padding:24px 22px; }
   .tracker-table { font-size:13px; }
 }
-
 </style>
+<script src="/consent.js"></script>
 </head>
 <body>
 
@@ -303,44 +287,8 @@ body::before {
 <div class="hero-bracket bl"></div>
 <div class="hero-bracket br"></div>
 
-<nav class="b-nav" id="bNav" aria-label="Main navigation">
-  <a href="/" class="b-nav-brand">The War Within</a>
-  <ul class="b-nav-center" aria-label="Site navigation">
-    <li><a href="/get-started.html">Get Started</a></li>
-    <li><a href="/join-the-movement.html">Join The Movement</a></li>
-    <li><a href="/find-your-aq.html">Find Your AQ</a></li>
-    <li><a href="/resources.html">Resources</a></li>
-    <li><a href="/about.html">About</a></li>
-  </ul>
-  <ul class="b-nav-links">
-    <li><a href="/order.html" class="nav-order">Order Now</a></li>
-  </ul>
-  <button class="b-nav-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="drawer-overlay" id="drawerOverlay"></div>
-<aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
-  <div class="drawer-header">
-    <a href="/" class="drawer-brand">The War Within</a>
-    <button class="drawer-close" id="drawerClose" aria-label="Close menu"></button>
-  </div>
-  <nav class="drawer-nav" aria-label="Mobile navigation">
-    <span class="drawer-nav-label">Navigation</span>
-    <a href="/get-started.html">Get Started</a>
-    <a href="/join-the-movement.html">Join The Movement</a>
-    <a href="/find-your-aq.html">Find Your AQ</a>
-    <a href="/resources.html">Resources</a>
-    <a href="/about.html">About</a>
-    <span class="drawer-nav-label" style="margin-top:8px;">Campaign</span>
-    <a href="/all-battles.html">Campaign Map</a>
-    <a href="/armory.html" class="active">Armoury</a>
-    <a href="/war-letters.html">War Letters</a>
-  </nav>
-  <div class="drawer-cta-wrap">
-    <a href="/order.html" class="drawer-cta">Order Now</a>
-  </div>
-</aside>
+<div id="site-nav"></div>
+<script src="/nav.js"></script>
 
 <!-- ═══ HERO ═══ -->
 <section id="hero">
@@ -619,37 +567,14 @@ body::before {
 
 </article>
 
-<nav class="footer-band" aria-label="Page navigation">
-  <a href="/armory.html" class="fband-cell">
-    <span class="fbc-dir">← Back</span>
-    <span class="fbc-title">The Armoury</span>
-    <span class="fbc-num">All Strategic Instruments</span>
-  </a>
-  <div class="fband-center">
-    <span class="fbc-ctr-lbl">The Campaign</span>
-    <a href="/all-battles.html" class="btn-sm">All 17 Battles</a>
-  </div>
-  <a href="/battle-13.html" class="fband-cell">
-    <span class="fbc-dir">Read →</span>
-    <span class="fbc-title">Battle 13</span>
-    <span class="fbc-num">The Comfort Conspiracy</span>
-  </a>
-</nav>
-
-<footer class="foot-strip" aria-label="Site footer">
-  <span class="foot-copy-left">© 2026 · TheWarWithin.you</span>
-  <ul class="foot-links" aria-label="Site links">
-    <li><a href="/start-here.html">Start Here</a></li>
-    <li><a href="/all-battles.html">Campaign Map</a></li>
-    <li><a href="/armory.html">Armoury</a></li>
-    <li><a href="/about.html">The Architect</a></li>
-    <li><a href="/war-letters.html">War Letters</a></li>
-  </ul>
-  <ul class="foot-legal" aria-label="Legal links">
-    <li><a href="/privacy.html">Privacy Policy</a></li>
-    <li><a href="/terms.html">Terms</a></li>
-  </ul>
-</footer>
+<div id="site-footer"
+     data-prev-url="/armory.html"
+     data-prev-title="The Armoury"
+     data-prev-num="All Strategic Instruments"
+     data-next-url="/battle-13.html"
+     data-next-title="The Comfort Conspiracy"
+     data-next-num="Battle 13"></div>
+<script src="/footer.js"></script>
 
 <script>
 const fill = document.getElementById('progressFill');

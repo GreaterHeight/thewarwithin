@@ -8,32 +8,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="/site.css">
 <style>
 /* ═══════════════════════════════════════════════════════
    ROOT & RESET
 ═══════════════════════════════════════════════════════ */
-:root {
-  --abyss:       #0E0806;
-  --void:        #130705;
-  --iron:        #2A0C06;
-  --mist:        #9B3A1C;
-  --edge:        #D4A017;
-  --crimson:     #8B1A1A;
-  --aged-gold:   #B8922A;
-  --white:       #F2EDE4;
-  --white-dim:   rgba(242,237,228,0.55);
-  --white-ghost: rgba(242,237,228,0.10);
-}
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:#D4A017 #130705; }
 
-::-webkit-scrollbar { width:8px; }
-::-webkit-scrollbar-track { background:var(--void); border-left:1px solid var(--iron); }
-::-webkit-scrollbar-thumb {
-  background:linear-gradient(to bottom,#B8922A,#D4A017 30%,#FFD700 50%,#D4A017 70%,#B8922A);
-  border-radius:2px; border:1px solid #2A0C06;
-}
+
+
+
+
+
+
 
 body {
   background:var(--abyss);
@@ -45,19 +32,15 @@ body {
 }
 
 /* Grain */
-body::before {
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:900; opacity:.5;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-}
+
 
 /* ═══════════════════════════════════════════════════════
    ANIMATIONS
 ═══════════════════════════════════════════════════════ */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(28px); }
+
   to   { opacity:1; transform:translateY(0); }
 }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+ to { opacity:1; } }
 @keyframes goldShimmer {
   0%   { background-position:200% center; }
   100% { background-position:-200% center; }
@@ -684,12 +667,7 @@ nav.scrolled { background:rgba(14,8,6,.97); box-shadow:0 1px 0 rgba(139,26,26,.3
   position:relative;
 }
 /* Opening quotation mark */
-.credo-body::before {
-  content:'\201C';
-  position:absolute; top:-28px; left:-16px;
-  font-family:'Cormorant Garamond',serif;
-  font-size:100px; line-height:1; color:var(--iron); opacity:.6;
-}
+.credo-
 
 .credo-statement {
   font-family:'Cormorant Garamond',serif;
@@ -912,8 +890,11 @@ footer {
   .footer-links { justify-content:center; flex-wrap:wrap; }
 }
 </style>
+<script src="/consent.js"></script>
 </head>
 <body>
+<div id="site-nav"></div>
+<script src="/nav.js"></script>
 
 <div class="reading-progress"><div class="reading-progress-fill" id="progressFill"></div></div>
 
@@ -1451,27 +1432,8 @@ footer {
   <div class="footer-copy">© 2026 · TheWarWithin.you</div>
 </footer>
 
-<script>
-/* Reading progress */
-const fill = document.getElementById('progressFill');
-window.addEventListener('scroll', () => {
-  const pct = document.documentElement.scrollTop /
-    (document.documentElement.scrollHeight - window.innerHeight) * 100;
-  fill.style.width = pct + '%';
-}, { passive:true });
 
-/* Nav */
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive:true });
-
-/* Scroll reveal */
-const revealEls = document.querySelectorAll('.reveal, .reveal-left');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold:0.06, rootMargin:'0px 0px -32px 0px' });
-revealEls.forEach(el => io.observe(el));
-</script>
+<div id="site-footer"></div>
+<script src="/footer.js"></script>
 </body>
 </html>
