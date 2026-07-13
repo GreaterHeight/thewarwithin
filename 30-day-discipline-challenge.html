@@ -11,7 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/site.css">
-<style>
+<style>#hero .rev{opacity:1!important;transform:none!important}
+
 /* ═══════════════════════════════════════════════════════════
    ROOT & RESET — shared TheWarWithin design system
 ═══════════════════════════════════════════════════════════ */
@@ -749,8 +750,8 @@ body {
 
 </article>
 
-<div id="site-footer"></div>
-<script src="/footer.js"></script>
+
+
 
 <script>
 const fill = document.getElementById('progressFill');
@@ -789,5 +790,13 @@ menuBtn.addEventListener('click', openDrawer);
 drawerClose.addEventListener('click', closeDrawer);
 drawerOverlay.addEventListener('click', closeDrawer);
 </script>
+<div id="site-footer"
+     data-prev-url="/armory.html"
+     data-prev-title="The Armoury"
+     data-prev-num="All Strategic Instruments"
+     data-next-url="/battle-13.html"
+     data-next-title="Battle 13"
+     data-next-num="The Comfort Conspiracy"></div>
+<script src="/footer.js"></script>
 </body>
 </html>

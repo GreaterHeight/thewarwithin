@@ -29,6 +29,13 @@
   --pad-v:       112px;
   --pad-h:       52px;
   --max-w:       1260px;
+  --max:         1260px;
+  /* ── Alias variables for page compatibility ── */
+  --pad:         52px;      /* alias for --pad-h */
+  --vpad:        112px;     /* alias for --pad-v */
+  --pale-gold:   #B8922A;   /* alias for --aged-gold */
+  --white-d:     rgba(242,237,228,.55); /* alias for --white-dim */
+
   --gap:         2px;
 }
 
@@ -795,3 +802,13 @@ MOBILE MENU BUTTON & DRAWER
   .nav-logo-img { height:80px; }
 }
 
+/* ── Hero reveal: above-fold .rev elements show immediately ── */
+#hero .rev,
+.hero .rev { opacity:1 !important; transform:none !important; }
+
+/* ── Cross-class reveal compatibility ─────────────────────── */
+.rev.visible  { opacity:1; transform:none; }
+.rev.active   { opacity:1; transform:none; }
+.rev.open     { opacity:1; transform:none; }
+.reveal.on    { opacity:1; transform:none; }
+.reveal.active{ opacity:1; transform:none; }

@@ -166,3 +166,29 @@
   });
 
 }());
+
+/* Global scroll-reveal — runs on every page via nav.js
+   .rev elements   → adds class "on"      (site.css: .rev.on { opacity:1 })
+   .reveal/.reveal-left → adds "visible"  (page CSS: .reveal.visible { opacity:1 }) */
+(function () {
+  function initReveal() {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        if (el.classList.contains('rev'))         el.classList.add('on');
+        if (el.classList.contains('reveal'))      el.classList.add('visible');
+        if (el.classList.contains('reveal-left')) el.classList.add('visible');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.rev, .reveal, .reveal-left').forEach(function (el) {
+      io.observe(el);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+}());

@@ -9,7 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/site.css">
-<style>
+<style>#hero .rev{opacity:1!important;transform:none!important}
+.rev.visible{opacity:1;transform:none}
+
 /* ── DEEP GOLD SCROLLBAR ── */
   
   
@@ -1393,10 +1395,12 @@
   }
 
   /* ANIMATIONS */
-  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  
+  @keyframes fadeIn {
+    from { opacity: 0; }
     to   { opacity: 1; }
   }
   @keyframes scrollPulse {
@@ -1455,7 +1459,8 @@
   }
   .hero-book-img:hover { transform: scale(1.02); }
 
-  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
@@ -2409,7 +2414,7 @@
 
         <button class="wl-submit" style="margin-top:18px;" onclick="submitWaitlist()">✉ &nbsp; Enlist Now — Secure My Launch Price</button>
         <p class="wl-note" style="margin-top:10px;">No spam · One battle dispatch per week · Unsubscribe at any time · Launching July 10, 2026</p>
-        <p class="wl-note" style="margin-top:6px;">Ready to pay now? <button onclick="switchTab('preorder-panel', document.querySelectorAll('.po-tab')[1])" style="background:none;border:none;color:var(--edge);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;text-decoration:underline;">Pre-Order Instead →</button></p>
+        <p class="wl-note" style="margin-top:6px;">Ready to pay now? <button onclick="switchTab('preorder-panel', document.querySelectorAll('.po-tab, .rev')[1])" style="background:none;border:none;color:var(--edge);font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;text-decoration:underline;">Pre-Order Instead →</button></p>
       </div>
 
       <!-- WAITLIST SUCCESS STATE -->

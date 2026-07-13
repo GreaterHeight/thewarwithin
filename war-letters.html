@@ -29,7 +29,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/site.css">
-<style>
+<style>#hero .rev{opacity:1!important;transform:none!important}
+
 /* ═══════════════════════════════════════════════════════
    ROOT & RESET
 ═══════════════════════════════════════════════════════ */
@@ -57,8 +58,8 @@ body {
 /* ═══════════════════════════════════════════════════════
    ANIMATIONS
 ═══════════════════════════════════════════════════════ */
- to{opacity:1;transform:translateY(0)} }
- to{opacity:1} }
+@keyframes fadeUp   { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn   { from{opacity:0} to{opacity:1} }
 @keyframes goldShimmer {
   0%   { background-position:200% center }
   100% { background-position:-200% center }
@@ -1786,10 +1787,18 @@ body {
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
-<div id="site-footer"></div>
+
+
+
+
+
+<div id="site-footer"
+     data-prev-url="/all-battles.html"
+     data-prev-title="Campaign Map"
+     data-prev-num="All 17 Battles"
+     data-next-url="/armory.html"
+     data-next-title="The Armoury"
+     data-next-num="7 Weapons"></div>
 <script src="/footer.js"></script>
-
-
 </body>
 </html>

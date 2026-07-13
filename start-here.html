@@ -13,7 +13,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/site.css">
-<style>
+<style>#hero .rev{opacity:1!important;transform:none!important}
+
 /* ═══════════════════════════════════════════════════════════
    ROOT & RESET
 ═══════════════════════════════════════════════════════════ */
@@ -41,10 +42,12 @@ body {
 /* ═══════════════════════════════════════════════════════════
    ANIMATIONS
 ═══════════════════════════════════════════════════════════ */
-
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(26px); }
   to   { opacity:1; transform:translateY(0); }
 }
- to { opacity:1; }
+@keyframes fadeIn {
+  from { opacity:0; } to { opacity:1; }
 }
 @keyframes goldShimmer {
   0%   { background-position:200% center; }
@@ -1986,12 +1989,17 @@ footer {
     <div class="cta-btns"><a href="/battle-1.html" class="btn-gold">Begin Battle 1</a><a href="/all-battles.html" class="btn-ghost">View Campaign Map</a><a href="/armory.html" class="btn-sm">Open the Armoury</a></div>
   </div>
 </section>
-<!-- ── FOOTER ── -->
-<div class="footer-band"><a href="/brand.html" class="fband-cell"><span class="fdir">← Previous</span><span class="ftitle">The Philosophy</span><span class="fnum">Brand &amp; Worldview</span></a><div class="fband-center"><span class="fctr">The Campaign</span><a href="/all-battles.html" class="btn-sm">All 17 Battles</a></div><a href="/battle-1.html" class="fband-cell"><span class="fdir">Next →</span><span class="ftitle">The Blind Warrior</span><span class="fnum">Battle 1</span></a></div>
-<div class="foot-strip"><span class="foot-copy-left">© 2026 · TheWarWithin.you</span><ul class="foot-links"><li><a href="/start-here.html">Start Here</a></li><li><a href="/all-battles.html">Campaign Map</a></li><li><a href="/armory.html">Armoury</a></li><li><a href="/about.html">The Architect</a></li><li><a href="/war-letters.html">War Letters</a></li></ul><ul class="foot-legal"><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms</a></li></ul></div>
 
 
-<div id="site-footer"></div>
+
+
+<div id="site-footer"
+     data-prev-url="/brand.html"
+     data-prev-title="The Philosophy"
+     data-prev-num="Brand & Worldview"
+     data-next-url="/battle-1.html"
+     data-next-title="The Blind Warrior"
+     data-next-num="Battle 1"></div>
 <script src="/footer.js"></script>
 </body>
 </html>
