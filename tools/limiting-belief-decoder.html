@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limiting Belief Decoder · Tool VIII | The War Within Armoury</title>
+<meta name="description" content="The Limiting Belief Decoder is a five-step cognitive reconstruction instrument deployed at Battle 11. Name the belief. Trace the source. Interrogate it. Replace it. Build the evidence that makes the replacement stick.">
+<meta name="author" content="Segun Samuel">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://thewarwithin.you/tools/limiting-belief-decoder">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The War Within">
+<meta property="og:url" content="https://thewarwithin.you/tools/limiting-belief-decoder">
+<meta property="og:title" content="Limiting Belief Decoder · Tool VIII | The War Within Armoury">
+<meta property="og:description" content="The belief running your life right now was installed without your consent. This instrument names it, traces it, and replaces it.">
+<meta property="og:image" content="https://thewarwithin.you/assets/og/default.jpg">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@warwithinmvmt">
+<meta name="twitter:title" content="Limiting Belief Decoder · Tool VIII | The War Within Armoury">
+<link rel="stylesheet" href="/site.css">
+<style>
+.tool-hero{padding:160px var(--pad-h) 80px;max-width:var(--max-w);margin:0 auto;position:relative;}
+.tool-num{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.4em;color:var(--edge);text-transform:uppercase;margin-bottom:16px;}
+.tool-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);font-weight:600;line-height:1.1;color:var(--white);margin-bottom:16px;}
+.tool-subtitle{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.28em;color:var(--mist);text-transform:uppercase;margin-bottom:32px;}
+.tool-decree{border:1px solid rgba(212,160,23,.25);border-left:3px solid var(--edge);padding:22px 28px;background:var(--gold-ghost);max-width:700px;font-style:italic;font-size:clamp(16px,1.5vw,19px);color:var(--white-dim);line-height:1.7;}
+.tool-section{padding:80px var(--pad-h);max-width:var(--max-w);margin:0 auto;}
+.section-rule{width:60px;height:2px;background:var(--edge);margin-bottom:32px;}
+.section-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.4em;color:var(--edge);text-transform:uppercase;margin-bottom:12px;}
+.section-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,36px);font-weight:600;color:var(--white);margin-bottom:20px;line-height:1.2;}
+.section-body{font-size:clamp(16px,1.5vw,19px);color:var(--white-dim);line-height:1.8;max-width:720px;}
+.section-body p{margin-bottom:18px;}
+.section-body strong{color:var(--white);}
+
+/* Spec cards */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:32px;}
+.spec-card{border:1px solid rgba(139,26,26,.3);padding:24px 28px;background:rgba(14,8,6,.6);transition:border-color .25s;}
+.spec-card:hover{border-color:rgba(212,160,23,.3);}
+.spec-card-num{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;color:var(--edge);margin-bottom:8px;}
+.spec-card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.spec-card-body{font-size:15px;color:var(--white-dim);line-height:1.6;}
+
+/* Five-step process */
+.steps-grid{display:grid;gap:2px;margin-top:32px;background:rgba(139,26,26,.2);}
+.step-card{background:var(--abyss);padding:36px 32px;display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start;transition:background .25s;}
+.step-card:hover{background:rgba(139,26,26,.05);}
+.step-num{font-family:'Cinzel',serif;font-size:clamp(28px,3vw,40px);font-weight:600;color:rgba(139,26,26,.4);line-height:1;padding-top:6px;}
+.step-content{}
+.step-action{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.36em;color:var(--edge);text-transform:uppercase;margin-bottom:8px;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2vw,26px);font-weight:600;color:var(--white);margin-bottom:12px;}
+.step-body{font-size:clamp(15px,1.4vw,17px);color:var(--white-dim);line-height:1.75;}
+.step-body em{color:var(--aged-gold);font-style:italic;}
+
+/* Origins grid */
+.origins-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px;background:rgba(139,26,26,.2);}
+.origin-card{background:var(--abyss);padding:28px 32px;}
+.origin-num{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.36em;color:var(--mist);text-transform:uppercase;margin-bottom:8px;}
+.origin-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--edge);margin-bottom:10px;}
+.origin-body{font-size:15px;color:var(--white-dim);line-height:1.65;}
+
+/* Patterns */
+.patterns-list{display:grid;gap:2px;margin-top:32px;background:rgba(139,26,26,.2);}
+.pattern-row{background:var(--abyss);padding:24px 32px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
+.pattern-lie{font-family:'Cormorant Garamond',serif;font-size:17px;color:rgba(139,26,26,.75);font-style:italic;}
+.pattern-arrow{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;color:var(--mist);text-align:center;}
+.pattern-truth{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--aged-gold);}
+
+/* Field record */
+.field-record{border:1px solid rgba(139,26,26,.3);border-left:3px solid var(--crimson);padding:36px 40px;background:rgba(139,26,26,.04);max-width:760px;margin-top:32px;}
+.fr-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.36em;color:var(--crimson);text-transform:uppercase;margin-bottom:16px;}
+.fr-body{font-size:clamp(16px,1.5vw,18px);color:var(--white-dim);line-height:1.85;}
+.fr-body p{margin-bottom:14px;}
+.fr-body p:last-child{margin-bottom:0;}
+
+/* Warning box */
+.warning-box{border:1px solid rgba(212,160,23,.2);border-top:2px solid var(--edge);padding:28px 32px;background:var(--gold-ghost);max-width:760px;margin:32px 0;}
+.warning-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.36em;color:var(--edge);text-transform:uppercase;margin-bottom:12px;}
+.warning-body{font-size:16px;color:var(--white-dim);line-height:1.75;}
+
+/* Deploy section */
+.deploy-section{padding:80px var(--pad-h);border-top:1px solid rgba(139,26,26,.2);}
+.deploy-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.deploy-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.4em;color:var(--edge);text-transform:uppercase;margin-bottom:16px;}
+.deploy-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:600;color:var(--white);margin-bottom:20px;line-height:1.2;}
+.deploy-body{font-size:16px;color:var(--white-dim);line-height:1.8;margin-bottom:32px;}
+.btn-deploy{display:inline-flex;align-items:center;gap:12px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;color:var(--abyss);background:var(--edge);padding:18px 36px;transition:all .3s;}
+.btn-deploy:hover{background:var(--aged-gold);transform:translateY(-2px);}
+.btn-secondary{display:inline-flex;align-items:center;gap:12px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;text-decoration:none;color:var(--white-dim);border:1px solid rgba(139,26,26,.4);padding:14px 28px;margin-top:16px;transition:all .3s;}
+.btn-secondary:hover{color:var(--white);border-color:var(--edge);}
+.deploy-visual{display:flex;flex-direction:column;gap:2px;}
+.dv-row{background:rgba(139,26,26,.06);border:1px solid rgba(139,26,26,.2);padding:16px 20px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.24em;color:var(--white-dim);text-transform:uppercase;}
+.dv-row span{color:var(--edge);}
+
+/* Mission statement */
+.mission-wrap{padding:80px var(--pad-h);text-align:center;border-top:1px solid rgba(139,26,26,.2);}
+.mission-inner{max-width:680px;margin:0 auto;}
+.mission-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.4em;color:var(--crimson);text-transform:uppercase;margin-bottom:24px;}
+.mission-text{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.8vw,34px);font-style:italic;color:var(--white);line-height:1.5;margin-bottom:24px;}
+.mission-attr{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:var(--mist);text-transform:uppercase;}
+
+/* Responsive */
+.rev{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.rev.on{opacity:1;transform:none;}
+@media(max-width:900px){
+  .origins-grid{grid-template-columns:1fr;}
+  .pattern-row{grid-template-columns:1fr;gap:8px;}
+  .pattern-arrow{text-align:left;}
+  .deploy-inner{grid-template-columns:1fr;gap:40px;}
+  .step-card{grid-template-columns:1fr;}
+  .step-num{font-size:28px;}
+}
+@media(max-width:760px){
+  :root{--pad-v:80px;--pad-h:24px;}
+  .tool-hero{padding:120px var(--pad-h) 60px;}
+  .tool-section,.deploy-section,.mission-wrap{padding:60px var(--pad-h);}
+  .step-card{padding:24px 20px;}
+}
+</style>
+<script src="/consent.js"></script>
+</head>
+<body>
+
+<div id="site-nav"></div>
+<script src="/nav.js"></script>
+
+<main>
+
+<!-- HERO -->
+<section class="tool-hero">
+  <div class="tool-num">Tool VIII · The War Within Armoury · Deploy at Battle 11</div>
+  <h1 class="tool-title">Limiting Belief Decoder</h1>
+  <div class="tool-subtitle">Exposure · Interrogation · Replacement · Rewiring · Validation</div>
+  <blockquote class="tool-decree">The belief running your life right now was installed without your consent. Most of it before age seven. The inner saboteur did not choose you. It was chosen for you. This instrument takes it apart.</blockquote>
+</section>
+
+<!-- WHAT THIS IS -->
+<section class="tool-section rev" style="border-top:1px solid rgba(139,26,26,.2);">
+  <div class="section-rule"></div>
+  <div class="section-label">What This Instrument Is</div>
+  <div class="section-body">
+    <p>The Limiting Belief Decoder is the tactical instrument deployed at Battle 11: The Inner Saboteur. It is a structured, five-step cognitive reconstruction protocol — not a motivational exercise, not a journaling prompt, not a general mindset course.</p>
+    <p>It does one specific thing: it takes a limiting belief through the full sequence from unconscious operation to conscious elimination. Exposure, interrogation, replacement, rewiring, validation. All five. In sequence. No shortcuts. The belief that has been costing you direction, output, and permission to occupy the rooms you were built for cannot be outworked, out-prayed, or outlasted. It has to be decoded — named, traced, contradicted, and replaced with something that has actual evidence behind it.</p>
+    <p>This instrument produces that sequence.</p>
+  </div>
+</section>
+
+<!-- FIELD RECORD -->
+<section class="tool-section rev" style="padding-top:0;">
+  <div class="section-label">Field Record</div>
+  <div class="field-record">
+    <p class="fr-label">Zainab · Head of Strategy · Lagos</p>
+    <div class="fr-body">
+      <p>Thirty-six. Head of Strategy at a financial services firm. Sharper than anyone in the room. Three promotion cycles passed over. Not for performance — for a belief she had never articulated as a belief. It was absorbed, not chosen.</p>
+      <p>The third promotion cycle passes. Her line manager says: <em>Zainab, this organisation does not have a performance problem with you. It has a visibility problem. You do the work then disappear before anyone can credit it to you.</em></p>
+      <p>That evening she writes it down for the first time: <em>I believe that women like me are not supposed to be too visible.</em> That sentence — the naming — is where the battle begins. Not the debrief. The act of writing the belief down as a belief.</p>
+      <p>The Limiting Belief Decoder starts there. With writing. With naming. Everything that follows depends on having named it first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR ORIGINS -->
+<section class="tool-section rev" style="border-top:1px solid rgba(139,26,26,.2);">
+  <div class="section-rule"></div>
+  <div class="section-label">The Four Origins of Limiting Beliefs</div>
+  <h2 class="section-heading">Where the Inner Saboteur Was Built</h2>
+  <div class="section-body">
+    <p>Limiting beliefs are not random intrusions. They are structured narratives built over time through specific mechanisms. The Decoder traces the belief to one of four origins — because tracing the source is part of dismantling it.</p>
+  </div>
+  <div class="origins-grid rev">
+    <div class="origin-card">
+      <p class="origin-num">Origin 01</p>
+      <p class="origin-name">Childhood Imprinting</p>
+      <p class="origin-body">Between birth and age seven, the brain operates primarily in theta wave states — the same frequency as hypnosis. The child accepts parental and environmental programming as absolute truth. Beliefs installed here carry the weight of foundational reality, which is why they are the hardest to examine: they feel like facts, not beliefs.</p>
+    </div>
+    <div class="origin-card">
+      <p class="origin-num">Origin 02</p>
+      <p class="origin-name">Trauma Interpretation</p>
+      <p class="origin-body">Trauma does not just create emotional wounds — it generates meaning-making narratives. When something painful happens, the mind asks: why? The answer it generates becomes a belief. <em>I was rejected because I am fundamentally unworthy</em> is not the event. It is the interpretation of the event. The wound is real. The belief is not.</p>
+    </div>
+    <div class="origin-card">
+      <p class="origin-num">Origin 03</p>
+      <p class="origin-name">Social Conditioning</p>
+      <p class="origin-body">Beyond family, culture transmits beliefs about what is possible for people like you: your gender, your class, your tribe, your geography. <em>Success requires the sacrifice of integrity. You cannot have both faith and wealth. People from where you come from do not become what you are trying to become.</em> These are not personal failures. They are cultural downloads that need examination.</p>
+    </div>
+    <div class="origin-card">
+      <p class="origin-num">Origin 04</p>
+      <p class="origin-name">Confirmation Bias</p>
+      <p class="origin-body">Once a limiting belief is established, the brain's Reticular Activating System filters sensory information to confirm it. Every rejection is noticed; every acceptance is explained away. The belief appears to be confirmed daily — not because the evidence is real, but because the filter is selective. The belief creates the perception that validates it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FIVE DESTRUCTIVE PATTERNS -->
+<section class="tool-section rev" style="border-top:1px solid rgba(139,26,26,.2);">
+  <div class="section-rule"></div>
+  <div class="section-label">The Five Destructive Mindset Patterns</div>
+  <h2 class="section-heading">What the Inner Saboteur Runs On</h2>
+  <div class="section-body">
+    <p>Limiting beliefs cluster into identifiable patterns. The Decoder identifies which pattern your primary belief belongs to — because the pattern determines the replacement protocol.</p>
+  </div>
+  <div class="patterns-list rev">
+    <div class="pattern-row">
+      <div class="pattern-lie">Intelligence and ability are fixed. Failure proves I am limited.</div>
+      <div class="pattern-arrow">→ Fixed Mindset → Growth Mindset</div>
+      <div class="pattern-truth">Failure is data. Effort develops capacity. I am not my current level.</div>
+    </div>
+    <div class="pattern-row">
+      <div class="pattern-lie">Resources are scarce. Someone else's success reduces mine.</div>
+      <div class="pattern-arrow">→ Scarcity Mindset → Abundance Mindset</div>
+      <div class="pattern-truth">The kingdom operates on multiplication, not subtraction. What God assigns, He provides for.</div>
+    </div>
+    <div class="pattern-row">
+      <div class="pattern-lie">Life happens to me. Circumstances determine my outcomes.</div>
+      <div class="pattern-arrow">→ Victim Mentality → Creator Mentality</div>
+      <div class="pattern-truth">I am a steward with agency. I cannot control everything. I am responsible for my response to everything.</div>
+    </div>
+    <div class="pattern-row">
+      <div class="pattern-lie">My value is determined by how I compare to others around me.</div>
+      <div class="pattern-arrow">→ Comparison Trap → Identity Anchor</div>
+      <div class="pattern-truth">I was assigned a specific calling that no one else has. The comparison is irrelevant to the assignment.</div>
+    </div>
+    <div class="pattern-row">
+      <div class="pattern-lie">Anything less than perfect reveals something fundamentally wrong with me.</div>
+      <div class="pattern-arrow">→ Perfectionism → Excellence</div>
+      <div class="pattern-truth">Perfectionism is fear wearing standards as a disguise. Excellence deploys. Perfectionism delays.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FIVE-STEP DECODER PROCESS -->
+<section class="tool-section rev" style="border-top:1px solid rgba(139,26,26,.2);">
+  <div class="section-rule"></div>
+  <div class="section-label">The Five-Step Cognitive Reconstruction Process</div>
+  <h2 class="section-heading">How to Run the Decoder</h2>
+  <div class="section-body">
+    <p>Five steps. In sequence. Each step depends on the one before it. Do not skip. Do not abbreviate. The belief has had years of repetition behind it — the decoder requires the full protocol.</p>
+  </div>
+
+  <div class="steps-grid rev">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <div class="step-action">Step One</div>
+        <div class="step-title">Exposure — Name It</div>
+        <div class="step-body">You cannot change what you cannot see. For one week, journal every limiting thought that surfaces. For each one, write three entries: the thought itself as a complete sentence; where it originated (childhood, trauma, culture, confirmation bias); and the consequence it has been producing in your life. Do not analyse yet. Only name. <em>Zainab's sentence: I believe that women like me are not supposed to be too visible.</em> That is the format. One belief. One sentence. Written.</div>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <div class="step-action">Step Two</div>
+        <div class="step-title">Interrogation — Challenge It</div>
+        <div class="step-body">Once exposed, interrogate the belief with five questions, in writing: Where did this originate? Is this objectively true, or merely a repeated interpretation? What has this belief cost me specifically — named in concrete terms? What evidence exists that directly contradicts it? What would change if this belief were false? Do not answer these in your head. Write every answer. The interrogation only works if it produces a written record you can return to.</div>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <div class="step-action">Step Three</div>
+        <div class="step-title">Replacement — Install the Counter-Truth</div>
+        <div class="step-body">Identify the specific truth — grounded in Scripture and in evidence from your own life — that directly contradicts the specific lie. Not a generic affirmation. A targeted replacement. Write it as a first-person declaration in the present tense. Then speak it aloud. Memorise it. The replacement must be precise enough to address the exact belief, and evidenced enough that your mind cannot immediately dismiss it. <em>Generic: I am enough. Targeted: I have built X, led Y, and been trusted with Z. The evidence does not support the belief that people like me are not supposed to be visible.</em></div>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <div class="step-action">Step Four</div>
+        <div class="step-title">Repetition — Rewire the Neural Pathway</div>
+        <div class="step-body">Neural pathways require consistent use to strengthen. The limiting belief has years of repetition behind it. The replacement requires deliberate, sustained repetition to build competing pathways. For 21 consecutive days: every time the primary limiting belief surfaces, immediately replace it with the counter-truth — spoken aloud if possible, written if alone. Track the days. Do not break the chain. Neuroscientists identify 66 days for full habit formation; 21 days begins the rewiring. The 66-day column is in the instrument.</div>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">05</div>
+      <div class="step-content">
+        <div class="step-action">Step Five</div>
+        <div class="step-title">Validation — Build the Evidence Archive</div>
+        <div class="step-body">Your brain needs proof that the replacement is true. Collect it deliberately. Three records, maintained simultaneously: a gratitude journal recording three daily contradictions to the primary limiting belief; a wins log documenting specific actions taken despite the belief's resistance; and a truth-teller account from one person who speaks life without flattery, whose testimony about you counters what the belief says about you. The evidence archive becomes the proof base that sustains the replacement when the old belief resurfaces under pressure — and it will resurface under pressure.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box rev">
+    <p class="warning-label">Field Intelligence</p>
+    <p class="warning-body">The inner saboteur is almost never about capacity. It is almost always about permission. You do not need more ability. You need to stop withholding permission from yourself to use what you already have. The decoder does not give you permission. It removes the structure that was withholding it.</p>
+  </div>
+</section>
+
+<!-- WHAT THE INSTRUMENT CONTAINS -->
+<section class="tool-section rev" style="border-top:1px solid rgba(139,26,26,.2);">
+  <div class="section-label">What This Instrument Contains</div>
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="spec-card-num">Section 1</div>
+      <div class="spec-card-title">The Belief Inventory</div>
+      <div class="spec-card-body">Seven-day journaling template. Each day captures: the limiting thought, its origin category, the consequence it produced, and the pattern it belongs to.</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-num">Section 2</div>
+      <div class="spec-card-title">The Primary Belief Declaration</div>
+      <div class="spec-card-body">Single-page identification sheet. The one limiting belief named as a sentence, its origin traced, and the five interrogation questions answered in full.</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-num">Section 3</div>
+      <div class="spec-card-title">The Counter-Truth Inscription</div>
+      <div class="spec-card-body">The targeted replacement written as a first-person present-tense declaration. Scripture anchor. Personal evidence base. Spoken daily for 21 days minimum.</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-num">Section 4</div>
+      <div class="spec-card-title">The 66-Day Rewiring Tracker</div>
+      <div class="spec-card-body">Daily chain grid. Each day the replacement is deployed over the surfacing belief is marked. The chain must not break. Visual accountability for the neural rewiring process.</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-num">Section 5</div>
+      <div class="spec-card-title">The Evidence Archive</div>
+      <div class="spec-card-body">Three-column rolling record: daily contradictions to the limiting belief, documented wins taken despite resistance, and truth-teller testimony. The proof base for the replacement.</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-card-num">Section 6</div>
+      <div class="spec-card-title">The 30-Day After-Action Report</div>
+      <div class="spec-card-body">Four debrief questions at Day 30. What changed in behaviour. What actions were taken that the belief had been preventing. What evidence is now in the archive. What the belief's current grip rating is vs. Day 1.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPLOY -->
+<section class="deploy-section rev">
+  <div class="deploy-inner">
+    <div class="deploy-content">
+      <div class="deploy-label">Deploy This Weapon</div>
+      <h2 class="deploy-title">Download · Print · Begin Tonight</h2>
+      <p class="deploy-body">The decoder is a print instrument. Six sections. The Belief Inventory begins tonight — not after you have thought about it more. The belief has already had more than enough time. Download it. Print Section 1. Open it before you sleep. Write the first limiting thought that surfaces. That is where the battle for Battle 11 actually begins.</p>
+      <div>
+        <a href="/armory.html" class="btn-secondary">← Return to The Armoury</a>
+      </div>
+    </div>
+    <div class="deploy-visual">
+      <div class="dv-row"><span>Section 1</span> — Seven-Day Belief Inventory</div>
+      <div class="dv-row"><span>Section 2</span> — Primary Belief Declaration + Interrogation</div>
+      <div class="dv-row"><span>Section 3</span> — Counter-Truth Inscription</div>
+      <div class="dv-row"><span>Section 4</span> — 66-Day Rewiring Tracker</div>
+      <div class="dv-row"><span>Section 5</span> — Evidence Archive (Rolling)</div>
+      <div class="dv-row"><span>Section 6</span> — 30-Day After-Action Report</div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION STATEMENT -->
+<section class="mission-wrap rev">
+  <div class="mission-inner">
+    <p class="mission-label">Battle 11 Doctrine</p>
+    <p class="mission-text">"The inner saboteur is almost never about capacity. It is almost always about permission. Your life will never rise above the ceiling of your dominant thoughts. Change how you think and you change what you can accomplish."</p>
+    <p class="mission-attr">The War Within · Battle 11 · The Inner Saboteur</p>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"
+     data-prev-url="/armory.html"
+     data-prev-title="The Armoury"
+     data-prev-num="All Strategic Instruments"
+     data-next-url="/battle-11.html"
+     data-next-title="The Inner Saboteur"
+     data-next-num="Battle 11">
+</div>
+<script src="/footer.js"></script>
+
+<script>
+(function(){
+  var revEls = document.querySelectorAll('.rev');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold:0.07, rootMargin:'0px 0px -32px 0px' });
+  revEls.forEach(function(el){ io.observe(el); });
+}());
+</script>
+</body>
+</html>
